@@ -261,9 +261,24 @@ header {
 }
 
 .resume-example {
-    width: 90%;
-    height: 90%;
-    padding: 1rem;
+    /*width: 90%;*/
+    /*height: 90%;*/
+    /*padding: 1rem;*/
+}
+
+.resume-div {
+    padding: 5px;
+    margin: 0 30px 30px 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.resume-text-h3 {
+    color: #444;
+    font-weight: 300;
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
 }
 
 .section-2 {
@@ -293,4 +308,25 @@ header {
 
 .section-1-container {
     background-color: #58C8E1;
+}
+
+.carousel-image {
+    height: 370px;
+}
+
+.carousel-indicators{
+    /*left: 720px;*/
+    position: relative;
+    float: right;
+    margin-right: 5%;
+}
+
+.carousel-indicators > li {
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+}
+
+.carousel-inner-images {
+    margin-bottom: -46px;
 }
