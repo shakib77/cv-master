@@ -261,9 +261,8 @@ header {
 }
 
 .resume-example {
-    /*width: 90%;*/
-    /*height: 90%;*/
-    /*padding: 1rem;*/
+    width: 368px;
+    height: 450px;
 }
 
 .resume-div {
@@ -280,17 +279,6 @@ header {
     margin: 0 0 10px 0;
     font-size: 1.5rem;
 }
-
-.section-2 {
-    width: 97rem;
-    height: 700px;
-    overflow-y: auto;
-    padding: 0px 100px 5px;
-}
-
-/*.section-2-container {*/
-/*  background-color: lightblue;*/
-/*}*/
 
 .section-3-container {
     background-color: rgb(245, 245, 245);

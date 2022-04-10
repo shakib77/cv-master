@@ -137,17 +137,16 @@
 <!-- Section 1 ends -->
 
 <!-- Section - 2 ---->
-<div class="section-2-container">
-    <div class="section-2 row">
+<div class="container">
+    <div class="row justify-content-md-center">
         <div class="column col-12 mt-4">
-            <img class="resume-example" src="https://cvmkr.com/images/press.png">
+            <img src="https://cvmkr.com/images/press.png" alt="cv maker">
         </div>
         <div class="column col-12 mt-4 resume-text-header">
             <h3 class="resume-text-h3">A wide range of templates to choose from</h3>
         </div>
         <div class="column col-lg-6">
-            <div class="resume-div">
-                <img class="resume-example" src="https://cvmkr.com/images/samples/headline.png">
+            <div class="resume-div basic">
             </div>
             <!-- <div>
                 <img class="resume-example" src="Images/resume-example3.webp">
@@ -156,7 +155,7 @@
         </div>
         <div class="column col-lg-6">
             <div class="resume-div">
-                <img class="resume-example" src="https://cvmkr.com/images/samples/mocca.png">
+                <img class="resume-example" src="https://cvmkr.com/images/samples/mocca.png" alt="cv maker">
             </div>
             <!-- <div>
                 <img class="resume-example" src="Images/resume-example6.svg">
@@ -165,32 +164,32 @@
         </div>
         <div class="column col-lg-3">
             <div class="resume-div">
-                <img class="resume-example" src="https://cvmkr.com/images/samples/executive.png">
+                <img src="https://cvmkr.com/images/samples/executive.png" alt="cv maker">
             </div>
         </div>
         <div class="column col-lg-3">
             <div class="resume-div">
-                <img class="resume-example" src="https://cvmkr.com/images/samples/elegant.png">
+                <img src="https://cvmkr.com/images/samples/elegant.png" alt="cv maker">
             </div>
         </div>
         <div class="column col-lg-3">
             <div class="resume-div">
-                <img class="resume-example" src="https://cvmkr.com/images/samples/bold.png">
+                <img src="https://cvmkr.com/images/samples/bold.png" alt="cv maker">
             </div>
         </div>
         <div class="column col-lg-3">
             <div class="resume-div">
-                <img class="resume-example" src="https://cvmkr.com/images/samples/literateur.png">
+                <img src="https://cvmkr.com/images/samples/literateur.png" alt="cv maker">
             </div>
         </div>
         <div class="column col-lg-3">
             <div class="resume-div">
-                <img class="resume-example" src="https://cvmkr.com/images/samples/finesse.png">
+                <img src="https://cvmkr.com/images/samples/finesse.png" alt="cv maker">
             </div>
         </div>
         <div class="column col-lg-3">
             <div class="resume-div">
-                <img class="resume-example" src="https://cvmkr.com/images/samples/metro.png">
+                <img src="https://cvmkr.com/images/samples/metro.png" alt="cv maker">
             </div>
         </div>
     </div> <!-- row -->
@@ -209,7 +208,7 @@
 
             <div class="row">
                 <div class="col-lg-1">
-                    <img src="Images/icon1.png" style="width: 70px;">
+                    <img src="Images/icon1.png" style="width: 70px;" alt="cv maker">
                 </div>
                 <div class="col-lg-8">
                     <div class="section-3-content text-left">
@@ -299,34 +298,6 @@
                         </div> <!-- footer wrapper -->
                     </div> <!-- footer link -->
                 </div>
-
-                <!--<div class="col-lg-6">
-                    <div>
-                        <div>
-                            <h4>Group Members</h4>
-                        </div>
-                        <div>
-                            <ul>
-                                <li>DIPANKAR SUGAT NIKESH &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; 201801089
-                                </li>
-                                <li>MAKWANA KETULKUMAR LALITKUMAR &emsp; &emsp;201801084</li>
-                                <li>PRAJAPATI SMIT AMRUTKUMAR &emsp; &emsp; &emsp; &emsp; &emsp;201801122</li>
-                                <li>AGRAWAL MOHIT PANKAJBHAI &emsp; &emsp; &emsp; &emsp; &emsp;201801044</li>
-                                <li>PATEL HIMANSHUKUMAR PARESHKUMAR &emsp; 201801181</li>
-                                <li>PADHIAR ADITYA ROHIT &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;201801215</li>
-                                <li>PATEL UTSAV JAYESHBHAI &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;201801148
-                                </li>
-                                <li>RATANPARA MAHIR YOGESHBHAI &emsp; &emsp; &emsp; &emsp; 201801004</li>
-                                <li>PARMAR KRUTIK MAHESHBHAI &emsp; &emsp; &emsp; &emsp; &emsp; 201801199</li>
-                                <li>MODI HARSH PARAG &emsp; &emsp; &emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-                                    201801029
-                                </li>
-                            </ul>
-                        </div>
-                    </div> &lt;!&ndash; footer contact &ndash;&gt;
-                </div>-->
-
-
                 <div class="col-lg-3">
                     <div class="d-flex align-items-end flex-column">
                         <div class="mr-5">
@@ -385,6 +356,35 @@
         }
 
     }
+</script>
+<script>
+    const myInit1 = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        mode: "cors",
+        cache: "default",
+    };
+
+    let image = fetch('https://xosstech.com/cvm/api/public/api/cv', myInit1).then((res) => {
+        return res.json()
+    }).then((jsonRes) => {
+        // console.log({jsonRes});
+        if (!jsonRes.success) {
+            return;
+        }
+        let html = '';
+        let htmlSegment = `<img class="resume-example" src="${jsonRes.cv[0].image}"  alt="">`;
+
+        html += htmlSegment;
+        let container = document.querySelector('.basic');
+        container.innerHTML = html;
+
+        console.log('jsonRes.cv[0].image', jsonRes.cv[0].image);
+        console.log(jsonRes.cv);
+
+    }).catch((err) => console.log('error', err))
 </script>
 <script>
     let isUserLoggedIn = false;

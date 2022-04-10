@@ -23,7 +23,7 @@ const url = "/api/profile";
 fetch(url, myInit)
   .then((res) => {
     // console.log(res);
-    if (!res.ok) throw new Error("Fauled to fetch resources");
+    if (!res.ok) throw new Error("Faulted to fetch resources");
     return res.json();
   })
   .then((jsonRes) => {
