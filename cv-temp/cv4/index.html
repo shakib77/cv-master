@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV Using HTML & CSS</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <style>
+        * {margin: 0;padding: 0;}
+
+        body{font-family: 'Montserrat', sans-serif;}
+
+        #page {
+            min-height: 200px;
+            width: 60%;
+            min-width: 600px;
+            background: #FAFAFA;
+            margin: auto;
+            padding: 30px;
+            color: #000000;
+        }
+
+        .photo-and-name {
+            /* NO STYLE NEEDED YET */
+        }
+
+        .photo {
+            width: 15%;
+            min-width: 130px;
+            float: right;
+            margin-right: 20px;
+        }
+
+        .contact-info-box {
+            width: 70.9%;
+            display: inline-block;
+        }
+
+        .name {
+            margin-bottom: -5px;
+        }
+        .job-title {
+            /*display: inline-block;*/
+            padding: 5px;
+        }
+
+        #objective {
+
+        }
+
+        #objective h3 {
+            background: #D3D3D3;
+            /*border: 1px solid #d3d3d3;*/
+            /*text-transform: uppercase;*/
+            padding: 3px;
+            /*border-radius: 5px;*/
+            margin: 30px 0 10px;
+        }
+
+        #objective p {
+            padding: 0 5px;
+            line-height: 25px;
+            font-size: 14px;
+            color: #000;
+        }
+
+        #education h3 {
+            background: #D3D3D3;
+            /*border: 1px solid #d3d3d3;*/
+            /*text-transform: uppercase;*/
+            padding: 3px;
+            /*border-radius: 5px;*/
+            margin: 30px 0 10px;
+        }
+
+        #education table {
+            border: 2px solid #000000;
+            padding: 5px;
+            font-size: 14px;
+            color: #000;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #education table td, th {
+            border: 2px solid #000000;
+            padding: 5px;
+            font-size: 14px;
+            color: #000;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        #education table tr.school-1 td:first-child {
+            width: 120px;
+            /*color: gray;*/
+            /*padding-bottom: 25px;*/
+        }
+
+        #language h3 {
+            background: #D3D3D3;
+            /*border: 1px solid #d3d3d3;*/
+            /*text-transform: uppercase;*/
+            padding: 3px;
+            /*border-radius: 5px;*/
+            margin: 30px 0 10px;
+        }
+
+        #language table {
+            border: 2px solid #000000;
+            padding: 5px;
+            font-size: 14px;
+            color: #000;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #language table th, td {
+            border: 2px solid #000000;
+            padding: 5px;
+            font-size: 14px;
+            color: #000;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        #work h3 {
+            background: #D3D3D3;
+            /*border: 1px solid #d3d3d3;*/
+            /*text-transform: uppercase;*/
+            padding: 3px;
+            /*border-radius: 5px;*/
+            margin: 30px 0 10px;
+        }
+
+        #work ul li {
+            display: inline-block;
+        }
+
+        #work .skill {
+            padding: 0 2px;
+            line-height: 25px;
+            font-size: 14px;
+            color: #000;
+        }
+
+        #bio-data h3 {
+            background: #D3D3D3;
+            /*border: 1px solid #d3d3d3;*/
+            /*text-transform: uppercase;*/
+            padding: 3px;
+            /*border-radius: 5px;*/
+            margin: 30px 0 10px;
+        }
+
+        #bio-data ul li {
+            display: block;
+        }
+
+         .s1 {
+            padding-left: 121px;
+        }
+
+         .s2 {
+            padding-left: 62px;
+        }
+
+         .s3 {
+            padding-left: 57px;
+        }
+
+         .s4 {
+            padding-left: 112px;
+        }
+
+         .s5 {
+            padding-left: 74px;
+        }
+
+         .s6 {
+            padding-left: 67px;
+        }
+
+         .s7 {
+            padding-left: 87px;
+        }
+
+         .s8 {
+            padding-left: 105px;
+        }
+
+         .s9 {
+            padding-left: 48px;
+        }
+
+         .s10 {
+            padding-left: 22px;
+        }
+
+        #bio-data .skill {
+            padding: 0 2px;
+            line-height: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        #bio-data table td {
+            padding: 8px;
+            font-size: 15px;
+            color: #000;
+        }
+
+        #bio-data table tr td:first-child {
+            width: 200px;
+        }
+
+        #bio-data table tr td:nth-child(2) {
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="page">
+    <div class="photo-and-name">
+        <img src="images/profile.png" class="photo" alt="Profile Picture">
+        <div class="contact-info-box">
+            <h1 class="name">Muhammad Owais</h1>
+            <br>
+            <p class="job-title">Address:</p>
+            <p class="job-title">Mobile:</p>
+            <p class="job-title">E-mail:</p>
+        </div>
+    </div>
+    <div id="objective">
+        <h3>Career Objective</h3>
+        <p>
+            To take a challenging and managerial role in the field of Computer programming and implement the expertise and experience gained in this field to develop complex project with efficiency and quality.
+        </p>
+    </div>
+    <div id="education">
+        <h3>Education</h3>
+        <table>
+            <tr>
+                <th>Exam Title</th>
+                <th>Concentration</th>
+                <th>Institute</th>
+                <th>Board</th>
+                <th>Result</th>
+                <th>Passing Year</th>
+            </tr>
+            <tr class="school-1">
+                <td>SSC</td>
+                <td>Science</td>
+                <td>School</td>
+                <td>Board</td>
+                <td>Result</td>
+                <td>Passing Year</td>
+            </tr>
+            <tr class="school-1">
+                <td>SSC</td>
+                <td>Science</td>
+                <td>School</td>
+                <td>Board</td>
+                <td>Result</td>
+                <td>Passing Year</td>
+            </tr>
+            <tr class="school-1">
+            <td>SSC</td>
+            <td>Science</td>
+            <td>School</td>
+            <td>Board</td>
+            <td>Result</td>
+            <td>Passing Year</td>
+        </tr>
+        </table>
+    </div>
+    <div id="work">
+        <h3>Special Qualities</h3>
+        <ul>
+            <li>
+                <div class="skill">Microsoft Word, </div>
+            </li>
+            <li>
+                <div class="skill">Microsoft Excel, </div>
+            </li>
+            <li>
+                <div class="skill">Microsoft Power Point </div>
+            </li>
+        </ul>
+    </div>
+    <div id="language">
+        <h3>Language Proficiency</h3>
+        <table>
+            <tr>
+                <th>Language Name</th>
+                <th>Eficiency</th>
+            </tr>
+            <tr>
+                <td>Bangla</td>
+                <td>Good</td>
+            </tr>
+            <tr>
+                <td>English</td>
+                <td>Good</td>
+            </tr>
+        </table>
+    </div>
+    <div id="bio-data">
+        <h3>Personal Details</h3>
+        <ul>
+            <li>
+                <div class="skill">Name<span class="s1">:</span> </div>
+            </li>
+            <li>
+                <div class="skill">Father's Name<span class="s2">:</span> </div>
+            </li>
+            <li>
+                <div class="skill">Mother's Name<span class="s3">:</span> </div>
+            </li>
+            <li>
+                <div class="skill">Gender<span class="s4">:</span> </div>
+            </li>
+            <li>
+                <div class="skill">Date of Birth<span class="s5">:</span> </div>
+            </li>
+            <li>
+                <div class="skill">Marital Status<span class="s6">:</span> </div>
+            </li>
+            <li>
+                <div class="skill">Nationality<span class="s7">:</span> </div>
+            </li>
+            <li>
+                <div class="skill">Religion<span class="s8">:</span> </div>
+            </li>
+            <li>
+                <div class="skill">Present Address<span class="s9">:</span> </div>
+            </li>
+            <li>
+                <div class="skill">Permanent Address<span class="s10">:</span> </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

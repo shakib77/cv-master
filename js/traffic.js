@@ -215,7 +215,7 @@ logoutButton.addEventListener("click", (e) => {
     .then((jsonRes) => {
       console.log({ jsonRes });
       localStorage.removeItem("token");
-      window.location.href = "index.html";
+      window.location.href = "cv2.html";
     })
     .catch((err) => console.log(err));
 });

@@ -65,7 +65,9 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 10% 0.05rem 10%;
-    background-color: #24419f09;
+    /*background-color: #2F2F2F;*/
+    background-color: #e1d4d4;
+    height: 45px;
 }
 
 .brand-name {
@@ -242,8 +244,12 @@ header {
 
 .section-1-content {
     /*padding-top: 180px;*/
-    /*float: left;*/
+    float: right;
     color: #fff;
+}
+
+.create-cv-btn {
+    margin-top: 100px;
 }
 
 .section-1-img {
@@ -265,7 +271,7 @@ header {
 }
 
 .resume-example-image {
-    width: 368px;
+    width: 100%;
     height: 450px;
 }
 
