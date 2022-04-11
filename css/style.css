@@ -261,13 +261,31 @@ header {
 }
 
 .resume-example {
+    position: relative;
+}
+
+.resume-example-image {
     width: 368px;
     height: 450px;
 }
 
+.resume-example-title {
+    padding: 3px 10px;
+    color: #999;
+    background: #fff;
+    display: block;
+    position: absolute;
+    left: -6px;
+    right: 1px;
+    bottom: -37px;
+    border: 1px solid #ddd;
+    width: 510px;
+    text-align: start;
+}
+
 .resume-div {
     padding: 5px;
-    margin: 0 30px 30px 0;
+    margin: 20px 30px 30px 0;
     border: 1px solid #ddd;
     border-radius: 3px;
     text-align: center;
@@ -278,20 +296,6 @@ header {
     font-weight: 300;
     margin: 0 0 10px 0;
     font-size: 1.5rem;
-}
-
-.section-3-container {
-    background-color: rgb(245, 245, 245);
-}
-
-.section-3 {
-    width: 90rem;
-    height: 700px;
-    padding: 130px 10px 100px 100px;
-}
-
-.section-3-content {
-    padding: 20px 20px 20px 20px;
 }
 
 .section-1-container {
