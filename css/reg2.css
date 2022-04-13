@@ -63,7 +63,9 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 10% 0.05rem 10%;
-  background-color: #24419f09;
+  /*background-color: #2F2F2F;*/
+  background-color: #e1d4d4;
+  height: 50px;
 }
 
 .brand-name {
@@ -192,20 +194,20 @@ header {
   box-shadow: 0px 4px 20px rgba(27, 90, 148, 0.2);
 }
 
-.bodyy {
+/*.bodyy {
   display: flex;
   height: 100vh;
   justify-content: center;
   align-items: center;
   padding: 15px;
-  /* background-image: url(th.jpg); 
-     background-size: cover; 
-  
-    background: transparent;
-     background-color: rgba(255, 255, 255, 0.521); */
-}
+  !* background-image: url(th.jpg);
+     background-size: cover;
 
-.container {
+    background: transparent;
+     background-color: rgba(255, 255, 255, 0.521); *!
+}*/
+
+/*.container {
   justify-content: center;
   align-items: center;
   padding: 15px;
@@ -215,7 +217,7 @@ header {
   border: solid 2px #0608a0;
   border-radius: 60px;
   box-shadow: 0px 80px 100px rgba(14, 4, 107, 0.966);
-}
+}*/
 .container .title {
   font-size: 30px;
   font-weight: 650;
@@ -397,4 +399,9 @@ form .button input:hover {
   .container .content .choice {
     flex-direction: column;
   }
+}
+
+.form-holder{
+  margin-top:20%;
+  margin-bottom:20%;
 }
