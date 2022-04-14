@@ -25,17 +25,6 @@
         <nav>
             <ul class="nav_links">
                 <li>
-                    <a
-                            href="adminDashboard.html"
-                            class="active-page"
-                            id="admin-dashboard"
-                            style="display: none"
-                    >Admin Dashboard</a
-                    >
-                </li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li>
                     <div class="dropdown">
                         <a
                                 class="btn dropdown-toggle avatar-btn"
@@ -52,8 +41,6 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Change Account</a>
-                            <a class="dropdown-item" href="#">Change Password</a>
                             <a class="dropdown-item" href="profile.html">Edit Profile</a>
                             <a class="dropdown-item" href="#" id="logout-button"
                             >Logout</a
@@ -186,25 +173,25 @@
         ? localStorage.getItem("token")
         : "";
 
-    const bearer = "BEARER " + token;
+    const bearer = "Bearer " + token;
     let isUserLoggedIn = false;
     let isFromGoogle = false;
     if (token) isUserLoggedIn = true;
     // console.log(document.cookie);
     const myInit = {
         method: "GET",
-        withCredentials: true,
-        credentials: "include",
+        // withCredentials: true,
+        // credentials: "include",
         headers: {
             "Content-Type": "application/json",
             Authorization: bearer,
-            cookie: document.cookie,
+            // cookie: document.cookie,
         },
         mode: "cors",
         cache: "default",
     };
 
-    fetch("/api/profile", myInit)
+    fetch("https://xosstech.com/cvm/api/public/api/infos", myInit)
         .then((res) => {
             console.log(res);
             if (!res.ok) {
@@ -214,8 +201,9 @@
             }
         })
         .then((jsonRes) => {
-            console.log({jsonRes});
+            console.log('jsonRes =>', jsonRes);
             if (!jsonRes.success) {
+                console.log('!jsonRes.success->', jsonRes);
                 window.location.href = "login.html";
             } else {
                 isUserLoggedIn = true;
@@ -230,7 +218,7 @@
         })
         .catch((err) => {
             console.log(err);
-            window.location.href = "/login.html";
+            // window.location.href = "/login.html";
         });
 
     // implementing logout API call

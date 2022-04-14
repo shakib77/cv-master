@@ -353,15 +353,15 @@ mix-blend-mode: screen;  */
 
 }
 
-input[type="text"]::-webkit-input-placeholder {
-    color: rgb(22, 22, 95) !important;
-    text-align: center;
-}
+/*input[type="text"]::-webkit-input-placeholder {*/
+/*    color: rgb(22, 22, 95) !important;*/
+/*    text-align: center;*/
+/*}*/
 
-input[type="password"]::-webkit-input-placeholder {
-    color: rgb(22, 22, 95) !important;
-    text-align: center;
-}
+/*input[type="password"]::-webkit-input-placeholder {*/
+/*    color: rgb(22, 22, 95) !important;*/
+/*    text-align: center;*/
+/*}*/
 
 .content .forget a {
 
@@ -478,10 +478,7 @@ p {
     }
 }
 
-     
-   
-  
-  
-  
-  
-  
+.form-holder {
+    margin-top: 20%;
+    margin-bottom: 20%;
+}

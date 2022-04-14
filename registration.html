@@ -42,7 +42,7 @@
                     <div class="card-body">
                         <h1>Registration</h1>
 <!--                        <form method="post" action="/api/register" id="register-form"> &lt;!&ndash;todo: action will not need i think&ndash;&gt;-->
-                        <form id="register-form"> <!--todo: action will not need i think-->
+                        <form id="register-form">
                             <div class="form-group">
                                 <label>Name</label>
                                 <input type="text" name="name" id="name" class="form-control" placeholder="name"/>
@@ -53,7 +53,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-8 text-right">
-                                    <input type="submit" class="btn btn-primary" value=" Login "/>
+                                    <input type="submit" class="btn btn-primary" value="Sign Up"/>
                                 </div>
                             </div>
                         </form>
@@ -96,41 +96,24 @@
             body: JSON.stringify(formData),
         })
             .then((response) => {
-                console.log('response=>',response);
                 return response.json();
             })
             .then((jsonRes) => {
-                console.log('jsonRes->',jsonRes);
                 if (!jsonRes.success) {
                     throw new Error(jsonRes);
                 }
-                    // console.log('Success:', jsonRes);
-                // console.log("http://127.0.0.1:5500/" + jsonRes.redirect);
                 else {
+                    console.log('jsonRes->', jsonRes.token);
                     // window.location.href = jsonRes.data.redirect;
+
+                    window.localStorage.setItem('token', jsonRes.token)
                     document.location = "dashboard.html";
                 }
             })
             .catch((error) => {
                 console.error("Error:", error);
-                const alertDiv = document.getElementById("alert-message");
-                alertDiv.innerHTML = "";
-                alertDiv.style.display = "flex";
-                const newDiv = document.createElement("div");
-                newDiv.setAttribute("justify-content", "center");
-                newDiv.setAttribute("align-items", "center");
-                const str = "alert alert-danger alert-dismissible fade show container-md";
-                str.split(" ").forEach((c) => newDiv.classList.add(c));
-                newDiv.innerHTML = error;
-
-                const newBtn = document.createElement("button");
-                newBtn.classList.add("btn-close");
-                newBtn.setAttribute("data-bs-dismiss", "alert");
-                newBtn.setAttribute("aria-label", "Close");
-
-                newDiv.append(newBtn);
-                alertDiv.append(newDiv);
             });
+        // console.log('local token', localStorage.getItem('token'));
     });
 </script>
 </html>

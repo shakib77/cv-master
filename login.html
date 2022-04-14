@@ -34,63 +34,28 @@
     </nav>
 </header>
 
-<div class="right">
-    <div class="content">
-        <div class="title">Welcome</div>
-
-        <form method="POST" id="login-form">
-            <div class="login">Login</div>
-
-            <div class="input">
-                <span>Username</span>
-                <input
-                        type="text"
-                        name="username"
-                        id="Username"
-                        placeholder="Username"
-                        required
-                />
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="card form-holder">
+                    <div class="card-body">
+                        <h1>Registration</h1>
+                        <!--                        <form method="post" action="/api/register" id="register-form"> &lt;!&ndash;todo: action will not need i think&ndash;&gt;-->
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label>Mobile</label>
+                                <input type="tel" name="mobile" id="mobile" class="form-control" placeholder="Mobile number"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 text-right">
+                                    <input type="submit" class="btn btn-primary" value="Sign Up"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-
-            <div class="input">
-                <span>Password</span>
-                <input
-                        type="Password"
-                        name="password"
-                        id="Password"
-                        placeholder="Password"
-                        required
-                />
-                <i class="far fa-eye-slash"></i>
-            </div>
-
-            <div class="forget">
-                <a href="forgot-password.html">Forget Password?</a>
-            </div>
-
-            <div class="input">
-                <input type="submit" value="Sign In" name="submit"/>
-            </div>
-
-            <div class="input2">
-                <p>Don't have an account?</p>
-                <a href="registration.html">Sign Up</a>
-            </div>
-
-            <hr/>
-        </form>
-
-        <div class="sign-up-google">
-            <button
-                    onclick="location.href='/api/login/auth/google'"
-                    class="btn btn-google"
-                    type="submit"
-                    value="submit"
-                    id="google-button"
-            >
-                <span class="google-text">Sign in with </span>
-                <img src="Images/google-icon.svg" alt="" class="google-icon"/>
-            </button>
         </div>
     </div>
 </div>
@@ -133,13 +98,13 @@
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const formData = {
-            username: e.target.elements["username"].value,
-            password: e.target.elements["password"].value,
+            mobile: e.target.elements["mobile"].value,
+            password: '12345'
         };
         console.log(formData);
-        fetch("/api/login", {
-            method: "POST", // or 'PUT',
-            mode: "cors",
+        fetch("https://xosstech.com/cvm/api/public/api/login", {
+            method: "POST",
+            // mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -151,35 +116,11 @@
             })
             .then((jsonRes) => {
                 // console.log('Success:', jsonRes);
-                localStorage.setItem("token", jsonRes.data.accessToken);
+                localStorage.setItem("token", jsonRes.token);
                 window.location.href = "dashboard.html";
             })
             .catch((error) => {
                 console.error("Error:", error);
-                // show errors to user
-                const alertDiv = document.getElementById("alert-message");
-                alertDiv.innerHTML = "";
-                alertDiv.style.display = "flex";
-                const newDiv = document.createElement("div");
-                alertDiv.setAttribute("justify-content", "center");
-                alertDiv.setAttribute("align-items", "center");
-                const str = "alert alert-danger alert-dismissible fade show container-md";
-                str.split(" ").forEach((c) => newDiv.classList.add(c));
-                let errors = [];
-                if (Array.isArray(error)) errors.push(...error);
-                else errors.push(error);
-                errors.forEach((err) => {
-                    newDiv.innerHTML = err;
-                })
-
-                const newBtn = document.createElement("button");
-                newBtn.classList.add("btn-close");
-                newBtn.setAttribute("data-bs-dismiss", "alert");
-                newBtn.setAttribute("aria-label", "Close");
-
-
-                newDiv.append(newBtn);
-                alertDiv.append(newDiv);
             });
     });
 </script>
