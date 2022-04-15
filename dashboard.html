@@ -161,7 +161,8 @@
                    aria-controls="v-pills-education" aria-selected="false">Education</a>
                 <a class="nav-link" id="v-pills-projects-tab" data-toggle="pill" href="#v-pills-projects" role="tab"
                    aria-controls="v-pills-projects" aria-selected="false">Projects</a>
-                <a class="nav-link" id="v-pills-additional-info-tab" data-toggle="pill" href="#v-pills-additional-info" role="tab"
+                <a class="nav-link" id="v-pills-additional-info-tab" data-toggle="pill" href="#v-pills-additional-info"
+                   role="tab"
                    aria-controls="v-pills-additional-info" aria-selected="false">Additional Information</a>
             </div>
         </div>
@@ -169,16 +170,134 @@
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="v-pills-personal-information" role="tabpanel"
                      aria-labelledby="v-pills-personal-information-tab">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <form id="personal-info-from">
+                        <div class="row">
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                           placeholder="Write your full name...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="mobile">Phone No.</label>
+                                    <input type="text" class="form-control" id="mobile" name="mobile"
+                                           placeholder="Write your phone number">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="email">Email address</label>
+                                    <input type="email" class="form-control" id="email"
+                                           aria-describedby="emailHelp" name="email" placeholder="Write your email...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="present-address">Present address</label>
+                                    <input type="text" class="form-control" id="present-address" name="present-address"
+                                           placeholder="Write your present address...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="permanent-address">Permanent address</label>
+                                    <input type="text" class="form-control" id="permanent-address"
+                                           name="permanent-address"
+                                           placeholder="Write your permanent address...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="job-title">Job Title</label>
+                                    <input type="text" class="form-control" id="job-title" name="job-title"
+                                           placeholder="Write your job title...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="marital-status">Marital status</label>
+                                    <select class="form-control" id="marital-status" name="marital-status">
+                                        <option>Single</option>
+                                        <option>Married</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="religion">Religion</label>
+                                    <input type="text" class="form-control" id="religion" name="religion"
+                                           placeholder="religion">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="nationality">Nationality</label>
+                                    <input type="text" class="form-control" id="nationality" name="nationality"
+                                           placeholder="nationality">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="gender">Gender</label>
+                                    <select class="form-control" id="gender" name="gender">
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="dob">Date of birth</label>
+                                    <input placeholder="Selected date" type="date" id="dob"
+                                           class="form-control datepicker">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="father-name">Father name</label>
+                                    <input type="text" class="form-control" id="father-name" name="father-name"
+                                           placeholder="father name">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="mother-name">Mother name</label>
+                                    <input type="text" class="form-control" id="mother-name" name="mother-name"
+                                           placeholder="mother name">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="profile-summary">Profile summary</label>
+                                    <textarea class="form-control" id="profile-summary" rows="4"
+                                              placeholder="profile summery..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="image">Photo</label>
+                                    <input type="file" class="form-control-file" id="image" accept="image/*">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
+
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
@@ -193,14 +312,14 @@
                 <div class="tab-pane fade" id="v-pills-projects" role="tabpanel" aria-labelledby="v-pills-projects-tab">
                     4
                 </div>
-                <div class="tab-pane fade" id="v-pills-additional-info" role="tabpanel" aria-labelledby="v-pills-additional-info-tab">
+                <div class="tab-pane fade" id="v-pills-additional-info" role="tabpanel"
+                     aria-labelledby="v-pills-additional-info-tab">
                     5
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <script
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -217,8 +336,6 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"
 ></script>
-<script src="./js/dropzone.js"></script>
-</body>
 
 <script>
     const logoutButton = document.getElementById("logout-button");
@@ -233,7 +350,7 @@
     if (token) isUserLoggedIn = true;
     // console.log(document.cookie);
     const myInit = {
-        method: "GET",
+        method: "POST",
         // withCredentials: true,
         // credentials: "include",
         headers: {
@@ -245,7 +362,7 @@
         cache: "default",
     };
 
-    fetch("https://xosstech.com/cvm/api/public/api/infos", myInit)
+    fetch("https://xosstech.com/cvm/api/public/api/profile", myInit)
         .then((res) => {
             console.log(res);
             if (!res.ok) {
@@ -260,23 +377,16 @@
                 console.log('!jsonRes.success->', jsonRes);
                 window.location.href = "login.html";
             } else {
-                isUserLoggedIn = true;
-
-                if (jsonRes.data.user.isAdmin) {
-                    document.getElementById("admin-dashboard").style.display = "inline";
-                }
-                if (jsonRes.data.user.googleId) isFromGoogle = true;
-                document.getElementById("user-image").src =
-                    jsonRes.data.user.photoURL;
+                console.log('jsonRes.success->', jsonRes);
             }
         })
         .catch((err) => {
-            console.log(err);
+            console.log('error->', err);
             // window.location.href = "/login.html";
         });
 
     // implementing logout API call
-    logoutButton.addEventListener("click", (e) => {
+    /*logoutButton.addEventListener("click", (e) => {
         myInit.method = "GET";
         let url = "/api/" + (isFromGoogle ? "login/auth/google/" : "") + "logout";
         console.log(url);
@@ -299,9 +409,9 @@
                 console.log(err);
                 // window.location.href = "cv2.html";
             });
-    });
+    });*/
 
-    document.getElementById("select-button").addEventListener("click", (e) => {
+    /*document.getElementById("select-button").addEventListener("click", (e) => {
         console.log(e.target.dataset);
         myInit.method = "POST";
         fetch("/api/resumeData", myInit)
@@ -313,6 +423,74 @@
                 window.location.href = e.target.dataset.redirect;
             })
             .catch((err) => console.log(err));
+    });*/
+</script>
+
+<!--<script type="text/javascript">-->
+<!--    $('.datepicker').datepicker({-->
+<!--        clearBtn: true,-->
+<!--        format: "dd/mm/yyyy"-->
+<!--    });-->
+<!--</script>-->
+
+
+</body>
+
+<script>
+    const personalInfoForm = document.getElementById("personal-info-from");
+    personalInfoForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = {
+            name: e.target.elements["name"].value,
+            mobile: e.target.elements["mobile"].value,
+            email: e.target.elements["email"].value,
+            present_address: e.target.elements["present-address"].value,
+            permanent_address: e.target.elements["permanent-address"].value,
+            job_title: e.target.elements["job-title"].value,
+            marital_status: e.target.elements["marital-status"].value,
+            religion: e.target.elements["religion"].value,
+            nationality: e.target.elements["nationality"].value,
+            gender: e.target.elements["gender"].value,
+            dob: e.target.elements["dob"].value,
+            profile_summary: e.target.elements["profile-summary"].value,
+            father_name: e.target.elements["father-name"].value,
+            mother_name: e.target.elements["mother-name"].value,
+            image: e.target.elements["image"].value,
+        };
+
+        console.log('from data->', formData);
+        console.log("bearer=>", bearer);
+        fetch("https://xosstech.com/cvm/api/public/api/info", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: bearer,
+            },
+            body: JSON.stringify(formData),
+        }).then((res) => {
+            console.log('res=>',res);
+            if (!res.ok) {
+                throw Error("Could not fetch data for that resource");
+            } else {
+                return res.json();
+            }
+        })
+            .then((jsonRes) => {
+                console.log('jsonRes =>', jsonRes);
+                if (!jsonRes.success) {
+                    console.log('!jsonRes.success->', jsonRes);
+                    // window.location.href = "login.html";
+                } else {
+                    console.log('jsonRes.success->', jsonRes);
+                    document.getElementById("personal-info-from").reset();
+                }
+            })
+            .catch((err) => {
+                console.log('error->', err);
+                // window.location.href = "/login.html";
+            });
     });
 </script>
+
 </html>
