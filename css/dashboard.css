@@ -1,0 +1,20 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 10% 0.05rem 10%;
+    /*background-color: #2F2F2F;*/
+    background-color: #e1d4d4;
+    height: 50px;
+}
+
+.fixed-position {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*padding: 1rem 10% 0.05rem 10%;*/
+    /*background: rgba(255, 255, 255, 0.637);*/
+    /*-webkit-backdrop-filter: blur(30px);*/
+    /*backdrop-filter: blur(30px);*/
+    width: 100%;
+}

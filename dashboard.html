@@ -16,6 +16,7 @@
         <!-- <link rel="stylesheet" href="./css/styles.css" /> -->
         <link rel="stylesheet" href="./css/aditya_styles.css"/>
         <link rel="stylesheet" href="./css/dropzone.min.css"/>
+        <link rel="stylesheet" href="./css/dashboard.css"/>
         <title>Dashboard - CVMaker</title>
     </head>
 <body>
@@ -148,7 +149,7 @@
     </div>
 </div>-->
 <div class="container">
-    <div class="row">
+    <div class="row pt-4">
         <div class="col-3">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active" id="v-pills-personal-information-tab" data-toggle="pill"
@@ -170,9 +171,8 @@
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="v-pills-personal-information" role="tabpanel"
                      aria-labelledby="v-pills-personal-information-tab">
-                    <form id="personal-info-from">
+                    <form id="personal_info_from">
                         <div class="row">
-
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="name">Full Name</label>
@@ -199,33 +199,33 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="present-address">Present address</label>
-                                    <input type="text" class="form-control" id="present-address" name="present-address"
+                                    <label for="present_address">Present address</label>
+                                    <input type="text" class="form-control" id="present_address" name="present_address"
                                            placeholder="Write your present address...">
                                 </div>
                             </div>
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="permanent-address">Permanent address</label>
-                                    <input type="text" class="form-control" id="permanent-address"
-                                           name="permanent-address"
+                                    <label for="permanent_address">Permanent address</label>
+                                    <input type="text" class="form-control" id="permanent_address"
+                                           name="permanent_address"
                                            placeholder="Write your permanent address...">
                                 </div>
                             </div>
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="job-title">Job Title</label>
-                                    <input type="text" class="form-control" id="job-title" name="job-title"
+                                    <label for="job_title">Job Title</label>
+                                    <input type="text" class="form-control" id="job_title" name="job_title"
                                            placeholder="Write your job title...">
                                 </div>
                             </div>
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="marital-status">Marital status</label>
-                                    <select class="form-control" id="marital-status" name="marital-status">
+                                    <label for="marital_status">Marital status</label>
+                                    <select class="form-control" id="marital_status" name="marital_status">
                                         <option>Single</option>
                                         <option>Married</option>
                                     </select>
@@ -268,24 +268,24 @@
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="father-name">Father name</label>
-                                    <input type="text" class="form-control" id="father-name" name="father-name"
+                                    <label for="father_name">Father name</label>
+                                    <input type="text" class="form-control" id="father_name" name="father_name"
                                            placeholder="father name">
                                 </div>
                             </div>
 
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="mother-name">Mother name</label>
-                                    <input type="text" class="form-control" id="mother-name" name="mother-name"
+                                    <label for="mother_name">Mother name</label>
+                                    <input type="text" class="form-control" id="mother_name" name="mother_name"
                                            placeholder="mother name">
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="profile-summary">Profile summary</label>
-                                    <textarea class="form-control" id="profile-summary" rows="4"
+                                    <label for="profile_summary">Profile summary</label>
+                                    <textarea class="form-control" id="profile_summary" rows="4"
                                               placeholder="profile summery..."></textarea>
                                 </div>
                             </div>
@@ -297,13 +297,65 @@
                                 </div>
                             </div>
                         </div>
-
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
                 <div class="tab-pane fade" id="v-pills-work-experience" role="tabpanel"
                      aria-labelledby="v-pills-work-experience-tab">
-                    2
+                    <form id="work_experience_from">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="company_name">Company name</label>
+                                    <input type="text" class="form-control" id="company_name" name="company_name"
+                                           placeholder="Write your company name...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="position">Position</label>
+                                    <input type="text" class="form-control" id="position" name="position"
+                                           placeholder="Write your position...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="start">Start From</label>
+                                    <input type="text" class="form-control" id="start" name="start" placeholder="Write Start date...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="end">End at</label>
+                                    <input type="text" class="form-control" id="end" name="end"
+                                           placeholder="Write end date...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="location">Location</label>
+                                    <input type="text" class="form-control" id="location"
+                                           name="location"
+                                           placeholder="Enter location...">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="work_summary">Work summary</label>
+                                    <textarea class="form-control" id="work_summary" rows="4"
+                                              placeholder="Write work summery..."></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
                 <div class="tab-pane fade" id="v-pills-education" role="tabpanel"
                      aria-labelledby="v-pills-education-tab">
@@ -437,29 +489,27 @@
 </body>
 
 <script>
-    const personalInfoForm = document.getElementById("personal-info-from");
+    const personalInfoForm = document.getElementById("personal_info_from");
     personalInfoForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const formData = {
             name: e.target.elements["name"].value,
             mobile: e.target.elements["mobile"].value,
             email: e.target.elements["email"].value,
-            present_address: e.target.elements["present-address"].value,
-            permanent_address: e.target.elements["permanent-address"].value,
-            job_title: e.target.elements["job-title"].value,
-            marital_status: e.target.elements["marital-status"].value,
+            present_address: e.target.elements["present_address"].value,
+            permanent_address: e.target.elements["permanent_address"].value,
+            job_title: e.target.elements["job_title"].value,
+            marital_status: e.target.elements["marital_status"].value,
             religion: e.target.elements["religion"].value,
             nationality: e.target.elements["nationality"].value,
             gender: e.target.elements["gender"].value,
             dob: e.target.elements["dob"].value,
-            profile_summary: e.target.elements["profile-summary"].value,
-            father_name: e.target.elements["father-name"].value,
-            mother_name: e.target.elements["mother-name"].value,
+            profile_summary: e.target.elements["profile_summary"].value,
+            father_name: e.target.elements["father_name"].value,
+            mother_name: e.target.elements["mother_name"].value,
             image: e.target.elements["image"].value,
         };
 
-        console.log('from data->', formData);
-        console.log("bearer=>", bearer);
         fetch("https://xosstech.com/cvm/api/public/api/info", {
             method: "POST",
             mode: "cors",
@@ -483,7 +533,53 @@
                     // window.location.href = "login.html";
                 } else {
                     console.log('jsonRes.success->', jsonRes);
-                    document.getElementById("personal-info-from").reset();
+                    document.getElementById("personal_info_from").reset();
+                }
+            })
+            .catch((err) => {
+                console.log('error->', err);
+                // window.location.href = "/login.html";
+            });
+    });
+</script>
+
+<script>
+    const workExperienceForm = document.getElementById("work_experience_from");
+    workExperienceForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = {
+            company_name: e.target.elements["company_name"].value,
+            position: e.target.elements["position"].value,
+            start: e.target.elements["start"].value,
+            end: e.target.elements["end"].value,
+            work_summary: e.target.elements["work_summary"].value,
+            location: e.target.elements["location"].value,
+        };
+
+        fetch("https://xosstech.com/cvm/api/public/api/experience", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: bearer,
+            },
+            body: JSON.stringify(formData),
+        }).then((res) => {
+            console.log('res=>',res);
+            if (!res.ok) {
+                throw Error("Could not fetch data for that resource");
+            } else {
+                return res.json();
+            }
+        })
+            .then((jsonRes) => {
+                console.log('jsonRes =>', jsonRes);
+                if (!jsonRes.success) {
+                    console.log('!jsonRes.success->', jsonRes);
+                    // window.location.href = "login.html";
+                } else {
+                    console.log('jsonRes.success->', jsonRes);
+                    // document.getElementById("work_experience_from").reset();
                 }
             })
             .catch((err) => {
