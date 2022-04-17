@@ -359,10 +359,101 @@
                 </div>
                 <div class="tab-pane fade" id="v-pills-education" role="tabpanel"
                      aria-labelledby="v-pills-education-tab">
-                    3
+                    <form id="education_from">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="inst_name">Institute name</label>
+                                    <input type="text" class="form-control" id="inst_name" name="inst_name"
+                                           placeholder="Write institute name...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="degree">Degree</label>
+                                    <input type="text" class="form-control" id="degree" name="degree"
+                                           placeholder="Write your degree...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="dept">Department</label>
+                                    <input type="text" class="form-control" id="dept" name="dept" placeholder="Write department...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="pass_year">Passing year</label>
+                                    <input placeholder="Selected passing year" type="date" id="pass_year"
+                                           class="form-control datepicker">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="result">Result</label>
+                                    <input type="number" class="form-control" id="result"
+                                           name="result"
+                                           placeholder="Ex: 5.00">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="board">Board</label>
+                                    <input type="text" class="form-control" id="board"
+                                           name="board"
+                                           placeholder="Board..">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
                 <div class="tab-pane fade" id="v-pills-projects" role="tabpanel" aria-labelledby="v-pills-projects-tab">
-                    4
+                    <form id="projects_from">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="project_name">Project name</label>
+                                    <input type="text" class="form-control" id="project_name" name="project_name"
+                                           placeholder="Write project name...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="project_start">Start date</label>
+                                    <input placeholder="Selected start date" type="date" id="project_start"
+                                           class="form-control datepicker">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="project_end">End date</label>
+                                    <input placeholder="Selected end date" type="date" id="project_end"
+                                           class="form-control datepicker">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="project_summary">Project summary</label>
+                                    <textarea class="form-control" id="project_summary" rows="4"
+                                              placeholder="Write work summery..."></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
                 <div class="tab-pane fade" id="v-pills-additional-info" role="tabpanel"
                      aria-labelledby="v-pills-additional-info-tab">
@@ -579,7 +670,97 @@
                     // window.location.href = "login.html";
                 } else {
                     console.log('jsonRes.success->', jsonRes);
-                    // document.getElementById("work_experience_from").reset();
+                    document.getElementById("work_experience_from").reset();
+                }
+            })
+            .catch((err) => {
+                console.log('error->', err);
+                // window.location.href = "/login.html";
+            });
+    });
+</script>
+
+<script>
+    const educationForm = document.getElementById("education_from");
+    educationForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = {
+            inst_name: e.target.elements["inst_name"].value,
+            degree: e.target.elements["degree"].value,
+            dept: e.target.elements["dept"].value,
+            pass_year: e.target.elements["pass_year"].value,
+            result: e.target.elements["result"].value,
+            board: e.target.elements["board"].value,
+        };
+
+        fetch("https://xosstech.com/cvm/api/public/api/education", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: bearer,
+            },
+            body: JSON.stringify(formData),
+        }).then((res) => {
+            console.log('res=>',res);
+            if (!res.ok) {
+                throw Error("Could not fetch data for that resource");
+            } else {
+                return res.json();
+            }
+        })
+            .then((jsonRes) => {
+                console.log('jsonRes =>', jsonRes);
+                if (!jsonRes.success) {
+                    console.log('!jsonRes.success->', jsonRes);
+                    // window.location.href = "login.html";
+                } else {
+                    console.log('jsonRes.success->', jsonRes);
+                    // document.getElementById("education_from").reset();
+                }
+            })
+            .catch((err) => {
+                console.log('error->', err);
+                // window.location.href = "/login.html";
+            });
+    });
+</script>
+
+<script>
+    const projectsForm = document.getElementById("projects_from");
+    projectsForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = {
+            project_name: e.target.elements["project_name"].value,
+            start: e.target.elements["project_start"].value,
+            end: e.target.elements["project_end"].value,
+            project_summary: e.target.elements["project_summary"].value,
+        };
+
+        fetch("https://xosstech.com/cvm/api/public/api/project", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: bearer,
+            },
+            body: JSON.stringify(formData),
+        }).then((res) => {
+            console.log('res=>',res);
+            if (!res.ok) {
+                throw Error("Could not fetch data for that resource");
+            } else {
+                return res.json();
+            }
+        })
+            .then((jsonRes) => {
+                console.log('jsonRes =>', jsonRes);
+                if (!jsonRes.success) {
+                    console.log('!jsonRes.success->', jsonRes);
+                    // window.location.href = "login.html";
+                } else {
+                    console.log('jsonRes.success->', jsonRes);
+                    // document.getElementById("projects_from").reset();
                 }
             })
             .catch((err) => {
