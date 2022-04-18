@@ -323,7 +323,8 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="start">Start From</label>
-                                    <input type="text" class="form-control" id="start" name="start" placeholder="Write Start date...">
+                                    <input type="text" class="form-control" id="start" name="start"
+                                           placeholder="Write Start date...">
                                 </div>
                             </div>
 
@@ -380,7 +381,8 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="dept">Department</label>
-                                    <input type="text" class="form-control" id="dept" name="dept" placeholder="Write department...">
+                                    <input type="text" class="form-control" id="dept" name="dept"
+                                           placeholder="Write department...">
                                 </div>
                             </div>
 
@@ -457,7 +459,62 @@
                 </div>
                 <div class="tab-pane fade" id="v-pills-additional-info" role="tabpanel"
                      aria-labelledby="v-pills-additional-info-tab">
-                    5
+                    <form id="additional_info_from">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="skills">Skills</label>
+                                    <input type="text" class="form-control" id="skills" name="skills"
+                                           placeholder="Write your skills...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="hobby">Hobby</label>
+                                    <input type="text" class="form-control" id="hobby" name="hobby"
+                                           placeholder="Write your hobby...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="language">Language</label>
+                                    <input type="text" class="form-control" id="language" name="language"
+                                           placeholder="Write language...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="linkedin">Linkedin</label>
+                                    <input type="text" class="form-control" id="linkedin" name="linkedin"
+                                           placeholder="Write your linkedin id...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="github">Github</label>
+                                    <input type="text" class="form-control" id="github" name="github"
+                                           placeholder="Write your github id...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="twitter">Twitter</label>
+                                    <input type="text" class="form-control" id="twitter" name="twitter"
+                                           placeholder="Write your twitter id...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="behance">Behance</label>
+                                    <input type="text" class="form-control" id="behance" name="behance"
+                                           placeholder="Write your behance id...">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -505,7 +562,7 @@
         cache: "default",
     };
 
-    fetch("https://xosstech.com/cvm/api/public/api/profile", myInit)
+    fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
         .then((res) => {
             console.log(res);
             if (!res.ok) {
@@ -610,7 +667,7 @@
             },
             body: JSON.stringify(formData),
         }).then((res) => {
-            console.log('res=>',res);
+            console.log('res=>', res);
             if (!res.ok) {
                 throw Error("Could not fetch data for that resource");
             } else {
@@ -656,7 +713,7 @@
             },
             body: JSON.stringify(formData),
         }).then((res) => {
-            console.log('res=>',res);
+            console.log('res=>', res);
             if (!res.ok) {
                 throw Error("Could not fetch data for that resource");
             } else {
@@ -680,94 +737,10 @@
     });
 </script>
 
-<script>
-    const educationForm = document.getElementById("education_from");
-    educationForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = {
-            inst_name: e.target.elements["inst_name"].value,
-            degree: e.target.elements["degree"].value,
-            dept: e.target.elements["dept"].value,
-            pass_year: e.target.elements["pass_year"].value,
-            result: e.target.elements["result"].value,
-            board: e.target.elements["board"].value,
-        };
+<script src="js/forms/education-from.js"></script>
 
-        fetch("https://xosstech.com/cvm/api/public/api/education", {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: bearer,
-            },
-            body: JSON.stringify(formData),
-        }).then((res) => {
-            console.log('res=>',res);
-            if (!res.ok) {
-                throw Error("Could not fetch data for that resource");
-            } else {
-                return res.json();
-            }
-        })
-            .then((jsonRes) => {
-                console.log('jsonRes =>', jsonRes);
-                if (!jsonRes.success) {
-                    console.log('!jsonRes.success->', jsonRes);
-                    // window.location.href = "login.html";
-                } else {
-                    console.log('jsonRes.success->', jsonRes);
-                    // document.getElementById("education_from").reset();
-                }
-            })
-            .catch((err) => {
-                console.log('error->', err);
-                // window.location.href = "/login.html";
-            });
-    });
-</script>
+<script src="js/forms/projects-from.js"></script>
 
-<script>
-    const projectsForm = document.getElementById("projects_from");
-    projectsForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = {
-            project_name: e.target.elements["project_name"].value,
-            start: e.target.elements["project_start"].value,
-            end: e.target.elements["project_end"].value,
-            project_summary: e.target.elements["project_summary"].value,
-        };
-
-        fetch("https://xosstech.com/cvm/api/public/api/project", {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: bearer,
-            },
-            body: JSON.stringify(formData),
-        }).then((res) => {
-            console.log('res=>',res);
-            if (!res.ok) {
-                throw Error("Could not fetch data for that resource");
-            } else {
-                return res.json();
-            }
-        })
-            .then((jsonRes) => {
-                console.log('jsonRes =>', jsonRes);
-                if (!jsonRes.success) {
-                    console.log('!jsonRes.success->', jsonRes);
-                    // window.location.href = "login.html";
-                } else {
-                    console.log('jsonRes.success->', jsonRes);
-                    // document.getElementById("projects_from").reset();
-                }
-            })
-            .catch((err) => {
-                console.log('error->', err);
-                // window.location.href = "/login.html";
-            });
-    });
-</script>
+<script src="js/forms/additional-info-from.js"></script>
 
 </html>
