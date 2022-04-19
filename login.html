@@ -45,7 +45,8 @@
                         <form id="login-form">
                             <div class="form-group">
                                 <label>Mobile</label>
-                                <input type="tel" name="mobile" id="mobile" class="form-control" placeholder="Mobile number"/>
+                                <input type="tel" name="mobile" id="mobile" class="form-control"
+                                       placeholder="Mobile number"/>
                             </div>
                             <div class="row">
                                 <div class="col-8 text-right">
@@ -53,6 +54,18 @@
                                 </div>
                             </div>
                         </form>
+
+                        <div class="row">
+                            <div class="col-8">
+                                <div>
+                                    <label for="code">Code</label> <br>
+                                    <input type="text" id="code" name="code"/> <br>
+                                </div>
+                                <div id="recaptcha-container"></div>
+                                <button id="signInWithPhone">Login</button>
+                                <button id="getCode">Get Code</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,6 +106,9 @@
         crossorigin="anonymous"
 ></script>
 
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
 <script>
     const loginForm = document.getElementById("login-form");
     loginForm.addEventListener("submit", (e) => {
@@ -102,7 +118,67 @@
             password: '12345'
         };
         console.log(formData);
-        fetch("https://xosstech.com/cvm/api/public/api/login", {
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDMAzOjiQ06P6cXK9np7BrT6tudunO_i9Y",
+            authDomain: "cv-master-shaon.firebaseapp.com",
+            projectId: "cv-master-shaon",
+            storageBucket: "cv-master-shaon.appspot.com",
+            messagingSenderId: "424450155304",
+            appId: "1:424450155304:web:ed26217e1833fe231de61d",
+            measurementId: "G-R90325TGWY"
+        };
+
+        firebase.initializeApp(firebaseConfig)
+
+        const phoneNumberField = formData.mobile;
+
+        const codeField = document.getElementById('code');
+        const getCodeButton = document.getElementById('getCode');
+        const signInWithPhoneButton = document.getElementById('signInWithPhone');
+
+        const auth = firebase.auth();
+
+        // Creates and render the captcha
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+        recaptchaVerifier.render().then(widgetId => {
+            window.recaptchaWidgetId = widgetId;
+        })
+
+        const sendVerificationCode = () => {
+            const phoneNumber = '+88' + phoneNumberField;
+            const appVerifier = window.recaptchaVerifier;
+
+            // Sends the 6 digit code to the user's phone
+            auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then(confirmationResult => {
+                    const sentCodeId = confirmationResult.verificationId;
+
+                    console.log('sentCodeId->', sentCodeId);
+
+                    // Sign in if the verification code is set correctly
+                    signInWithPhoneButton.addEventListener('click', () => signInWithPhone(sentCodeId));
+                })
+        }
+
+        const signInWithPhone = sentCodeId => {
+            const code = codeField.value;
+            // A credential object (contains user's data) is created after a comparison between the 6 digit code sent to the user's phone
+            // and the code typed by the user in the code field on the html form.
+            const credential = firebase.auth.PhoneAuthProvider.credential(sentCodeId, code);
+            auth.signInWithCredential(credential)
+                .then(() => {
+                    console.log('Signed in successfully !');
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+        }
+
+        getCodeButton.addEventListener('click', sendVerificationCode);
+
+
+        /*fetch("https://xosstech.com/cvm/api/public/api/login", {
             method: "POST",
             // mode: "cors",
             headers: {
@@ -121,7 +197,7 @@
             })
             .catch((error) => {
                 console.error("Error:", error);
-            });
+            });*/
     });
 </script>
 </html>
