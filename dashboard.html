@@ -164,7 +164,15 @@
                    aria-controls="v-pills-projects" aria-selected="false">Projects</a>
                 <a class="nav-link" id="v-pills-additional-info-tab" data-toggle="pill" href="#v-pills-additional-info"
                    role="tab"
-                   aria-controls="v-pills-additional-info" aria-selected="false">Additional Information</a>
+                   aria-controls="v-pills-additional" aria-selected="false">Additional Information</a>
+
+                <a class="nav-link" id="v-pills-reference-tab" data-toggle="pill" href="#v-pills-reference"
+                   role="tab"
+                   aria-controls="v-pills-reference" aria-selected="false">Reference</a>
+
+                <a class="nav-link" id="v-pills-training-tab" data-toggle="pill" href="#v-pills-training"
+                   role="tab"
+                   aria-controls="v-pills-training" aria-selected="false">Training</a>
             </div>
         </div>
         <div class="col-9">
@@ -516,6 +524,84 @@
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
+                <div class="tab-pane fade" id="v-pills-reference" role="tabpanel"
+                     aria-labelledby="v-pills-reference-tab">
+                    <form id="reference_from">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="reference_name">Name</label>
+                                    <input type="text" class="form-control" id="reference_name" name="reference_name"
+                                           placeholder="Write name...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="designation">Designation</label>
+                                    <input type="text" class="form-control" id="designation" name="designation"
+                                           placeholder="Write designation...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="organization">Organization</label>
+                                    <input type="text" class="form-control" id="organization" name="organization"
+                                           placeholder="Write organization...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="reference_email">Email</label>
+                                    <input type="email" class="form-control" id="reference_email" name="reference_email"
+                                           aria-describedby="emailHelp" placeholder="Write email id...">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="reference_mobile">Mobile</label>
+                                    <input type="tel" class="form-control" id="reference_mobile"
+                                           name="reference_mobile"
+                                           placeholder="Write your mobile no...">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-training" role="tabpanel"
+                     aria-labelledby="v-pills-training-tab">
+                    <form id="training_from">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="training_name">Training name</label>
+                                    <input type="text" class="form-control" id="training_name" name="training_name"
+                                           placeholder="Write training name...">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="training_end">End date</label>
+                                    <input placeholder="Selected end date" type="date" id="training_end"
+                                           class="form-control datepicker">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="training_summary">Training summary</label>
+                                    <textarea class="form-control" id="training_summary" rows="4"
+                                              placeholder="Write training summery..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -636,111 +722,18 @@
 
 </body>
 
-<script>
-    const personalInfoForm = document.getElementById("personal_info_from");
-    personalInfoForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = {
-            name: e.target.elements["name"].value,
-            mobile: e.target.elements["mobile"].value,
-            email: e.target.elements["email"].value,
-            present_address: e.target.elements["present_address"].value,
-            permanent_address: e.target.elements["permanent_address"].value,
-            job_title: e.target.elements["job_title"].value,
-            marital_status: e.target.elements["marital_status"].value,
-            religion: e.target.elements["religion"].value,
-            nationality: e.target.elements["nationality"].value,
-            gender: e.target.elements["gender"].value,
-            dob: e.target.elements["dob"].value,
-            profile_summary: e.target.elements["profile_summary"].value,
-            father_name: e.target.elements["father_name"].value,
-            mother_name: e.target.elements["mother_name"].value,
-            image: e.target.elements["image"].value,
-        };
+<script src="js/forms/personal-info-from.js"></script>
 
-        fetch("https://xosstech.com/cvm/api/public/api/info", {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: bearer,
-            },
-            body: JSON.stringify(formData),
-        }).then((res) => {
-            console.log('res=>', res);
-            if (!res.ok) {
-                throw Error("Could not fetch data for that resource");
-            } else {
-                return res.json();
-            }
-        })
-            .then((jsonRes) => {
-                console.log('jsonRes =>', jsonRes);
-                if (!jsonRes.success) {
-                    console.log('!jsonRes.success->', jsonRes);
-                    // window.location.href = "login.html";
-                } else {
-                    console.log('jsonRes.success->', jsonRes);
-                    document.getElementById("personal_info_from").reset();
-                }
-            })
-            .catch((err) => {
-                console.log('error->', err);
-                // window.location.href = "/login.html";
-            });
-    });
-</script>
-
-<script>
-    const workExperienceForm = document.getElementById("work_experience_from");
-    workExperienceForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = {
-            company_name: e.target.elements["company_name"].value,
-            position: e.target.elements["position"].value,
-            start: e.target.elements["start"].value,
-            end: e.target.elements["end"].value,
-            work_summary: e.target.elements["work_summary"].value,
-            location: e.target.elements["location"].value,
-        };
-
-        fetch("https://xosstech.com/cvm/api/public/api/experience", {
-            method: "POST",
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: bearer,
-            },
-            body: JSON.stringify(formData),
-        }).then((res) => {
-            console.log('res=>', res);
-            if (!res.ok) {
-                throw Error("Could not fetch data for that resource");
-            } else {
-                return res.json();
-            }
-        })
-            .then((jsonRes) => {
-                console.log('jsonRes =>', jsonRes);
-                if (!jsonRes.success) {
-                    console.log('!jsonRes.success->', jsonRes);
-                    // window.location.href = "login.html";
-                } else {
-                    console.log('jsonRes.success->', jsonRes);
-                    document.getElementById("work_experience_from").reset();
-                }
-            })
-            .catch((err) => {
-                console.log('error->', err);
-                // window.location.href = "/login.html";
-            });
-    });
-</script>
+<script src="js/forms/work-experience-from.js"></script>
 
 <script src="js/forms/education-from.js"></script>
 
 <script src="js/forms/projects-from.js"></script>
 
 <script src="js/forms/additional-info-from.js"></script>
+
+<script src="js/forms/reference-from.js"></script>
+
+<script src="js/forms/training_from.js"></script>
 
 </html>
