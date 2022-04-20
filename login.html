@@ -41,20 +41,11 @@
                 <div class="card form-holder">
                     <div class="card-body">
                         <h1>Login</h1>
-                        <!--                        <form method="post" action="/api/register" id="register-form"> &lt;!&ndash;todo: action will not need i think&ndash;&gt;-->
-                        <form id="login-form">
-                            <div class="form-group">
-                                <label for="mobile">Mobile</label>
-                                <input type="tel" name="mobile" id="mobile" class="form-control"
-                                       placeholder="Mobile number"/>
-                            </div>
-                            <!--                            <div class="row">-->
-                            <!--                                <div class="col-8 text-right">-->
-                            <!--                                    <input type="submit" class="btn btn-primary" value="Login"/>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
-
-                        </form>
+                        <div class="form-group">
+                            <label for="mobile">Mobile</label>
+                            <input type="tel" name="mobile" id="mobile" class="form-control"
+                                   placeholder="Mobile number"/>
+                        </div>
 
                         <div class="row text-center">
                             <div class="col-12">
@@ -119,16 +110,6 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
 <script>
-    /*const loginForm = document.getElementById("login-form");
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = {
-            mobile: e.target.elements["mobile"].value,
-            password: '12345'
-        };
-        console.log(formData);
-    });*/
-
     const firebaseConfig = {
         apiKey: "AIzaSyDMAzOjiQ06P6cXK9np7BrT6tudunO_i9Y",
         authDomain: "cv-master-shaon.firebaseapp.com",
@@ -139,7 +120,7 @@
         measurementId: "G-R90325TGWY"
     };
 
-    firebase.initializeApp(firebaseConfig)
+    firebase.initializeApp(firebaseConfig);
 
     const phoneNumberField = document.getElementById('mobile');
 

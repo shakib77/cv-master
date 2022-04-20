@@ -43,18 +43,35 @@
                         <h1>Registration</h1>
                         <form id="register-form">
                             <div class="form-group">
-                                <label>Name</label>
+                                <label for="name">Name</label>
                                 <input type="text" name="name" id="name" class="form-control" placeholder="name"/>
                             </div>
                             <div class="form-group">
-                                <label>Mobile</label>
-                                <input type="tel" name="mobile" id="mobile" class="form-control" placeholder="Mobile number"/>
+                                <label for="mobile">Mobile</label>
+                                <input type="tel" name="mobile" id="mobile" class="form-control"
+                                       placeholder="Mobile number"/>
                             </div>
-                            <div class="row">
-                                <div class="col-8 text-right">
-                                    <input type="submit" class="btn btn-primary" value="Sign Up"/>
+
+                            <div class="row text-center">
+                                <div class="col-12">
+                                    <div id="recaptcha-container"></div>
+                                    <button type="button" class="btn btn-primary btn-block mt-2" id="getCode">Get Code
+                                    </button>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="code">OTP code</label> <br>
+                                <input type="text" id="code" name="code" class="form-control"
+                                       placeholder="input otp code..."/> <br>
+                            </div>
+
+                            <div class="row mt-3 text-center">
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-primary" id="signInWithPhone">Sign up</button>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -75,44 +92,102 @@
         crossorigin="anonymous"
 ></script>
 
-<script>
-    const registerForm = document.getElementById("register-form");
-    registerForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = {
-            name: e.target.elements["name"].value,
-            mobile: e.target.elements["mobile"].value,
-            password: '12345',
-            password_confirmation: '12345',
-        };
-        console.log(formData);
-        fetch("https://xosstech.com/cvm/api/public/api/register", {
-            method: "POST", // or 'PUT',
-            mode: "cors",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formData),
-        })
-            .then((response) => {
-                return response.json();
-            })
-            .then((jsonRes) => {
-                if (!jsonRes.success) {
-                    throw new Error(jsonRes);
-                }
-                else {
-                    console.log('jsonRes->', jsonRes.token);
-                    // window.location.href = jsonRes.data.redirect;
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
 
-                    window.localStorage.setItem('token', jsonRes.token)
-                    document.location = "dashboard.html";
-                }
+
+<script>
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDMAzOjiQ06P6cXK9np7BrT6tudunO_i9Y",
+        authDomain: "cv-master-shaon.firebaseapp.com",
+        projectId: "cv-master-shaon",
+        storageBucket: "cv-master-shaon.appspot.com",
+        messagingSenderId: "424450155304",
+        appId: "1:424450155304:web:ed26217e1833fe231de61d",
+        measurementId: "G-R90325TGWY"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    const phoneNumberField = document.getElementById('mobile');
+    const nameField = document.getElementById('name');
+
+    const codeField = document.getElementById('code');
+    const getCodeButton = document.getElementById('getCode');
+    const signInWithPhoneButton = document.getElementById('signInWithPhone');
+
+    const auth = firebase.auth();
+
+    // Creates and render the captcha
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    recaptchaVerifier.render().then(widgetId => {
+        window.recaptchaWidgetId = widgetId;
+    })
+
+    const sendVerificationCode = () => {
+        const phoneNumber = '+88' + phoneNumberField.value;
+        const appVerifier = window.recaptchaVerifier;
+
+        // Sends the 6 digit code to the user's phone
+        auth.signInWithPhoneNumber(phoneNumber, appVerifier)
+            .then(confirmationResult => {
+
+                const sentCodeId = confirmationResult.verificationId;
+
+                console.log('sentCodeId->', sentCodeId);
+
+                // Sign in if the verification code is set correctly
+                signInWithPhoneButton.addEventListener('click', () => signInWithPhone(sentCodeId));
             })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-        // console.log('local token', localStorage.getItem('token'));
-    });
+    }
+
+    const signInWithPhone = sentCodeId => {
+        const code = codeField.value;
+        // A credential object (contains user's data) is created after a comparison between the 6 digit code sent to the user's phone
+        // and the code typed by the user in the code field on the html form.
+        const credential = firebase.auth.PhoneAuthProvider.credential(sentCodeId, code);
+        auth.signInWithCredential(credential)
+            .then(() => {
+                console.log('Signed in successfully !');
+
+                const formData = {
+                    name: nameField.value,
+                    mobile: phoneNumberField.value,
+                    password: '12345',
+                    password_confirmation: '12345',
+                };
+
+                fetch("https://xosstech.com/cvm/api/public/api/register", {
+                    method: "POST",
+                    // mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+
+
+                    body: JSON.stringify(formData),
+                })
+                    .then((response) => {
+                        if (!response.ok) throw Error("Incorrect username or password");
+                        else return response.json();
+                    })
+                    .then((jsonRes) => {
+                        // console.log('Success:', jsonRes);
+                        localStorage.setItem("token", jsonRes.token);
+                        window.location.href = "dashboard.html";
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                    });
+
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    }
+
+    getCodeButton.addEventListener('click', sendVerificationCode);
+
 </script>
 </html>
