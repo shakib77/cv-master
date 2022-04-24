@@ -329,3 +329,9 @@ header {
 .carousel-inner-images {
     margin-bottom: -46px;
 }
+
+.play-store-logo {
+    width: 180px;
+    height: 75px;
+    cursor: pointer;
+}
