@@ -194,10 +194,18 @@
         crossorigin="anonymous"
 ></script>
 <script>
+
+    let isUserLoggedIn = false;
+    const token = localStorage.getItem("token") || "";
+    if (token) isUserLoggedIn = true;
+
+    if (isUserLoggedIn) {
+        document.location = "dashboard.html";
+    } else {
+        document.location = "login.html";
+    }
+
     function cv_btn_function() {
-        let isUserLoggedIn = false;
-        const token = localStorage.getItem("token") || "";
-        if (token) isUserLoggedIn = true;
 
         if (isUserLoggedIn === false) {
             document.location = "login.html";
