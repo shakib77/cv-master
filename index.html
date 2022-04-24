@@ -68,7 +68,7 @@
                 </div>
                 <div class="col-6">
                     <div class="section-1-content text-left pt-5">
-                        <button class="btn btn-create create-cv-btn" type="submit" onclick="cv_btn_function()">
+                        <button class="btn btn-create create-cv-btn" type="submit" onclick="cvBtnFunction()">
                             Create a CV Now
                         </button>
                     </div>
@@ -96,16 +96,6 @@
                             <li data-target="#carouselCircleIndicators" data-slide-to="1"></li>
                             <li data-target="#carouselCircleIndicators" data-slide-to="2"></li>
                         </ol>
-                        <!--                        <button class="carousel-control-prev" type="button" data-target="#carouselCircleIndicators"-->
-                        <!--                                data-slide="prev">-->
-                        <!--                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-                        <!--                            <span class="sr-only">Previous</span>-->
-                        <!--                        </button>-->
-                        <!--                        <button class="carousel-control-next" type="button" data-target="#carouselCircleIndicators"-->
-                        <!--                                data-slide="next">-->
-                        <!--                            <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-                        <!--                            <span class="sr-only">Next</span>-->
-                        <!--                        </button>-->
                     </div>
 
                 </div>
@@ -201,11 +191,9 @@
 
     if (isUserLoggedIn) {
         document.location = "dashboard.html";
-    } else {
-        document.location = "login.html";
     }
 
-    function cv_btn_function() {
+    function cvBtnFunction() {
 
         if (isUserLoggedIn === false) {
             document.location = "login.html";

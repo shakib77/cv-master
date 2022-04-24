@@ -1,5 +1,5 @@
-const additionalInfoFrom = document.getElementById("additional_info_from");
-additionalInfoFrom.addEventListener("submit", (e) => {
+const additionalInfoForm = document.getElementById("additional_info_from");
+additionalInfoForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = {
         skills: e.target.elements["skills"].value,
