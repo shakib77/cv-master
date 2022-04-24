@@ -405,3 +405,9 @@ form .button input:hover {
   margin-top:20%;
   margin-bottom:20%;
 }
+
+.play-store-logo {
+  width: 180px;
+  height: 75px;
+  cursor: pointer;
+}

@@ -7,172 +7,85 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="icon" sizes="64x64" href="./Images/checklist.png"/>
-        <link
-                rel="stylesheet"
-                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-                integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-                crossorigin="anonymous"
-        />
-        <!-- <link rel="stylesheet" href="./css/styles.css" /> -->
-        <link rel="stylesheet" href="./css/aditya_styles.css"/>
-        <link rel="stylesheet" href="./css/dropzone.min.css"/>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+              integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+              crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+                crossorigin="anonymous">
+        </script>
+
+
+        <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
+
         <link rel="stylesheet" href="./css/dashboard.css"/>
         <title>Dashboard - CVMaker</title>
     </head>
 <body>
 <header>
-    <div class="fixed-position">
-        <a href="index.html" class="brand-name">CVMaker</a>
-        <nav>
-            <ul class="nav_links">
-                <li>
-                    <div class="dropdown">
-                        <a
-                                class="btn dropdown-toggle avatar-btn"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                        >
-                            <img
-                                    src="./Images/panda-head.png"
-                                    alt="avatar"
-                                    class="avatar-img"
-                                    id="user-image"
-                            />
-                        </a>
+    <a href="#" class="brand-name">CVMaker</a>
+    <nav>
+        <ul class="nav_links">
+            <li>
+                <a class="btn-logout" id="logout-button">
+                    Logout
+                </a>
+            </li>
+        </ul>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="profile.html">Edit Profile</a>
-                            <a class="dropdown-item" href="#" id="logout-button"
-                            >Logout</a
-                            >
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    </nav>
+
 </header>
 
-<!--<div class="container">
-    <div class="row">
-        <div class="col-9 mrg">
-            <h1 class="title-margin">Dashboard</h1>
-        </div>
-
-
-        &lt;!&ndash;-&#45;&#45;&#45;&#45;Cards-&#45;&#45;&#45;&#45;&ndash;&gt;
-
-        <div class="col-4 align-self-center">
-            <div class="card">
-                <div class="card-image-section">
-                    <img
-                            src="./Images/Classic.png"
-                            alt="Classic template"
-                            class="img-fluid"
-                    />
-                </div>
-                <div class="card-text-info">
-                    <h3>Classic Template</h3>
-                </div>
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-12 card-action-buttons">
-                            <a
-                                    class="btn btn-edit"
-                                    data-index="0"
-                                    href="./classic-template.html"
-                            >Edit</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-4 align-self-center">
-            <div class="card">
-                <div class="card-image-section">
-                    <img
-                            src="./Images/modern-template.webp"
-                            alt="Classic template"
-                            class="img-fluid"
-                    />
-                </div>
-                <div class="card-text-info">
-                    <h3>Morden Template</h3>
-                </div>
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-12 card-action-buttons">
-                            <a
-                                    class="btn btn-edit"
-                                    data-index="1"
-                                    href="./modern-template.html"
-                            >Edit</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-4 align-self-center">
-            <div class="card">
-                <div class="card-image-section">
-                    <img
-                            src="./Images/minimalist-template.webp"
-                            alt="Classic template"
-                            class="img-fluid"
-                    />
-                </div>
-                <div class="card-text-info">
-                    <h3>Minimalist Template</h3>
-                </div>
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-12 card-action-buttons">
-                            <a
-                                    class="btn btn-edit"
-                                    data-index="2"
-                                    href="./minimalist-template.html"
-                            >Edit</a
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
 <div class="container">
-    <div class="row pt-4">
+    <div class="row pt-4 main-row">
         <div class="col-3">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active" id="v-pills-personal-information-tab" data-toggle="pill"
-                   href="#v-pills-personal-information" role="tab"
-                   aria-controls="v-pills-personal-information" aria-selected="true">Personal Information</a>
-                <a class="nav-link" id="v-pills-work-experience-tab" data-toggle="pill" href="#v-pills-work-experience"
-                   role="tab"
-                   aria-controls="v-pills-work-experience" aria-selected="false">Work Experience</a>
-                <a class="nav-link" id="v-pills-education-tab" data-toggle="pill" href="#v-pills-education" role="tab"
-                   aria-controls="v-pills-education" aria-selected="false">Education</a>
-                <a class="nav-link" id="v-pills-projects-tab" data-toggle="pill" href="#v-pills-projects" role="tab"
-                   aria-controls="v-pills-projects" aria-selected="false">Projects</a>
-                <a class="nav-link" id="v-pills-additional-info-tab" data-toggle="pill" href="#v-pills-additional-info"
-                   role="tab"
-                   aria-controls="v-pills-additional" aria-selected="false">Additional Information</a>
+                <ul class="nav nav-tabs flex-column list-group" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="v-pills-personal-information-tab" data-toggle="tab"
+                           href="#v-pills-personal-information" role="tab" aria-controls="personal-information"
+                           aria-selected="true">Personal Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="v-pills-work-experience-tab" data-toggle="tab"
+                           href="#v-pills-work-experience"
+                           role="tab"
+                           aria-controls="v-pills-work-experience" aria-selected="false">Work Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="v-pills-education-tab" data-toggle="tab" href="#v-pills-education"
+                           role="tab"
+                           aria-controls="v-pills-education" aria-selected="false">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="v-pills-projects-tab" data-toggle="tab" href="#v-pills-projects"
+                           role="tab"
+                           aria-controls="v-pills-projects" aria-selected="false">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="v-pills-additional-info-tab" data-toggle="tab"
+                           href="#v-pills-additional-info"
+                           role="tab"
+                           aria-controls="v-pills-additional" aria-selected="false">Additional Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="v-pills-reference-tab" data-toggle="tab" href="#v-pills-reference"
+                           role="tab"
+                           aria-controls="v-pills-reference" aria-selected="false">Reference</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="v-pills-training-tab" data-toggle="tab" href="#v-pills-training"
+                           role="tab"
+                           aria-controls="v-pills-training" aria-selected="false">Training</a>
+                    </li>
+                </ul>
 
-                <a class="nav-link" id="v-pills-reference-tab" data-toggle="pill" href="#v-pills-reference"
-                   role="tab"
-                   aria-controls="v-pills-reference" aria-selected="false">Reference</a>
-
-                <a class="nav-link" id="v-pills-training-tab" data-toggle="pill" href="#v-pills-training"
-                   role="tab"
-                   aria-controls="v-pills-training" aria-selected="false">Training</a>
             </div>
         </div>
         <div class="col-9">
@@ -607,6 +520,28 @@
     </div>
 </div>
 
+<!-- Nav tabs -->
+
+
+<footer id="sticky-footer" class="flex-shrink-0 py-3 bg-dark text-white-50 mt-4">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-6">
+                <div>CV Master</div>
+                <div>All Rights Reserved</div>
+                <div>By</div>
+                <div>Xoss Technologies Ltd.</div>
+            </div>
+            <div class="col-6">
+                <div>Get our app</div>
+                <a href="https://play.google.com/store/apps/details?id=com.cvmaster.xosstech" target="_blank"><img
+                        class="play-store-logo" src="Images/play-store.png" alt="cv master"></a>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script
         src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -617,14 +552,21 @@
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"
 ></script>
-<script
-        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"
-></script>
+
+<script>
+    Sortable.create(myTab, {
+        animation: 150,
+        ghostClass: 'blue-background-class'
+    });
+</script>
 
 <script>
     const logoutButton = document.getElementById("logout-button");
+    logoutButton.addEventListener("click", (e) => {
+        localStorage.removeItem("token");
+        window.location.href = "index.html";
+    });
+
 
     const token = localStorage.getItem("token")
         ? localStorage.getItem("token")

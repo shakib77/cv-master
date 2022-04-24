@@ -486,3 +486,9 @@ p {
 .section-1 {
     height: 627px;
 }
+
+.play-store-logo {
+    width: 180px;
+    height: 75px;
+    cursor: pointer;
+}
