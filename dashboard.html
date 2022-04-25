@@ -43,8 +43,24 @@
 </header>
 
 <div class="container">
+    <div class="row p-2">
+        <div class="col-12">
+            <div class="row float-right">
+                <div class="col-6">
+                    <button type="button" class="btn btn-info top-button p-2 top-button-q-pre" id="quick_preview">
+                        <a href="../cv-temp/cv2" target="_blank">Quick Preview </a>
+                    </button>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-secondary p-2 top-button"
+                            data-toggle="modal" data-target="#exampleModal">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row pt-4 main-row">
-        <div class="col-3">
+        <div class="col-3 form-nav-menus">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <ul class="nav nav-tabs flex-column list-group" id="myTab" role="tablist">
                     <li class="nav-item">
@@ -88,7 +104,7 @@
 
             </div>
         </div>
-        <div class="col-9">
+        <div class="col-9 form-column-div">
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="v-pills-personal-information" role="tabpanel"
                      aria-labelledby="v-pills-personal-information-tab">
@@ -518,6 +534,37 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+<!--                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="user_mobile" class="col-form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="user_mobile">
+                        </div>
+                        <div class="form-group">
+                            <label for="charge" class="col-form-label">Amount</label>
+                            <input class="form-control" id="charge">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="payment" type="button" class="btn btn-primary">Pay</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Nav tabs -->
@@ -574,9 +621,8 @@
 
     const bearer = "Bearer " + token;
     let isUserLoggedIn = false;
-    let isFromGoogle = false;
     if (token) isUserLoggedIn = true;
-    // console.log(document.cookie);
+
     const myInit = {
         method: "POST",
         // withCredentials: true,
@@ -613,53 +659,7 @@
             // window.location.href = "/login.html";
         });
 
-    // implementing logout API call
-    /*logoutButton.addEventListener("click", (e) => {
-        myInit.method = "GET";
-        let url = "/api/" + (isFromGoogle ? "login/auth/google/" : "") + "logout";
-        console.log(url);
-        fetch(url, myInit)
-            .then((res) => {
-                console.log(res.ok);
-                if (!res.ok) {
-                    window.location.href = "index.html";
-                    // throw Error("Could not fetch data for that resource");
-                } else {
-                    return res.json();
-                }
-            })
-            .then((jsonRes) => {
-                console.log(jsonRes);
-                if (localStorage.getItem("token")) localStorage.removeItem("token");
-                window.location.href = "index.html";
-            })
-            .catch((err) => {
-                console.log(err);
-                // window.location.href = "cv2.html";
-            });
-    });*/
-
-    /*document.getElementById("select-button").addEventListener("click", (e) => {
-        console.log(e.target.dataset);
-        myInit.method = "POST";
-        fetch("/api/resumeData", myInit)
-            .then((res) => res.json())
-            .then((jsonRes) => {
-                if (!jsonRes.success) throw Error("error");
-                console.log(jsonRes);
-                localStorage.setItem("resumeId", jsonRes.data.resumeId);
-                window.location.href = e.target.dataset.redirect;
-            })
-            .catch((err) => console.log(err));
-    });*/
 </script>
-
-<!--<script type="text/javascript">-->
-<!--    $('.datepicker').datepicker({-->
-<!--        clearBtn: true,-->
-<!--        format: "dd/mm/yyyy"-->
-<!--    });-->
-<!--</script>-->
 
 
 </body>
@@ -677,5 +677,56 @@
 <script src="js/forms/reference-form.js"></script>
 
 <script src="js/forms/training_form.js"></script>
+
+<script>
+    const paymentButton = document.getElementById('payment');
+
+
+
+    paymentButton.addEventListener('click', (e)=> {
+
+        const userMobile = document.getElementById('user_mobile');
+        const charge = document.getElementById('charge');
+        console.log('userMobile->', userMobile.value);
+
+        const formData = {
+            user_mobile: userMobile.value
+        };
+
+        fetch("https://xosstech.com/cvm/xossapp/subscription.php", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: bearer,
+            },
+
+
+            body: JSON.stringify(formData),
+        }).then((res) => {
+            console.log('res=>', res);
+            if (!res.ok) {
+                throw Error("Could not fetch data for that resource");
+            } else {
+                return res.json();
+            }
+        })
+            .then((jsonRes) => {
+                console.log('jsonRes =>', jsonRes);
+                if (!jsonRes.success) {
+                    console.log('!jsonRes.success->', jsonRes);
+                    // window.location.href = "login.html";
+                } else {
+                    console.log('jsonRes.success->', jsonRes);
+                    // document.getElementById("personal_info_from").reset();
+                }
+            })
+            .catch((err) => {
+                console.log('error->', err);
+                // window.location.href = "/login.html";
+            });
+    })
+
+</script>
 
 </html>
