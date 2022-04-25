@@ -52,8 +52,11 @@
                     </button>
                 </div>
                 <div class="col-6">
+                    <!--                    <button type="button" class="btn btn-secondary p-2 top-button"-->
+                    <!--                            data-toggle="modal" data-target="#mobile_no_modal">Download-->
+                    <!--                    </button>-->
                     <button type="button" class="btn btn-secondary p-2 top-button"
-                            data-toggle="modal" data-target="#mobile_no_modal">Download
+                            data-toggle="modal" data-target="#amount_modal">Download
                     </button>
                 </div>
             </div>
@@ -567,8 +570,8 @@
         </div>
     </div>
 
-    <!-- Modal 1 -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+    <!-- Modal 2 -->
+    <div class="modal fade" id="amount_modal" tabindex="-1" role="dialog" aria-labelledby="amount_modal"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -588,7 +591,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="payment_amount_submit" type="button" class="btn btn-primary">Pay</button>
+                    <button id="payment_amount_submit" type="button" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
@@ -670,6 +673,7 @@
 
 <script src="js/forms/training_form.js"></script>
 
+<!--todo: BDApps js-->
 <script>
     const mobileNoSubmit = document.getElementById('mobile_no_submit');
 
@@ -755,6 +759,45 @@
             });
     })
 
+</script>
+
+<script>
+    const submitAmount = document.getElementById('payment_amount_submit')
+
+    submitAmount.addEventListener('click', (e) => {
+        const charge = document.getElementById('charge');
+
+        const nagadFormData = {
+            amount: charge.value
+        }
+
+        fetch("https://xosstech.com/Payment/nagad/index.php", {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(nagadFormData),
+            redirect: 'follow',
+
+        }).then((res) => {
+            console.log('res=>', res);
+            if (!res.ok) {
+                throw Error("Could not fetch data for that resource!!!");
+            } else {
+                return res.json();
+            }
+        })
+            .then((jsonRes) => {
+                console.log('jsonRes =>', jsonRes);
+                if (!jsonRes.success) {
+                    console.log('!jsonRes.success->', jsonRes);
+                    // window.location.href = "login.html";
+                } else {
+                    console.log('jsonRes.success->', jsonRes);
+                }
+            })
+    })
 </script>
 
 </html>
