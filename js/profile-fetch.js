@@ -1,9 +1,22 @@
+// const token = localStorage.getItem("token")
+//     ? localStorage.getItem("token")
+//     : "";
+//
+// const bearer = "Bearer " + token;
+// let isUserLoggedIn = false;
+// if (token) isUserLoggedIn = true;
+
 const myInit = {
-    method: "POST", // withCredentials: true,
+    method: "POST",
+    // withCredentials: true,
     // credentials: "include",
     headers: {
-        "Content-Type": "application/json", Authorization: bearer, // cookie: document.cookie,
-    }, mode: "cors", cache: "default",
+        "Content-Type": "application/json",
+        Authorization: bearer,
+        // cookie: document.cookie,
+    },
+    mode: "cors",
+    cache: "default",
 };
 
 fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
@@ -24,7 +37,6 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             console.log('jsonRes.success->', jsonRes);
 
             let data = jsonRes;
-            console.log('data->', data);
         }
     })
     .catch((err) => {
