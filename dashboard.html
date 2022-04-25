@@ -53,7 +53,8 @@
                 </div>
                 <div class="col-6">
                     <button type="button" class="btn btn-secondary p-2 top-button"
-                            data-toggle="modal" data-target="#exampleModal">Download</button>
+                            data-toggle="modal" data-target="#mobile_no_modal">Download
+                    </button>
                 </div>
             </div>
         </div>
@@ -535,13 +536,13 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+    <!-- Modal 1 -->
+    <div class="modal fade" id="mobile_no_modal" tabindex="-1" role="dialog" aria-labelledby="mobile_no_modal"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-<!--                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
+                    <!--                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -552,6 +553,33 @@
                             <label for="user_mobile" class="col-form-label">Phone Number</label>
                             <input type="text" class="form-control" id="user_mobile">
                         </div>
+                        <!--<div class="form-group">
+                            <label for="charge" class="col-form-label">Amount</label>
+                            <input class="form-control" id="charge">
+                        </div>-->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="mobile_no_submit" type="button" class="btn btn-primary">Pay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>-->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
                         <div class="form-group">
                             <label for="charge" class="col-form-label">Amount</label>
                             <input class="form-control" id="charge">
@@ -560,7 +588,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="payment" type="button" class="btn btn-primary">Pay</button>
+                    <button id="payment_amount_submit" type="button" class="btn btn-primary">Pay</button>
                 </div>
             </div>
         </div>
@@ -679,17 +707,15 @@
 <script src="js/forms/training_form.js"></script>
 
 <script>
-    const paymentButton = document.getElementById('payment');
+    const mobileNoSubmit = document.getElementById('mobile_no_submit');
 
-
-
-    paymentButton.addEventListener('click', (e)=> {
-
+    mobileNoSubmit.addEventListener('click', (e) => {
+        // payment_amount_submit
         const userMobile = document.getElementById('user_mobile');
         const charge = document.getElementById('charge');
         console.log('userMobile->', userMobile.value);
 
-        const formData = {
+        const formData1 = {
             user_mobile: userMobile.value
         };
 
@@ -702,7 +728,7 @@
             },
 
 
-            body: JSON.stringify(formData),
+            body: JSON.stringify(formData1),
         }).then((res) => {
             console.log('res=>', res);
             if (!res.ok) {
@@ -717,7 +743,45 @@
                     console.log('!jsonRes.success->', jsonRes);
                     // window.location.href = "login.html";
                 } else {
+
+                    const formData2 = {
+                        user_mobile: userMobile.value,
+                        charge: charge.value
+                    };
+
                     console.log('jsonRes.success->', jsonRes);
+                    fetch("https://xosstech.com/cvm/xossapp/cass.php", {
+                        method: "POST",
+                        mode: "cors",
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: bearer,
+                        },
+
+
+                        body: JSON.stringify(formData2),
+                    }).then((res) => {
+                        console.log('res=>', res);
+                        if (!res.ok) {
+                            throw Error("Could not fetch data for that resource");
+                        } else {
+                            return res.json();
+                        }
+                    })
+                        .then((jsonRes) => {
+                            console.log('jsonRes =>', jsonRes);
+                            if (!jsonRes.success) {
+                                console.log('!jsonRes.success->', jsonRes);
+                                // window.location.href = "login.html";
+                            } else {
+                                console.log('jsonRes.success->', jsonRes);
+                                // document.getElementById("personal_info_from").reset();
+                            }
+                        })
+                        .catch((err) => {
+                            console.log('error->', err);
+                            // window.location.href = "/login.html";
+                        });
                     // document.getElementById("personal_info_from").reset();
                 }
             })
