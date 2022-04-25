@@ -46,7 +46,7 @@
             font-weight: 500;
             font-size: 16px;
             float: right;
-            margin-top: -60px;
+            margin-top: -35px;
         }
 
         .semi-bold2 {
@@ -243,14 +243,11 @@
 <div class="resume">
     <div class="resume_left1">
         <div class="resume_left">
-            <div class="resume_profile">
-                <img src="images/pic.jpg" alt="profile_pic">
+            <div class="resume_profile profile_image">
             </div>
             <div class="resume_content">
                 <div class="resume_item resume_info">
-                    <div class="title">
-                        <p class="bold1">stephen colbert</p>
-                        <p class="regular">Job Title</p>
+                    <div class="title profile_name">
                     </div>
                     <div class="title">
                         <p class="bold">Contact</p>
@@ -260,7 +257,7 @@
                             <div class="icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div class="data">
+                            <div class="data profile_address">
                                 21 Street, Texas <br/> USA
                             </div>
                         </li>
@@ -268,7 +265,7 @@
                             <div class="icon">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
-                            <div class="data">
+                            <div class="data profile_mobile">
                                 +324 4445678
                             </div>
                         </li>
@@ -276,7 +273,7 @@
                             <div class="icon">
                                 <i class="far fa-envelope"></i>
                             </div>
-                            <div class="data">
+                            <div class="data profile_email">
                                 stephen@gmail.com
                             </div>
                         </li>
@@ -292,7 +289,7 @@
                             <div class="icon">
                                 <i class="fab fa-linkedin-in"></i>
                             </div>
-                            <div class="data">
+                            <div class="data additional_linked">
                                 stephen@linkedin
                             </div>
                         </li>
@@ -302,30 +299,10 @@
                     <div class="title">
                         <p class="bold">skill's</p>
                     </div>
-                    <ul>
+                    <ul class="profile_skills">
                         <li>
                             <div class="skill_name">
                                 HTML,
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill_name">
-                                CSS,
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill_name">
-                                SASS,
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill_name">
-                                JS,
-                            </div>
-                        </li>
-                        <li>
-                            <div class="skill_name">
-                                JQUERY
                             </div>
                         </li>
                     </ul>
@@ -336,27 +313,27 @@
                     </div>
                     <ul>
                         <li>
-                            <div class="data">
+                            <div class="data reference_name">
                                 <p>Name</p>
                             </div>
                         </li>
                         <li>
-                            <div class="data">
+                            <div class="data reference_designation">
                                 <p>Designation</p>
                             </div>
                         </li>
                         <li>
-                            <div class="data">
+                            <div class="data reference_organization">
                                 <p>Company Name</p>
                             </div>
                         </li>
                         <li>
-                            <div class="data">
+                            <div class="data reference_email">
                                 <p>Email</p>
                             </div>
                         </li>
                         <li>
-                            <div class="data">
+                            <div class="data reference_mobile">
                                 <p>Contact Number</p>
                             </div>
                         </li>
@@ -370,8 +347,10 @@
             <div class="title">
                 <p class="bold">Profile</p>
             </div>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis illo fugit officiis distinctio
+            <span class="personal_info_profile_summary">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis illo fugit officiis distinctio
                 culpa officia totam atque exercitationem inventore repudiandae?</p>
+            </span>
         </div>
         <hr style="border-bottom: 2px solid #D4D4D4;">
         <div class="resume_item resume_work">
@@ -380,34 +359,13 @@
             </div>
             <ul>
                 <li>
-                    <div class="date">Company Name</div>
-                    <div class="title">
+                    <div class="date job_exp_company_name">Company Name</div>
+                    <div class="title job_exp_title">
                         <p class="regular">Job
-                            Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>
+                            Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location
+                        </p>
                     </div>
-                    <div class="info">
-                        <p class="semi-bold">Duration</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="date">Company Name</div>
-                    <div class="title">
-                        <p class="regular">Job
-                            Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>
-                    </div>
-                    <div class="info">
-                        <p class="semi-bold">Duration</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="date">Company Name</div>
-                    <div class="title">
-                        <p class="regular">Job
-                            Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>
-                    </div>
-                    <div class="info">
+                    <div class="info job_exp_Summary">
                         <p class="semi-bold">Duration</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
                     </div>
@@ -419,19 +377,7 @@
             <div class="title">
                 <p class="bold">Education</p>
             </div>
-            <table>
-                <tr>
-                    <td>2008</td>
-                    <td>Dhaka University</td>
-                    <td>Course <br> Details</td>
-                    <td>Result</td>
-                </tr>
-                <tr>
-                    <td>2008</td>
-                    <td>Dhaka University</td>
-                    <td>Course <br> Details</td>
-                    <td>Result</td>
-                </tr>
+            <table class="education_info">
                 <tr>
                     <td>2008</td>
                     <td>Dhaka University</td>
@@ -445,17 +391,7 @@
             <div class="title">
                 <p class="bold">Award & Achievement</p>
             </div>
-            <ul>
-                <li>
-                    <div class="date">Training Name</div>
-                    <div class="title">
-                        <p class="regular">Institute Name</p>
-                    </div>
-                    <div class="info">
-                        <p class="semi-bold1">Duration</p>
-                        <!--<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>-->
-                    </div>
-                </li>
+            <ul class="training_info">
                 <li>
                     <div class="date">Training Name</div>
                     <div class="title">
@@ -474,7 +410,7 @@
             <div class="title">
                 <p class="bold">Projects</p>
             </div>
-            <ul>
+            <ul class="project_info">
                 <li>
                     <div class="date">Project Name</div>
                     <div class="title">
@@ -482,16 +418,6 @@
                     </div>
                     <div class="info">
                         <p class="semi-bold2">2019-2020</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="date">Company Name</div>
-                    <div class="title">
-                        <!--<p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>-->
-                    </div>
-                    <div class="info">
-                        <p class="semi-bold2">2019-Running</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
                     </div>
                 </li>
