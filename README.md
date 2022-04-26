@@ -1,3 +1,3 @@
-# cvmaker
+# cvmaster
 
-cv maker client site. HTML, CSS, JS
+cv master client site. HTML, CSS, JS
