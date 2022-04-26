@@ -761,23 +761,23 @@
 
 </script>
 
+<!--
+todo: nagad
+-->
 <script>
     const submitAmount = document.getElementById('payment_amount_submit')
 
     submitAmount.addEventListener('click', (e) => {
-        const charge = document.getElementById('charge');
+        const charge = document.getElementById('charge').value;
 
-        const nagadFormData = {
-            amount: charge.value
-        }
+        let nagadFormData = new FormData();
+        nagadFormData.append('amount', charge);
 
         fetch("https://xosstech.com/Payment/nagad/index.php", {
             method: "POST",
             mode: "no-cors",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(nagadFormData),
+            body: nagadFormData,
+            redirect: 'follow'
 
         }).then((res) => {
             console.log('res=>', res);
