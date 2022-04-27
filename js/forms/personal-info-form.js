@@ -1,3 +1,36 @@
+fetch('https://xosstech.com/cvm/api/public/api/infos', {
+    method: "POST", headers: {
+        "Content-Type": "application/json", Authorization: bearer
+    }, mode: "cors", cache: "default",
+}).then((res) => {
+    return res.json()
+}).then((jsonRes) => {
+    // console.log({jsonRes});
+    if (!jsonRes.success) {
+        throw Error("Could not fetch data for that resource");
+    } else {
+        let personalInfoData = jsonRes.data[0];
+
+        document.getElementById('name').value = personalInfoData.name;
+        document.getElementById('email').value = personalInfoData.email;
+        document.getElementById('mobile').value = personalInfoData.mobile;
+        document.getElementById('present_address').value = personalInfoData.present_address;
+        document.getElementById('permanent_address').value = personalInfoData.permanent_address;
+        document.getElementById('job_title').value = personalInfoData.job_title;
+        document.getElementById('marital_status').value = personalInfoData.marital_status;
+        document.getElementById('religion').value = personalInfoData.religion;
+        document.getElementById('nationality').value = personalInfoData.nationality;
+        document.getElementById('gender').value = personalInfoData.gender;
+        document.getElementById('dob').value = personalInfoData.dob;
+        document.getElementById('father_name').value = personalInfoData.father_name;
+        document.getElementById('mother_name').value = personalInfoData.mother_name;
+        document.getElementById('profile_summary').value = personalInfoData.profile_summary;
+        document.getElementById('image').value = personalInfoData.image;
+    }
+
+}).catch((err) => console.log('error', err))
+
+
 const personalInfoForm = document.getElementById("personal_info_from");
 personalInfoForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -20,13 +53,9 @@ personalInfoForm.addEventListener("submit", (e) => {
     };
 
     fetch("https://xosstech.com/cvm/api/public/api/info", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: bearer,
-        },
-        body: JSON.stringify(formData),
+        method: "POST", mode: "cors", headers: {
+            "Content-Type": "application/json", Authorization: bearer,
+        }, body: JSON.stringify(formData),
     }).then((res) => {
         console.log('res=>', res);
         if (!res.ok) {

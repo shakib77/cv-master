@@ -1,3 +1,30 @@
+// todo: not implemented yet for key space
+fetch('https://xosstech.com/cvm/api/public/api/project', {
+    method: "POST", headers: {
+        "Content-Type": "application/json", Authorization: bearer
+    }, mode: "cors", cache: "default",
+}).then((res) => {
+    return res.json()
+}).then((jsonRes) => {
+    // console.log({jsonRes});
+    if (!jsonRes.success) {
+        throw Error("Could not fetch data for that resource");
+    } else {
+        let projectInfoData = jsonRes.data[0];
+
+        document.getElementById('dept').value = projectInfoData.dept;
+        document.getElementById('pass_year').value = projectInfoData.pass_year;
+        document.getElementById('result').value = projectInfoData.result;
+        document.getElementById('board').value = projectInfoData.board;
+        document.getElementById('location').value = projectInfoData.location;
+        document.getElementById('work_summary').value = projectInfoData.work_summary;
+        document.getElementById('degree').value = projectInfoData.degree;
+        document.getElementById('inst_name').value = projectInfoData.inst_name;
+    }
+
+}).catch((err) => console.log('error', err));
+
+
 const projectsForm = document.getElementById("projects_from");
 projectsForm.addEventListener("submit", (e) => {
     e.preventDefault();

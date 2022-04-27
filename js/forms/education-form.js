@@ -1,3 +1,29 @@
+fetch('https://xosstech.com/cvm/api/public/api/educations', {
+    method: "POST", headers: {
+        "Content-Type": "application/json", Authorization: bearer
+    }, mode: "cors", cache: "default",
+}).then((res) => {
+    return res.json()
+}).then((jsonRes) => {
+    // console.log({jsonRes});
+    if (!jsonRes.success) {
+        throw Error("Could not fetch data for that resource");
+    } else {
+        let educationInfoData = jsonRes.data[0];
+
+        document.getElementById('dept').value = educationInfoData.dept;
+        document.getElementById('pass_year').value = educationInfoData.pass_year;
+        document.getElementById('result').value = educationInfoData.result;
+        document.getElementById('board').value = educationInfoData.board;
+        document.getElementById('location').value = educationInfoData.location;
+        document.getElementById('work_summary').value = educationInfoData.work_summary;
+        document.getElementById('degree').value = educationInfoData.degree;
+        document.getElementById('inst_name').value = educationInfoData.inst_name;
+    }
+
+}).catch((err) => console.log('error', err));
+
+
 const educationForm = document.getElementById("education_from");
 educationForm.addEventListener("submit", (e) => {
     e.preventDefault();

@@ -1,3 +1,27 @@
+fetch('http://xosstech.com/cvm/api/public/api/experiences', {
+    method: "POST", headers: {
+        "Content-Type": "application/json", Authorization: bearer
+    }, mode: "cors", cache: "default",
+}).then((res) => {
+    return res.json()
+}).then((jsonRes) => {
+    // console.log({jsonRes});
+    if (!jsonRes.success) {
+        throw Error("Could not fetch data for that resource");
+    } else {
+        let workExperienceInfoData = jsonRes.data[0];
+
+        document.getElementById('company_name').value = workExperienceInfoData.company_name;
+        document.getElementById('position').value = workExperienceInfoData.position;
+        document.getElementById('start').value = workExperienceInfoData.start;
+        document.getElementById('end').value = workExperienceInfoData.end;
+        document.getElementById('location').value = workExperienceInfoData.location;
+        document.getElementById('work_summary').value = workExperienceInfoData.work_summary;
+    }
+
+}).catch((err) => console.log('error', err));
+
+
 const workExperienceForm = document.getElementById("work_experience_from");
 workExperienceForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -11,13 +35,9 @@ workExperienceForm.addEventListener("submit", (e) => {
     };
 
     fetch("https://xosstech.com/cvm/api/public/api/experience", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: bearer,
-        },
-        body: JSON.stringify(formData),
+        method: "POST", mode: "cors", headers: {
+            "Content-Type": "application/json", Authorization: bearer,
+        }, body: JSON.stringify(formData),
     }).then((res) => {
         console.log('res=>', res);
         if (!res.ok) {
