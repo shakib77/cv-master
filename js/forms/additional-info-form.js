@@ -1,3 +1,27 @@
+fetch('https://xosstech.com/cvm/api/public/api/additions', {
+    method: "POST", headers: {
+        "Content-Type": "application/json", Authorization: bearer
+    }, mode: "cors", cache: "default",
+}).then((res) => {
+    return res.json()
+}).then((jsonRes) => {
+    // console.log({jsonRes});
+    if (!jsonRes.success) {
+        throw Error("Could not fetch data for that resource");
+    } else {
+        let additionalInfoData = jsonRes.data[0];
+
+        document.getElementById('skills').value = additionalInfoData.skills;
+        document.getElementById('hobby').value = additionalInfoData.hobby;
+        document.getElementById('language').value = additionalInfoData.language;
+        document.getElementById('linkedin').value = additionalInfoData.linkedin;
+        document.getElementById('twitter').value = additionalInfoData.twitter;
+        document.getElementById('behance').value = additionalInfoData.behance;
+        document.getElementById('github').value = additionalInfoData.github;
+    }
+
+}).catch((err) => console.log('error', err));
+
 const additionalInfoForm = document.getElementById("additional_info_from");
 additionalInfoForm.addEventListener("submit", (e) => {
     e.preventDefault();

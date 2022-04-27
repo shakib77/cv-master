@@ -1,5 +1,4 @@
-// todo: not implemented yet for key space
-fetch('https://xosstech.com/cvm/api/public/api/project', {
+fetch('https://xosstech.com/cvm/api/public/api/projects', {
     method: "POST", headers: {
         "Content-Type": "application/json", Authorization: bearer
     }, mode: "cors", cache: "default",
@@ -12,14 +11,10 @@ fetch('https://xosstech.com/cvm/api/public/api/project', {
     } else {
         let projectInfoData = jsonRes.data[0];
 
-        document.getElementById('dept').value = projectInfoData.dept;
-        document.getElementById('pass_year').value = projectInfoData.pass_year;
-        document.getElementById('result').value = projectInfoData.result;
-        document.getElementById('board').value = projectInfoData.board;
-        document.getElementById('location').value = projectInfoData.location;
-        document.getElementById('work_summary').value = projectInfoData.work_summary;
-        document.getElementById('degree').value = projectInfoData.degree;
-        document.getElementById('inst_name').value = projectInfoData.inst_name;
+        document.getElementById('project_name').value = projectInfoData.project_name;
+        document.getElementById('project_summary').value = projectInfoData.project_summary;
+        document.getElementById('project_start').value = projectInfoData.start;
+        document.getElementById('project_end').value = projectInfoData.end;
     }
 
 }).catch((err) => console.log('error', err));
