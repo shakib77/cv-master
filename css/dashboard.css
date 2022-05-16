@@ -22,17 +22,39 @@ header {
     transition: all 0.3s ease-in-out 0s;
 }
 
-.nav_links li a {
+.nav-link {
     text-decoration: none;
-    font-size: 1.2rem;
-    padding: 10px;
     border-radius: 1rem;
+    background: #fff url(../images/bg_button.png) repeat-x bottom left;
+    display: block;
+    padding: 6px 0 6px 8px;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 12px;
+    color: #666;
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+    border-color: #d7d7d7 !important;
 }
 
-.nav_links li a:hover {
-    color: #41249fd7;
-    background-color: #3053c50a;
-    cursor: pointer;
+.nav-link.active {
+    background: #00b1c9 url(../images/bg_button2.png) repeat-x bottom left;
+    color: #fff;
+    border-width: 0 1px 0 1px;
+    border-style: solid;
+    border-color: #089fb3 !important;
+}
+
+/*.nav-link.active {
+    background-color: #04b2cc !important;
+    color: #fff !important;
+}*/
+
+.nav-item {
+    width: 100%;
+    border-width: 1px 0 1px 1px !important;
+    background-color: #F5F5F5;
+
 }
 
 .btn-logout {
@@ -40,6 +62,13 @@ header {
     font-size: 1.2rem;
     padding: 0.2rem 2.4rem;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    color: #666 !important;
+}
+
+.btn-logout:hover {
+    color: #18c7e1 !important;
+    background: #d7d7d7 !important;
 }
 
 .brand-name {
@@ -74,18 +103,6 @@ a {
     cursor: move;
 }
 
-.nav-link.active {
-    background-color: #04b2cc !important;
-    color: #fff !important;
-}
-
-.nav-item {
-    width: 100%;
-    border-width: 1px 0 1px 1px !important;
-    background-color: #F5F5F5;
-
-}
-
 .title {
     font-size: 20px;
     line-height: 30px;
@@ -106,7 +123,8 @@ a {
 }
 
 .form-control {
-    background-color: #F5F5F5;
+    background: #fff url(../Images/bg_input.png) repeat-x bottom left;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, serif;
     font-size: 13px;
     padding: 6px;
     border: 1px solid #ccc;
@@ -146,6 +164,7 @@ a {
 .top-button-q-pre {
     white-space: nowrap;
     margin-right: 20px;
+    margin-top: 3px;
 }
 
 .msg-div {
@@ -178,4 +197,12 @@ a {
     text-shadow: 1px 1px #089fb3;
     border-color: #089fb3;
     box-shadow: none;
+}
+
+.btn-primary {
+    background: #089fb3 !important;
+}
+
+.btn-primary:hover {
+    background: #106d7b !important;
 }
