@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- new -->
 <head>
-    <!-- new -->
-    <head>
-        <meta charset="UTF-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link rel="icon" sizes="64x64" href="./Images/cv-master-logo.jpg"/>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" sizes="64x64" href="./Images/cv-master-logo.jpg"/>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-              integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
-              crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+          crossorigin="anonymous">
 
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-                crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-                crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+            crossorigin="anonymous">
+    </script>
 
 
-        <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
+    <script src="http://SortableJS.github.io/Sortable/Sortable.js"></script>
 
-        <link rel="stylesheet" href="./css/dashboard.css"/>
-        <title>Dashboard - CVMaster</title>
-    </head>
+    <link rel="stylesheet" href="./css/dashboard.css"/>
+    <title>Dashboard - CVMaster</title>
+</head>
 <body>
 <header>
     <a href="#" class="brand-name">
@@ -49,15 +48,13 @@
         <div class="col-12">
             <div class="row float-right">
                 <div class="col-6">
-                    <button type="button" class="btn btn-info top-button p-2 top-button-q-pre" id="quick_preview">
-                        <a href="../cv-temp/cv2" target="_blank">Quick Preview </a>
-                    </button>
+                    <a class="top-button top-button-q-pre" href="../cv-temp/cv2" target="_blank">Quick Preview </a>
                 </div>
                 <div class="col-6">
                     <!--                    <button type="button" class="btn btn-secondary p-2 top-button"-->
                     <!--                            data-toggle="modal" data-target="#mobile_no_modal">Download-->
                     <!--                    </button>-->
-                    <button type="button" class="btn btn-secondary p-2 top-button"
+                    <button type="button" class="top-button"
                             data-toggle="modal" data-target="#amount_modal">Download
                     </button>
                 </div>
@@ -107,6 +104,12 @@
                            aria-controls="v-pills-training" aria-selected="false">Training</a>
                     </li>
                 </ul>
+
+                <div class="msg-div">
+                    <p class="msg">* Click and drag section names in the above list to reorder sections in your CV.</p>
+                    <p class="msg">* If you leave the fields in a section empty, the section will not appear in your
+                        CV.</p>
+                </div>
 
             </div>
         </div>
