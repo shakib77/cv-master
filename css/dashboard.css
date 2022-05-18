@@ -39,16 +39,11 @@ header {
 
 .nav-link.active {
     background: #00b1c9 url(../images/bg_button2.png) repeat-x bottom left;
-    color: #fff;
+    color: #fff !important;
     border-width: 0 1px 0 1px;
     border-style: solid;
     border-color: #089fb3 !important;
 }
-
-/*.nav-link.active {
-    background-color: #04b2cc !important;
-    color: #fff !important;
-}*/
 
 .nav-item {
     width: 100%;
