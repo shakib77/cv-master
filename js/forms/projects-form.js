@@ -1,3 +1,5 @@
+let projectInfo_form_data = [];
+
 fetch('https://xosstech.com/cvm/api/public/api/projects', {
     method: "POST", headers: {
         "Content-Type": "application/json", Authorization: bearer
@@ -10,6 +12,7 @@ fetch('https://xosstech.com/cvm/api/public/api/projects', {
         throw Error("Could not fetch data for that resource");
     } else {
         let projectInfoLength = jsonRes.data.length;
+        projectInfo_form_data = jsonRes.data;
         let projectInfoData = jsonRes.data[0];
 
         document.getElementById('project_name').value = projectInfoData.project_name;
@@ -96,3 +99,54 @@ fetch('https://xosstech.com/cvm/api/public/api/projects', {
     }
 
 }).catch((err) => console.log('error', err));
+
+let projectForm = '';
+let projectFormSegment = `
+        <form id="projects_from">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="project_name">Project name</label>
+                                        <input type="text" class="form-control" id="project_name" name="project_name"
+                                               placeholder="Write project name...">
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="project_start">Start date</label>
+                                        <input placeholder="Selected start date" type="date" id="project_start"
+                                               class="form-control datepicker">
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="project_end">End date</label>
+                                        <input placeholder="Selected end date" type="date" id="project_end"
+                                               class="form-control datepicker">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="project_summary">Project summary</label>
+                                        <textarea class="form-control" id="project_summary" rows="4"
+                                                  placeholder="Write work summery..."></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>`;
+
+projectInfo_form_data.map((data) => {
+    return projectForm += projectFormSegment;
+})
+// projectForm += projectFormSegment; //todo: it will be in loop
+
+let projectFormContainer = document.querySelector('.project_form_div');
+projectFormContainer.innerHTML = projectForm;
+
+
