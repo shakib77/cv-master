@@ -10,7 +10,7 @@ fetch('https://xosstech.com/cvm/api/public/api/infos', {
         throw Error("Could not fetch data for that resource");
     } else {
         let personalInfoLength = jsonRes.data.length;
-        let personalInfoData = jsonRes.data[0];
+        let personalInfoData = jsonRes.data[personalInfoLength - 1];
 
         document.getElementById('name').value = personalInfoData.name;
         document.getElementById('email').value = personalInfoData.email;
