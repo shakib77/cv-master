@@ -49,7 +49,8 @@ fetch('https://xosstech.com/cvm/api/public/api/references', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
-                            document.getElementById("reference_from").reset();
+                            alert('Data has been successfully updated');
+                            // document.getElementById("reference_from").reset();
                         }
                     })
                     .catch((err) => {
@@ -76,7 +77,8 @@ fetch('https://xosstech.com/cvm/api/public/api/references', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
-                            document.getElementById("reference_from").reset();
+                            // document.getElementById("reference_from").reset();
+                            alert('Data has been successfully created');
                         }
                     })
                     .catch((err) => {

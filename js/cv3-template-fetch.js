@@ -169,34 +169,16 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
 
             educationInfo += educationInfoSegment;
             let educationInfoContainer = document.querySelector('.education_info');
-            educationInfoContainer.innerHTML = educationInfo; /*todo: start from here*/
-
-
-
-
-
-
-
-
-            let profileLinkedIn = '';
-            let profileLinkedInSegment = `<span>${additionalInfo.linkedin}</span>`;
-
-            profileLinkedIn += profileLinkedInSegment;
-            let profileLinkedInContainer = document.querySelector('.additional_linked');
-            profileLinkedInContainer.innerHTML = profileLinkedIn; //todo: issue
-
+            educationInfoContainer.innerHTML = educationInfo;
 
             let trainingInfo = '';
             let trainingInfoSegment = `
-                 <li>
-                    <div class="date">${trainings.training_name}</div>
-                    <!--<div class="title">
-                        <p class="regular">Institute Name</p>
-                    </div>-->
-                    <div class="info">
-                        <p class="semi-bold1">${trainings.end}</p>
-                    </div>
-                </li>`;
+                    <td>
+                        <p>${trainings.training_name}</p>
+                        <!--<p>Institute Name</p>-->
+                        <p class="p-4">${trainings.end}</p>
+                    </td>
+                 `;
 
             trainingInfo += trainingInfoSegment;
             let trainingInfoContainer = document.querySelector('.training_info');
@@ -204,16 +186,12 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
 
             let projectInfo = '';
             let projectInfoSegment = `
-                 <li>
-                    <div class="date">${projects.project_name}</div>
-                    <div class="title">
-                        <!--<p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>-->
-                    </div>
-                    <div class="info">
-                        <p class="semi-bold2">${projects.start} - ${projects.end}</p>
-                        <p>${projects.project_summary}</p>
-                    </div>
-                </li>`;
+                <p>${projects.project_name}</p>
+                <p style="font-size: 14px;">${projects.start} - ${projects.end}</p>
+                <p class="p-4">
+                    ${projects.project_summary}
+                </p>
+                 `;
 
             projectInfo += projectInfoSegment;
             let projectInfoContainer = document.querySelector('.project_info');

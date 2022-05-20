@@ -53,6 +53,7 @@ fetch('https://xosstech.com/cvm/api/public/api/educations', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
+                            alert('Data has been successfully updated');
                             // document.getElementById("education_from").reset();
                         }
                     })
@@ -80,6 +81,7 @@ fetch('https://xosstech.com/cvm/api/public/api/educations', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
+                            alert('Data has been successfully created');
                             // document.getElementById("education_from").reset();
                         }
                     })

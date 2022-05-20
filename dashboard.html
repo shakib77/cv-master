@@ -47,9 +47,14 @@
     <div class="row p-2">
         <div class="col-12">
             <div class="row float-right">
-                <div class="col-6">
+                <!--<div class="col-6">
                     <a class="top-button top-button-q-pre" href="../cv-temp/cv3" target="_blank"><i
                             class="bi bi-search"></i> Quick Preview</a>
+                </div>-->
+                <div class="col-6">
+                    <button type="button" class="top-button top-button-q-pre"
+                            data-toggle="modal" data-target="#preview_modal">Quick Preview
+                    </button>
                 </div>
                 <div class="col-6">
                     <!--                    <button type="button" class="btn btn-secondary p-2 top-button"-->
@@ -618,6 +623,40 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button id="payment_amount_submit" type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div class="modal fade" id="preview_modal" tabindex="-1" role="dialog" aria-labelledby="preview_modal"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="preview_modal_title">Payment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!--todo: start from here-->
+                <div class="modal-body">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Default radio
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Second default radio
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

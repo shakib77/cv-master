@@ -51,7 +51,8 @@ fetch('http://xosstech.com/cvm/api/public/api/experiences', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
-                            document.getElementById("work_experience_from").reset();
+                            // document.getElementById("work_experience_from").reset();
+                            alert('Data has been successfully updated');
                         }
                     })
                     .catch((err) => {
@@ -78,7 +79,8 @@ fetch('http://xosstech.com/cvm/api/public/api/experiences', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
-                            document.getElementById("work_experience_from").reset();
+                            alert('Data has been successfully created');
+                            // document.getElementById("work_experience_from").reset();
                         }
                     })
                     .catch((err) => {

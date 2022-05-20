@@ -59,6 +59,7 @@ fetch('https://xosstech.com/cvm/api/public/api/additions', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
+                            alert('Data has been successfully updated');
                             // document.getElementById("additional_info_from").reset();
                         }
                     })
@@ -90,6 +91,7 @@ fetch('https://xosstech.com/cvm/api/public/api/additions', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
+                            alert('Data has been successfully created');
                             // document.getElementById("additional_info_from").reset();
                         }
                     })

@@ -10,7 +10,7 @@ fetch('https://xosstech.com/cvm/api/public/api/projects', {
         throw Error("Could not fetch data for that resource");
     } else {
         let projectInfoLength = jsonRes.data.length;
-        let projectInfoData = jsonRes.data[0];
+        let projectInfoData = jsonRes.data[projectInfoLength - 1];
 
         document.getElementById('project_name').value = projectInfoData.project_name;
         document.getElementById('project_summary').value = projectInfoData.project_summary;
@@ -51,6 +51,7 @@ fetch('https://xosstech.com/cvm/api/public/api/projects', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
+                            alert('Data has been successfully updated');
                             // document.getElementById("projects_from").reset();
                         }
                     })
@@ -82,6 +83,7 @@ fetch('https://xosstech.com/cvm/api/public/api/projects', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
+                            alert('Data has been successfully created');
                             // document.getElementById("projects_from").reset();
                         }
                     })

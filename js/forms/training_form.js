@@ -45,7 +45,8 @@ fetch('https://xosstech.com/cvm/api/public/api/trainings', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
-                            document.getElementById("training_from").reset();
+                            alert('Data has been successfully updated');
+                            // document.getElementById("training_from").reset();
                         }
                     })
                     .catch((err) => {
@@ -73,7 +74,8 @@ fetch('https://xosstech.com/cvm/api/public/api/trainings', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
-                            document.getElementById("training_from").reset();
+                            alert('Data has been successfully created');
+                            // document.getElementById("training_from").reset();
                         }
                     })
                     .catch((err) => {

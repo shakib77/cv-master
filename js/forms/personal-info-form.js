@@ -69,7 +69,8 @@ fetch('https://xosstech.com/cvm/api/public/api/infos', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
-                            document.getElementById("personal_info_from").reset();
+                            alert('Data has been successfully updated');
+                            // document.getElementById("personal_info_from").reset();
                         }
                     })
                     .catch((err) => {
@@ -96,7 +97,8 @@ fetch('https://xosstech.com/cvm/api/public/api/infos', {
                             // window.location.href = "login.html";
                         } else {
                             console.log('jsonRes.success->', jsonRes);
-                            document.getElementById("personal_info_from").reset();
+                            // document.getElementById("personal_info_from").reset();
+                            alert('Data has been successfully created');
                         }
                     })
                     .catch((err) => {
