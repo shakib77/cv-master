@@ -14,16 +14,6 @@ let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
 
     let cvTempRadio = '';
 
-    /*let cvTempRadioSegment = `
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="cvRadios" id="cvRadios" value="option1">
-                            <label class="form-check-label" for="cvRadios1">
-                                Default radio
-                            </label>
-                        </div>`;*/
-
-    // console.log('cvs->', cvs);
-
     let cvTempRadioSegment = cvs.map((cv) => {
         return `
                 <div class="row py-2">
@@ -53,8 +43,6 @@ const cvTemplateSubmit = document.getElementById('cv_template_submit');
 
 cvTemplateSubmit.addEventListener('click', (e) => {
     const radioValue = document.querySelector('input[name="cvRadios"]:checked').value;
-    console.log('radioValue->', Number(radioValue));
-    // window.location.href = "/login.html";
 
     switch (radioValue) {
         case '1':

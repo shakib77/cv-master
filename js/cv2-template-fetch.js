@@ -225,3 +225,51 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
         console.log('error->', err);
         // window.location.href = "/login.html";
     });
+
+let cvObj = {};
+
+let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
+    method: "GET", headers: {
+        "Content-Type": "application/json",
+    }, mode: "cors", cache: "default",
+}).then((res) => {
+    return res.json()
+}).then((jsonRes) => {
+    // console.log({jsonRes});
+    if (!jsonRes.success) {
+        return false;
+    }
+
+    cvObj = jsonRes?.cv[2];
+
+}).catch((err) => console.log('error', err))
+
+
+const onClickCv2Download = () => {
+    let nagadFormData = new FormData();
+    nagadFormData.append('amount', cvObj?.price);
+
+    fetch("https://xosstech.com/Payment/nagad/index.php", {
+        method: "POST",
+        mode: "no-cors",
+        body: nagadFormData,
+        redirect: 'follow'
+
+    }).then((res) => {
+        console.log('res=>', res);
+        if (!res.ok) {
+            throw Error("Could not fetch data for that resource!!!");
+        } else {
+            return res.json();
+        }
+    })
+        .then((jsonRes) => {
+            console.log('jsonRes =>', jsonRes);
+            if (!jsonRes.success) {
+                console.log('!jsonRes.success->', jsonRes);
+                // window.location.href = "login.html";
+            } else {
+                console.log('jsonRes.success->', jsonRes);
+            }
+        })
+}

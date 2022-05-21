@@ -236,9 +236,47 @@
             margin-bottom: 0;
         }
 
+        .download-div{
+            margin-top: 16px;
+        }
+
+        .top-button-q-pre {
+            white-space: nowrap;
+            margin-right: 20px;
+            margin-top: 3px;
+            float: right;
+        }
+
+        .top-button {
+            background: #f3f3f3 url(../../Images/bg_button.png) repeat-x bottom left;
+            padding: 2px 10px 3px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #666;
+            text-shadow: 1px 1px #ddd;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .top-button:hover {
+            background: #18c7e1 url(../../Images/bg_button2.png) repeat-x bottom left;
+            color: #fff;
+            text-shadow: 1px 1px #089fb3;
+            border-color: #089fb3;
+            box-shadow: none;
+        }
+
     </style>
 </head>
 <body>
+
+<div class="download-div">
+    <button type="button" class="top-button top-button-q-pre" id="cv2_download" onclick="onClickCv2Download()">Download
+    </button>
+</div>
 
 <div class="resume">
     <div class="resume_left1">
