@@ -16,7 +16,7 @@ let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
 
     let cvTempRadioSegment = cvs.map((cv) => {
         return `
-                <div class="row py-2">
+                <div class="row py-2 temp_radio_div">
                             <div class="col-6">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="cvRadios" id="cvRadios" value='${cv.id}'>
@@ -26,7 +26,7 @@ let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
                                 </div>
                             </div>
                             <div class="col-6">
-                                <p>Price: ${cv?.price}</p>
+                                <p class="mb-0" style="color: #37c871; font-weight: bold;">(Price: ${cv?.price} &#2547; ) ★</p>
                             </div>
                         </div>`
     }).join('');

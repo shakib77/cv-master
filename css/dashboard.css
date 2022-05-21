@@ -201,3 +201,11 @@ a {
 .btn-primary:hover {
     background: #106d7b !important;
 }
+
+.temp_radio_div {
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px 0;
+}

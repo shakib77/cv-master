@@ -270,6 +270,15 @@ const onClickCv2Download = () => {
                 // window.location.href = "login.html";
             } else {
                 console.log('jsonRes.success->', jsonRes);
+
+                /*let printContents = document.getElementById('print_cv').innerHTML;
+                let originalContents = document.body.innerHTML;
+
+                document.body.innerHTML = printContents;
+
+                window.print();
+
+                document.body.innerHTML = originalContents;*/
             }
         })
 }
