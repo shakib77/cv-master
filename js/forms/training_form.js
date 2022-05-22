@@ -1,3 +1,14 @@
+const addTraining = () => {
+    let selector = document.getElementById('training_div')
+    selector.parentElement.innerHTML += selector.outerHTML;
+}
+
+const deleteTraining = ()=> {
+    $('.training_from_cls').on('click',function(){
+        $(this).parent('div.training_div').remove();
+    });
+}
+
 fetch('https://xosstech.com/cvm/api/public/api/trainings', {
     method: "POST", headers: {
         "Content-Type": "application/json", Authorization: bearer
@@ -10,7 +21,7 @@ fetch('https://xosstech.com/cvm/api/public/api/trainings', {
         throw Error("Could not fetch data for that resource");
     } else {
         let trainingsInfoDataLength = jsonRes.data.length;
-        let trainingsInfoData = jsonRes.data[0];
+        let trainingsInfoData = jsonRes.data[trainingsInfoDataLength - 1];
 
         document.getElementById('training_name').value = trainingsInfoData.training_name;
         document.getElementById('training_end').value = trainingsInfoData.end;

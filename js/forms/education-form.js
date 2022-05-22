@@ -1,3 +1,14 @@
+const addEducation = () => {
+    let selector = document.getElementById('education_div')
+    selector.parentElement.innerHTML += selector.outerHTML;
+}
+
+const deleteEducation = ()=> {
+    $('.education_from_cls').on('click',function(){
+        $(this).parent('div.education_div').remove();
+    });
+}
+
 fetch('https://xosstech.com/cvm/api/public/api/educations', {
     method: "POST", headers: {
         "Content-Type": "application/json", Authorization: bearer
@@ -10,7 +21,7 @@ fetch('https://xosstech.com/cvm/api/public/api/educations', {
         throw Error("Could not fetch data for that resource");
     } else {
         let educationInfoLength = jsonRes.data.length;
-        let educationInfoData = jsonRes.data[0];
+        let educationInfoData = jsonRes.data[educationInfoLength - 1];
 
         document.getElementById('dept').value = educationInfoData.dept;
         document.getElementById('pass_year').value = educationInfoData.pass_year;

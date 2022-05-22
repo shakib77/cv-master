@@ -1,3 +1,14 @@
+const addProject = () => {
+    let selector = document.getElementById('project_div')
+    selector.parentElement.innerHTML += selector.outerHTML;
+}
+
+const deleteProject = ()=> {
+    $('.project_from_cls').on('click',function(){
+        $(this).parent('div.project_div').remove();
+    });
+}
+
 fetch('https://xosstech.com/cvm/api/public/api/projects', {
     method: "POST", headers: {
         "Content-Type": "application/json", Authorization: bearer

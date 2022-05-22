@@ -9,8 +9,8 @@ fetch('https://xosstech.com/cvm/api/public/api/additions', {
     if (!jsonRes.success) {
         throw Error("Could not fetch data for that resource");
     } else {
-        let additionalInfoData = jsonRes.data[0];
         let additionalInfoDataLength = jsonRes.data.length;
+        let additionalInfoData = jsonRes.data[additionalInfoDataLength - 1];
 
         // https://xosstech.com/cvm/api/public/api/addition/update/1
 

@@ -1,3 +1,14 @@
+const addReference = () => {
+    let selector = document.getElementById('reference_div')
+    selector.parentElement.innerHTML += selector.outerHTML;
+}
+
+const deleteReference = ()=> {
+    $('.reference_from_cls').on('click',function(){
+        $(this).parent('div.reference_div').remove();
+    });
+}
+
 fetch('https://xosstech.com/cvm/api/public/api/references', {
     method: "POST", headers: {
         "Content-Type": "application/json", Authorization: bearer
@@ -10,7 +21,7 @@ fetch('https://xosstech.com/cvm/api/public/api/references', {
         throw Error("Could not fetch data for that resource");
     } else {
         let referencesInfoLength = jsonRes.data.length;
-        let referencesInfoData = jsonRes.data[0];
+        let referencesInfoData = jsonRes.data[referencesInfoLength - 1];
 
         document.getElementById('reference_name').value = referencesInfoData.name;
         document.getElementById('designation').value = referencesInfoData.designation;

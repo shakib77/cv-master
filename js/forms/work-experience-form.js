@@ -1,3 +1,14 @@
+const addWorkExperience = () => {
+    let selector = document.getElementById('work_experience_div')
+    selector.parentElement.innerHTML += selector.outerHTML;
+}
+
+const deleteWorkExperience = ()=> {
+    $('.work_experience_from_cls').on('click',function(){
+        $(this).parent('div.work_experience_div').remove();
+    });
+}
+
 fetch('http://xosstech.com/cvm/api/public/api/experiences', {
     method: "POST", headers: {
         "Content-Type": "application/json", Authorization: bearer
@@ -10,7 +21,7 @@ fetch('http://xosstech.com/cvm/api/public/api/experiences', {
         throw Error("Could not fetch data for that resource");
     } else {
         let workExperienceInfoLength = jsonRes.data.length;
-        let workExperienceInfoData = jsonRes.data[0];
+        let workExperienceInfoData = jsonRes.data[workExperienceInfoLength - 1];
 
         document.getElementById('company_name').value = workExperienceInfoData.company_name;
         document.getElementById('position').value = workExperienceInfoData.position;
