@@ -271,14 +271,14 @@ const onClickCv2Download = () => {
             } else {
                 console.log('jsonRes.success->', jsonRes);
 
-                /*let printContents = document.getElementById('print_cv').innerHTML;
+                let printContents = document.getElementById('print_cv').innerHTML;
                 let originalContents = document.body.innerHTML;
 
                 document.body.innerHTML = printContents;
 
                 window.print();
 
-                document.body.innerHTML = originalContents;*/
+                document.body.innerHTML = originalContents;
             }
         })
 }
