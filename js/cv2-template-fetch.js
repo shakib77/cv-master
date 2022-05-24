@@ -226,7 +226,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
         // window.location.href = "/login.html";
     });
 
-let cvObj = {};
+let cv2Obj = {};
 
 let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
     method: "GET", headers: {
@@ -240,14 +240,14 @@ let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
         return false;
     }
 
-    cvObj = jsonRes?.cv[2];
+    cv2Obj = jsonRes?.cv[2];
 
 }).catch((err) => console.log('error', err))
 
 
 const onClickCv2Download = () => {
     let nagadFormData = new FormData();
-    nagadFormData.append('amount', cvObj?.price);
+    nagadFormData.append('amount', cv2Obj?.price);
 
     fetch("https://xosstech.com/Payment/nagad/index.php", {
         method: "POST",

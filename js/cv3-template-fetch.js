@@ -53,7 +53,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let profileImage = '';
             let image = personalInfo.image
             let profileImageSegment = `
-            <img src='${image}' alt="profile_pic">`;
+            <img src='${image}' class="profile" alt="profile_pic">`;
 
             profileImage += profileImageSegment;
             let profileImageContainer = document.querySelector('.profile_image');
@@ -202,3 +202,59 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
         console.log('error->', err);
         // window.location.href = "/login.html";
     });
+
+let cv3Obj = {};
+
+let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
+    method: "GET", headers: {
+        "Content-Type": "application/json",
+    }, mode: "cors", cache: "default",
+}).then((res) => {
+    return res.json()
+}).then((jsonRes) => {
+    // console.log({jsonRes});
+    if (!jsonRes.success) {
+        return false;
+    }
+
+    cv3Obj = jsonRes?.cv[1];
+
+}).catch((err) => console.log('error', err))
+
+const onClickCv3Download = () => {
+    let nagadFormData = new FormData();
+    nagadFormData.append('amount', cv3Obj?.price);
+
+    fetch("https://xosstech.com/Payment/nagad/index.php", {
+        method: "POST",
+        mode: "no-cors",
+        body: nagadFormData,
+        redirect: 'follow'
+
+    }).then((res) => {
+        console.log('res=>', res);
+        if (!res.ok) {
+            // throw Error("Could not fetch data for that resource!!!");
+        } else {
+            return res.json();
+        }
+    })
+        .then((jsonRes) => {
+            console.log('jsonRes =>', jsonRes);
+            if (!jsonRes.success) {
+                console.log('!jsonRes.success->', jsonRes);
+                // window.location.href = "login.html";
+            } else {
+                console.log('jsonRes.success->', jsonRes);
+
+                /*let printContents = document.getElementById('print_cv').innerHTML;
+                let originalContents = document.body.innerHTML;
+
+                document.body.innerHTML = printContents;
+
+                window.print();
+
+                document.body.innerHTML = originalContents;*/
+            }
+        })
+}
