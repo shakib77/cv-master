@@ -282,3 +282,50 @@ const onClickCv2Download = () => {
             }
         })
 }
+
+const onClickCv2DownloadBdApp = () => {
+    const mobileNoSubmit = document.getElementById('mobile_no_submit');
+
+    mobileNoSubmit.addEventListener('click', (e) => {
+        // payment_amount_submit
+        const userMobile = document.getElementById('user_mobile');
+        const charge = cv2Obj?.price;
+        console.log('userMobile->', userMobile.value);
+
+        const bdAppFormData = new FormData();
+        bdAppFormData.append("user_mobile", userMobile.value);
+
+        fetch("https://xosstech.com/cvm/xossapp/check_subscription.php", {
+            method: "POST",
+            mode: "no-cors",
+            body: bdAppFormData,
+            redirect: 'follow'
+
+        }).then((res) => {
+            console.log('res=>', res);
+            if (!res.ok) {
+                throw Error("Could not fetch data for that resource!!!");
+            } else {
+                return res.json();
+            }
+        })
+            .then((jsonRes) => {
+                console.log('jsonRes =>', jsonRes);
+                if (!jsonRes.success) {
+                    console.log('!jsonRes.success->', jsonRes);
+                    // window.location.href = "login.html";
+                } else {
+                    console.log('jsonRes.success->', jsonRes);
+
+                    let printContents = document.getElementById('print_cv').innerHTML;
+                    let originalContents = document.body.innerHTML;
+
+                    document.body.innerHTML = printContents;
+
+                    window.print();
+
+                    document.body.innerHTML = originalContents;
+                }
+            })
+    })
+}
