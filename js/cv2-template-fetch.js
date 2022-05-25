@@ -44,11 +44,11 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
 
             let personalInfo = data?.personal_infos_data?.personal_infos[personalInfoLength]
             let additionalInfo = data?.additonalInfos_data?.additonalInfos[additionalInfoLength]
-            let reference = data?.references_data?.references[referenceLength]
-            let workExperience = data?.experiences_data?.experiences[workExperienceLength]
-            let education = data?.education_data?.education[educationLength]
-            let trainings = data?.trainings_data?.trainings[trainingsLength]
-            let projects = data?.projects_data?.projects[projectsLength]
+            let references = data?.references_data?.references
+            let workExperience = data?.experiences_data?.experiences
+            let education = data?.education_data?.education;
+            let trainings = data?.trainings_data?.trainings
+            let projects = data?.projects_data?.projects
 
             let profileImage = '';
             let image = personalInfo.image
@@ -108,40 +108,43 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let profileSkillsContainer = document.querySelector('.profile_skills');
             profileSkillsContainer.innerHTML = profileSkills;
 
-            let referenceName = '';
-            let referenceNameSegment = `<p>${reference.name}</p>`;
 
-            referenceName += referenceNameSegment;
-            let referenceNameContainer = document.querySelector('.reference_name');
-            referenceNameContainer.innerHTML = referenceName;
+            let reference = '';
 
-            let referenceDesignation = '';
-            let referenceDesignationSegment = `<p>${reference.designation}</p>`;
+            let referenceSegment = references.map((reference) => {
+                return (`
+                <ul>
+                                    <li>
+                                        <div class="data reference_name">
+                                            <p>${reference.name}</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="data reference_designation">
+                                            <p>${reference.designation}</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="data reference_organization">
+                                            <p>${reference.organization}</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="data reference_email">
+                                            <p>${reference.email}</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="data reference_mobile">
+                                            <p>${reference.mobile}
+                                        </div>
+                                    </li>
+                                </ul>`)
+            }).join('');
 
-            referenceDesignation += referenceDesignationSegment;
-            let referenceDesignationContainer = document.querySelector('.reference_designation');
-            referenceDesignationContainer.innerHTML = referenceDesignation;
-
-            let referenceOrganization = '';
-            let referenceOrganizationSegment = `<p>${reference.organization}</p>`;
-
-            referenceOrganization += referenceOrganizationSegment;
-            let referenceOrganizationContainer = document.querySelector('.reference_organization');
-            referenceOrganizationContainer.innerHTML = referenceOrganization;
-
-            let referenceEmail = '';
-            let referenceEmailSegment = `<p>${reference.email}</p>`;
-
-            referenceEmail += referenceEmailSegment;
-            let referenceEmailContainer = document.querySelector('.reference_email');
-            referenceEmailContainer.innerHTML = referenceEmail;
-
-            let referenceMobile = '';
-            let referenceMobileSegment = `<p>${reference.mobile}</p>`;
-
-            referenceMobile += referenceMobileSegment;
-            let referenceMobileContainer = document.querySelector('.reference_mobile');
-            referenceMobileContainer.innerHTML = referenceMobile;
+            reference += referenceSegment;
+            let referenceContainer = document.querySelector('.reference');
+            referenceContainer.innerHTML = reference;
 
             let profileSummary = '';
             let profileSummarySegment = `<p>${personalInfo.profile_summary}</p>`;
@@ -150,71 +153,82 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let profileSummaryContainer = document.querySelector('.personal_info_profile_summary');
             profileSummaryContainer.innerHTML = profileSummary;
 
-            let jobExperienceComName = '';
-            let jobExperienceComNameSegment = `<span>${workExperience.company_name}</span>`;
-
-            jobExperienceComName += jobExperienceComNameSegment;
-            let jobExperienceComNameContainer = document.querySelector('.job_exp_company_name');
-            jobExperienceComNameContainer.innerHTML = jobExperienceComName;
-
-            let jobExperienceJobTitle = '';
-            let jobExperienceJobTitleSegment = `<p class="regular">
+            let jobExperience = '';
+            let jobExperienceSegment = workExperience.map((workExperience) => {
+                return (
+                    `<ul>
+                            <li>
+                                <div class="date job_exp_company_name">${workExperience.company_name}</div>
+                                <div class="title job_exp_title">
+                                    <p class="regular">
                             ${workExperience.position}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${workExperience.location}
-                        </p>`;
+                        </p>
+                                </div>
+                                <div class="info job_exp_Summary">
+                                    <p class="semi-bold">${workExperience.start} - ${workExperience.end}</p>
+                        <p>${workExperience.work_summary}</p>
+                                </div>
+                            </li>
+                        </ul>`
+                )
+            }).join('')
 
-            jobExperienceJobTitle += jobExperienceJobTitleSegment;
-            let jobExperienceJobTitleContainer = document.querySelector('.job_exp_title');
-            jobExperienceJobTitleContainer.innerHTML = jobExperienceJobTitle;
 
-            let jobExperienceJobDurationSummary = '';
-            let jobExperienceJobDurationSummarySegment = `<p class="semi-bold">${workExperience.start} - ${workExperience.end}</p>
-                        <p>${workExperience.work_summary}</p>`;
-
-            jobExperienceJobDurationSummary += jobExperienceJobDurationSummarySegment;
-            let jobExperienceJobDurationSummaryContainer = document.querySelector('.job_exp_Summary');
-            jobExperienceJobDurationSummaryContainer.innerHTML = jobExperienceJobDurationSummary;
+            jobExperience += jobExperienceSegment;
+            let jobExperienceContainer = document.querySelector('.work_experience');
+            jobExperienceContainer.innerHTML = jobExperience;
 
             let educationInfo = '';
-            let educationInfoSegment = `
-                 <tr>
+            let educationInfoSegment = education.map((education, index) => {
+                return (`
+                 <tr key={index}>
                     <td>${education.pass_year}</td>
                     <td>${education.inst_name}</td>
                     <td>${education.degree}</td>
                     <td>${education.result}</td>
-                </tr>`;
+                </tr>`)
+            }).join('');
 
             educationInfo += educationInfoSegment;
             let educationInfoContainer = document.querySelector('.education_info');
             educationInfoContainer.innerHTML = educationInfo;
 
             let trainingInfo = '';
-            let trainingInfoSegment = `
+
+            let trainingInfoSegment = trainings.map((training) => {
+                return (
+                    `
                  <li>
-                    <div class="date">${trainings.training_name}</div>
+                    <div class="date">${training.training_name}</div>
                     <!--<div class="title">
                         <p class="regular">Institute Name</p>
                     </div>-->
                     <div class="info">
-                        <p class="semi-bold1">${trainings.end}</p>
+                        <p class="semi-bold1">${training.end}</p>
                     </div>
-                </li>`;
+                </li>`
+                )
+            }).join('');
 
             trainingInfo += trainingInfoSegment;
             let trainingInfoContainer = document.querySelector('.training_info');
             trainingInfoContainer.innerHTML = trainingInfo;
 
             let projectInfo = '';
-            let projectInfoSegment = `
+
+            let projectInfoSegment = projects.map((project) => {
+                return (`
                  <li>
-                    <div class="date">${projects.project_name}</div>
+                    <div class="date">${project.project_name}</div>
                     <div class="title">
                         <!--<p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>-->
                     </div>
                     <div class="info">
-                        <p class="semi-bold2">${projects.start} - ${projects.end}</p>
-                        <p>${projects.project_summary}</p>
+                        <p class="semi-bold2">${project.start} - ${project.end}</p>
+                        <p>${project.project_summary}</p>
                     </div>
-                </li>`;
+                </li>`)
+            }).join('');
 
             projectInfo += projectInfoSegment;
             let projectInfoContainer = document.querySelector('.project_info');

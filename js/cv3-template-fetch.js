@@ -44,11 +44,11 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
 
             let personalInfo = data?.personal_infos_data?.personal_infos[personalInfoLength]
             let additionalInfo = data?.additonalInfos_data?.additonalInfos[additionalInfoLength]
-            let reference = data?.references_data?.references[referenceLength]
-            let workExperience = data?.experiences_data?.experiences[workExperienceLength]
-            let education = data?.education_data?.education[educationLength]
-            let trainings = data?.trainings_data?.trainings[trainingsLength]
-            let projects = data?.projects_data?.projects[projectsLength]
+            let reference = data?.references_data?.references
+            let workExperience = data?.experiences_data?.experiences
+            let education = data?.education_data?.education
+            let trainings = data?.trainings_data?.trainings
+            let projects = data?.projects_data?.projects
 
             let profileImage = '';
             let image = personalInfo.image
@@ -104,7 +104,9 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             languageContainer.innerHTML = language;
 
             let referenceInfo = '';
-            let referenceInfoSegment = `
+
+            let referenceInfoSegment = reference.map((reference) => {
+                return (`
                 <li>
                     <div class="p3">
                         <p>${reference.name}</p>
@@ -131,7 +133,8 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
                     </div>
                 </li>
 
-                `;
+                `)
+            }).join('')
 
             referenceInfo += referenceInfoSegment;
             let referenceInfoContainer = document.querySelector('.ref');
@@ -150,48 +153,52 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             profileSummaryContainer.innerHTML = profileSummary;
 
             let experience_info = '';
-            let experience_infoSegment = `
-<!--<span>${workExperience.company_name}</span>-->
-                    <p class="head">EXPERIENCE</p>
-                    <p>${workExperience.position}&nbsp;(${workExperience.start} - ${workExperience.end})</p>
-                    <p class="p-4">${workExperience.work_summary}</p>
-                `;
+            let experience_infoSegment = workExperience.map((workExperience) => {
+                return (`<p>${workExperience.position}&nbsp;(${workExperience.start} - ${workExperience.end})</p>
+                    <p class="p-4">${workExperience.work_summary}</p>`)
+            }).join('')
 
             experience_info += experience_infoSegment;
             let experience_infoContainer = document.querySelector('.experience_info');
             experience_infoContainer.innerHTML = experience_info;
 
             let educationInfo = '';
-            let educationInfoSegment = `
-                <p class="head">Education</p>
-                <p class="p-4">${education.degree}&nbsp;&nbsp;&nbsp;&nbsp; ${education.inst_name}&nbsp;&nbsp;&nbsp;&nbsp; ${education.pass_year}&nbsp;&nbsp;&nbsp;&nbsp; ${education.result}</p>
-                `;
+
+            let educationInfoSegment = education.map((education) => {
+                return (`
+                                <p class="p-4">${education.degree}&nbsp;&nbsp;&nbsp;&nbsp; ${education.inst_name}&nbsp;&nbsp;&nbsp;&nbsp; ${education.pass_year}&nbsp;&nbsp;&nbsp;&nbsp; ${education.result}</p>
+`)
+            }).join('')
 
             educationInfo += educationInfoSegment;
             let educationInfoContainer = document.querySelector('.education_info');
             educationInfoContainer.innerHTML = educationInfo;
 
             let trainingInfo = '';
-            let trainingInfoSegment = `
+            let trainingInfoSegment = trainings.map((training) => {
+                return (`
                     <td>
-                        <p>${trainings.training_name}</p>
-                        <!--<p>Institute Name</p>-->
-                        <p class="p-4">${trainings.end}</p>
+                        <p>${training.training_name}</p>
+                        <p class="p-4">${training.end}</p>
                     </td>
-                 `;
+                 `)
+            }).join('')
 
             trainingInfo += trainingInfoSegment;
             let trainingInfoContainer = document.querySelector('.training_info');
             trainingInfoContainer.innerHTML = trainingInfo;
 
             let projectInfo = '';
-            let projectInfoSegment = `
-                <p>${projects.project_name}</p>
-                <p style="font-size: 14px;">${projects.start} - ${projects.end}</p>
+
+            let projectInfoSegment = projects.map((project) => {
+                return (`
+                <p>${project.project_name}</p>
+                <p style="font-size: 14px;">${project.start} - ${project.end}</p>
                 <p class="p-4">
-                    ${projects.project_summary}
+                    ${project.project_summary}
                 </p>
-                 `;
+                 `)
+            }).join('')
 
             projectInfo += projectInfoSegment;
             let projectInfoContainer = document.querySelector('.project_info');
@@ -226,10 +233,7 @@ const onClickCv3Download = () => {
     nagadFormData.append('amount', cv3Obj?.price);
 
     fetch("https://xosstech.com/Payment/nagad/index.php", {
-        method: "POST",
-        mode: "no-cors",
-        body: nagadFormData,
-        redirect: 'follow'
+        method: "POST", mode: "no-cors", body: nagadFormData, redirect: 'follow'
 
     }).then((res) => {
         console.log('res=>', res);
