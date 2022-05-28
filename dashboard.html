@@ -252,7 +252,9 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="mb-4">
+                            <button type="submit" class="top-button top-button-q-pre float-right">Save</button>
+                        </div>
                     </form>
                 </div>
                 <div class="tab-pane fade py-4" id="v-pills-work-experience" role="tabpanel"
@@ -261,68 +263,12 @@
                         Work Experience
                     </span></h2>
                     <div class="work_experience_div" id="work_experience_div">
-                        <form id="work_experience_from" class="work_experience_from_cls">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="company_name">Company name</label>
-                                        <input type="text" class="form-control" id="company_name" name="company_name"
-                                               placeholder="Write your company name...">
-                                    </div>
-                                </div>
 
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="position">Position</label>
-                                        <input type="text" class="form-control" id="position" name="position"
-                                               placeholder="Write your position...">
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="start">Start From</label>
-                                        <input type="text" class="form-control" id="start" name="start"
-                                               placeholder="Write Start date...">
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="end">End at</label>
-                                        <input type="text" class="form-control" id="end" name="end"
-                                               placeholder="Write end date...">
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="location">Location</label>
-                                        <input type="text" class="form-control" id="location"
-                                               name="location"
-                                               placeholder="Enter location...">
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="work_summary">Work summary</label>
-                                        <textarea class="form-control" id="work_summary" rows="4"
-                                                  placeholder="Write work summery..."></textarea>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="mb-4">
-                                <button type="button" class="top-button top-button-q-pre" onclick="addWorkExperience()">Add
-                                </button>
-                                <button type="button" class="top-button top-button-q-pre" onclick="deleteWorkExperience()">
-                                    Delete
-                                </button>
-                                <button type="submit" class="top-button top-button-q-pre float-right">Save</button>
-                            </div>
-                            <hr>
-                        </form>
+                    </div>
+                    <div class="mb-4">
+                        <button type="button" class="top-button top-button-q-pre" onclick="addWorkExperience()">
+                            Add
+                        </button>
                     </div>
                 </div>
                 <div class="tab-pane fade py-4" id="v-pills-education" role="tabpanel"
@@ -404,52 +350,10 @@
                        Projects
                     </span></h2>
                     <div class="project_div" id="project_div">
-                        <form id="projects_from" class="project_from_cls">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="project_name">Project name</label>
-                                        <input type="text" class="form-control" id="project_name" name="project_name"
-                                               placeholder="Write project name...">
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="project_start">Start date</label>
-                                        <input placeholder="Selected start date" type="date" id="project_start"
-                                               class="form-control datepicker">
-                                    </div>
-                                </div>
-
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="project_end">End date</label>
-                                        <input placeholder="Selected end date" type="date" id="project_end"
-                                               class="form-control datepicker">
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="project_summary">Project summary</label>
-                                        <textarea class="form-control" id="project_summary" rows="4"
-                                                  placeholder="Write work summery..."></textarea>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="mb-4">
-                                <button type="button" class="top-button top-button-q-pre" onclick="addProject()">Add
-                                </button>
-                                <button type="button" class="top-button top-button-q-pre" onclick="deleteProject()">
-                                    Delete
-                                </button>
-                                <button type="submit" class="top-button top-button-q-pre float-right">Save</button>
-                            </div>
-                            <hr>
-                        </form>
+                    </div>
+                    <div class="mb-4">
+                        <button type="button" class="top-button top-button-q-pre" onclick="addProject()">Add
+                        </button>
                     </div>
 
                 </div>
@@ -511,8 +415,9 @@
                             </div>
 
                         </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="mb-4">
+                            <button type="submit" class="top-button top-button-q-pre float-right">Save</button>
+                        </div>
                     </form>
                 </div>
                 <div class="tab-pane fade py-4" id="v-pills-reference" role="tabpanel"
@@ -526,7 +431,8 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="reference_name">Name</label>
-                                        <input type="text" class="form-control" id="reference_name" name="reference_name"
+                                        <input type="text" class="form-control" id="reference_name"
+                                               name="reference_name"
                                                placeholder="Write name...">
                                     </div>
                                 </div>
@@ -547,7 +453,8 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="reference_email">Email</label>
-                                        <input type="email" class="form-control" id="reference_email" name="reference_email"
+                                        <input type="email" class="form-control" id="reference_email"
+                                               name="reference_email"
                                                aria-describedby="emailHelp" placeholder="Write email id...">
                                     </div>
                                 </div>
