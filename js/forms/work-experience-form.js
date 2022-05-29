@@ -64,13 +64,13 @@ const addWorkExperience = () => {
     let selector = document.getElementById('work_experience_div')
     let temp = document.createElement('div')
     temp.innerHTML += workExperienceFormDiv;
-
     selector.appendChild(temp.children[0]);
 }
 
 const deleteWorkExperience = () => {
     $('.work_experience_from_cls').on('click', function () {
-        $(this).parent('div.work_experience_div').remove();
+        // $(this).parent('div.work_experience_div').remove();
+        $(this).remove();
     });
 }
 

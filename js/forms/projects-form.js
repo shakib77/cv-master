@@ -61,9 +61,9 @@ const addProject = () => {
 
 const deleteProject = () => {
     $('.project_from_cls').on('click', function () {
-        console.log('this->', $(this));
-        console.log('thisdfdf->', $("#project_id").val());
-        // $(this).remove();
+        // console.log('this->', $(this));
+        // console.log('thisdfdf->', $("#project_id").val());
+        $(this).remove();
     });
 }
 
