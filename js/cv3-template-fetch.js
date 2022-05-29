@@ -232,6 +232,15 @@ const onClickCv3Download = () => {
     let nagadFormData = new FormData();
     nagadFormData.append('amount', cv3Obj?.price);
 
+    let printContents = document.getElementById('print_cv').innerHTML;
+    let originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+
     fetch("https://xosstech.com/Payment/nagad/index.php", {
         method: "POST", mode: "no-cors", body: nagadFormData, redirect: 'follow'
 
