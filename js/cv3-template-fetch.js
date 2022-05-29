@@ -233,32 +233,32 @@ const onClickCv3Download = () => {
     nagadFormData.append('amount', cv3Obj?.price);
 
     fetch("https://xosstech.com/Payment/nagad/index.php", {
-        method: "POST", mode: "cors", body: nagadFormData, redirect: 'follow'
+        method: "POST", mode: "cors", body: nagadFormData
 
     }).then((res) => {
-        console.log('res=>', res);
+        console.log('nagad res=>', res);
         if (!res.ok) {
-            // throw Error("Could not fetch data for that resource!!!");
+            throw Error("Could not fetch data for that resource!!!");
         } else {
             return res.json();
         }
     })
         .then((jsonRes) => {
-            console.log('jsonRes =>', jsonRes);
+            console.log('Nagad jsonRes =>', jsonRes);
             if (!jsonRes.success) {
-                console.log('!jsonRes.success->', jsonRes);
+                console.log('!nagad jsonRes.success->', jsonRes);
                 // window.location.href = "login.html";
-            } else {
-                console.log('jsonRes.success->', jsonRes);
-
-                /*let printContents = document.getElementById('print_cv').innerHTML;
-                let originalContents = document.body.innerHTML;
-
-                document.body.innerHTML = printContents;
-
-                window.print();
-
-                document.body.innerHTML = originalContents;*/
             }
-        })
+            console.log('nagad jsonRes.success->', jsonRes);
+
+
+            /*let printContents = document.getElementById('print_cv').innerHTML;
+            let originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;*/
+        }).catch((err) => console.log('err->', err))
 }
