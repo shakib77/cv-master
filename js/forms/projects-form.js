@@ -3,7 +3,7 @@ const projectFormDiv = `<form id="projects_from" class="project_from_cls">
                             <div class="col-6 d-none">
                                     <div class="form-group">
                                         <label for="project_name">Project name</label>
-                                        <input type="text" class="form-control" id="project_id" name="project_id"
+                                        <input type="text" class="form-control" name="project_id"
                                                placeholder="Write project id...">
                                     </div>
                                 </div>
@@ -42,11 +42,10 @@ const projectFormDiv = `<form id="projects_from" class="project_from_cls">
                             </div>
 
                             <div class="mb-4">
-                                <button type="button" class="top-button top-button-q-pre" onclick="deleteProject()">
+                                <button type="button" class="top-button top-button-q-pre" onclick="deleteProject(event)">
                                     Delete
                                 </button>
-                                <button type="submit" class="top-button top-button-q-pre float-right">Save</button>
-                                <button type="submit" class="top-button top-button-q-pre float-right">Save</button>
+                                <button type="button" class="top-button top-button-q-pre float-right" onclick="addUpdate(event)">Save</button>
                             </div>
                             <hr>
                         </form>`;
@@ -57,14 +56,6 @@ const addProject = () => {
     temp.innerHTML += projectFormDiv;
     selector.appendChild(temp.children[0])
     // selector.parentElement.innerHTML += selector.outerHTML;
-}
-
-const deleteProject = () => {
-    $('.project_from_cls').on('click', function () {
-        // console.log('this->', $(this));
-        // console.log('thisdfdf->', $("#project_id").val());
-        $(this).remove();
-    });
 }
 
 fetch('https://xosstech.com/cvm/api/public/api/projects', {
@@ -99,92 +90,89 @@ fetch('https://xosstech.com/cvm/api/public/api/projects', {
                 $(div.children[i]).find('[name="project_start"]').val(projectInfo.start);
                 $(div.children[i]).find('[name="project_end"]').val(projectInfo.end);
 
-                const projectsForm = document.getElementById("projects_from");
-                projectsForm.addEventListener("submit", (e) => {
-                    e.preventDefault();
-                    const formData = {
-                        project_name: e.target.elements["project_name"].value,
-                        start: e.target.elements["project_start"].value,
-                        end: e.target.elements["project_end"].value,
-                        project_summary: e.target.elements["project_summary"].value,
-                    };
-
-                    console.log('form1=>', formData);
-
-                    if (projectInfo.id) {
-                        fetch(`https://xosstech.com/cvm/api/public/api/project/update/${projectInfo.id}`, {
-                            method: "POST", mode: "cors", headers: {
-                                "Content-Type": "application/json", Authorization: bearer,
-                            }, body: JSON.stringify(formData),
-                        }).then((res) => {
-                            console.log('res=>', res);
-                            if (!res.ok) {
-                                throw Error("Could not fetch data for that resource");
-                            } else {
-                                return res.json();
-                            }
-                        })
-                            .then((jsonRes) => {
-                                console.log('jsonRes =>', jsonRes);
-                                if (!jsonRes.success) {
-                                    console.log('!jsonRes.success->', jsonRes);
-                                    // window.location.href = "login.html";
-                                } else {
-                                    console.log('jsonRes.success->', jsonRes);
-                                    alert('Data has been successfully updated');
-                                    // document.getElementById("projects_from").reset();
-                                }
-                            })
-                            .catch((err) => {
-                                console.log('error->', err);
-                                // window.location.href = "/login.html";
-                            });
-                    }
-                });
             })
         }
-
-        /*const projectsForm = document.getElementById("projects_from");
-        projectsForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const formData = {
-                project_name: e.target.elements["project_name"].value,
-                start: e.target.elements["project_start"].value,
-                end: e.target.elements["project_end"].value,
-                project_summary: e.target.elements["project_summary"].value,
-            };
-
-            console.log('form2=>', formData);
-
-            fetch("https://xosstech.com/cvm/api/public/api/project", {
-                method: "POST", mode: "cors", headers: {
-                    "Content-Type": "application/json", Authorization: bearer,
-                }, body: JSON.stringify(formData),
-            }).then((res) => {
-                console.log('res=>', res);
-                if (!res.ok) {
-                    throw Error("Could not fetch data for that resource");
-                } else {
-                    return res.json();
-                }
-            })
-                .then((jsonRes) => {
-                    console.log('jsonRes =>', jsonRes);
-                    if (!jsonRes.success) {
-                        console.log('!jsonRes.success->', jsonRes);
-                        // window.location.href = "login.html";
-                    } else {
-                        console.log('jsonRes.success->', jsonRes);
-                        alert('Data has been successfully created');
-                        // document.getElementById("projects_from").reset();
-                    }
-                })
-                .catch((err) => {
-                    console.log('error->', err);
-                    // window.location.href = "/login.html";
-                });
-
-        });*/
     }
 
 }).catch((err) => console.log('error', err));
+
+const addUpdate = (e) => {
+
+    let form = $(e.target).parent().parent();
+    let id = form.find('[name="project_id"]').val();
+
+    const formData = {
+        project_name: form.find('[name="project_name"]').val(),
+        start: form.find('[name="project_start"]').val(),
+        end: form.find('[name="project_end"]').val(),
+        project_summary: form.find('[name="project_summary"]').val(),
+    };
+
+    console.log('form1=>', formData);
+
+    fetch(id ? `https://xosstech.com/cvm/api/public/api/project/update/${id}` : `https://xosstech.com/cvm/api/public/api/project`, {
+        method: "POST", mode: "cors", headers: {
+            "Content-Type": "application/json", Authorization: bearer,
+        }, body: JSON.stringify(formData),
+    }).then((res) => {
+        console.log('res=>', res);
+        if (!res.ok) {
+            throw Error("Could not fetch data for that resource");
+        } else {
+            return res.json();
+        }
+    })
+        .then((jsonRes) => {
+            console.log('jsonRes =>', jsonRes);
+            if (!jsonRes.success) {
+                console.log('!jsonRes.success->', jsonRes);
+                // window.location.href = "login.html";
+            } else {
+                console.log('jsonRes.success->', jsonRes);
+                alert(id ? 'Data has been successfully updated' : 'Data has been successfully submitted');
+                // document.getElementById("projects_from").reset();
+            }
+        })
+        .catch((err) => {
+            console.log('error->', err);
+            // window.location.href = "/login.html";
+        });
+}
+
+const deleteProject = (e) => {
+    let form = $(e.target).parent().parent();
+    let id = form.find('[name="project_id"]').val();
+
+    fetch(`https://xosstech.com/cvm/api/public/api/project/delete/${id}`, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json", Authorization: bearer,
+        },
+    }).then((res) => {
+        console.log('res=>', res);
+        if (!res.ok) {
+            throw Error("Could not fetch data for that resource");
+        } else {
+            return res.json();
+        }
+    })
+        .then((jsonRes) => {
+            console.log('jsonRes =>', jsonRes);
+            if (!jsonRes.success) {
+                console.log('!jsonRes.success->', jsonRes);
+                // window.location.href = "login.html";
+            } else {
+                console.log('delete jsonRes.success->', jsonRes);
+                alert('Data has been successfully deleted');
+                $('.project_from_cls').on('click', function () {
+                    // console.log('thisdfdf->', $("#project_id").val());
+                    $(this).remove();
+                });
+            }
+        })
+        .catch((err) => {
+            console.log('error->', err);
+            // window.location.href = "/login.html";
+        });
+}
