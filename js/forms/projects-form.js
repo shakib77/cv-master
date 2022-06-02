@@ -1,8 +1,8 @@
 const projectFormDiv = `<form id="projects_from" class="project_from_cls">
                             <div class="row">
-                            <div class="col-6 d-none">
+                                <div class="col-6 d-none">
                                     <div class="form-group">
-                                        <label for="project_name">Project name</label>
+                                        <label for="project_id">Project ID</label>
                                         <input type="text" class="form-control" name="project_id"
                                                placeholder="Write project id...">
                                     </div>
@@ -38,14 +38,13 @@ const projectFormDiv = `<form id="projects_from" class="project_from_cls">
                                                   placeholder="Write work summery..."></textarea>
                                     </div>
                                 </div>
-
                             </div>
 
                             <div class="mb-4">
                                 <button type="button" class="top-button top-button-q-pre" onclick="deleteProject(event)">
                                     Delete
                                 </button>
-                                <button type="button" class="top-button top-button-q-pre float-right" onclick="addUpdate(event)">Save</button>
+                                <button type="button" class="top-button top-button-q-pre float-right" onclick="addUpdateProject(event)">Save</button>
                             </div>
                             <hr>
                         </form>`;
@@ -96,8 +95,7 @@ fetch('https://xosstech.com/cvm/api/public/api/projects', {
 
 }).catch((err) => console.log('error', err));
 
-const addUpdate = (e) => {
-
+const addUpdateProject = (e) => {
     let form = $(e.target).parent().parent();
     let id = form.find('[name="project_id"]').val();
 
@@ -107,8 +105,6 @@ const addUpdate = (e) => {
         end: form.find('[name="project_end"]').val(),
         project_summary: form.find('[name="project_summary"]').val(),
     };
-
-    console.log('form1=>', formData);
 
     fetch(id ? `https://xosstech.com/cvm/api/public/api/project/update/${id}` : `https://xosstech.com/cvm/api/public/api/project`, {
         method: "POST", mode: "cors", headers: {

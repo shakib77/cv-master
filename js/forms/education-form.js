@@ -1,5 +1,12 @@
 const educationFormDiv = `<form id="education_from" class="education_from_cls">
                             <div class="row">
+                                <div class="col-6 d-none">
+                                    <div class="form-group">
+                                        <label for="inst_id">Institute ID</label>
+                                        <input type="text" class="form-control" name="inst_id"
+                                               placeholder="Write inst id...">
+                                    </div>
+                                </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="inst_name">Institute name</label>
@@ -54,14 +61,14 @@ const educationFormDiv = `<form id="education_from" class="education_from_cls">
 
                             <div class="mb-4">
                                
-                                <button type="button" class="top-button top-button-q-pre" onclick="deleteEducation()">
+                                <button type="button" class="top-button top-button-q-pre" onclick="deleteEducation(event)">
                                     Delete
                                 </button>
-                                <button type="submit" class="top-button top-button-q-pre float-right">Save</button>
+                                <button type="button" class="top-button top-button-q-pre float-right" onclick="addUpdateEducation(event)">Save</button>
                             </div>
                             <hr>
                         </form>
-`
+                        `;
 
 const addEducation = () => {
     let selector = document.getElementById('education_div')
@@ -104,6 +111,7 @@ fetch('https://xosstech.com/cvm/api/public/api/educations', {
         if (educationInfoData && educationInfoLength > 0) {
             educationInfoData.forEach((educationInfo, i) => {
                 let div = document.getElementById('education_div')
+                $(div.children[i]).find('[name="inst_id"]').val(educationInfo.id);
                 $(div.children[i]).find('[name="dept"]').val(educationInfo.dept);
                 $(div.children[i]).find('[name="pass_year"]').val(educationInfo.pass_year);
                 $(div.children[i]).find('[name="result"]').val(educationInfo.result);
@@ -114,78 +122,49 @@ fetch('https://xosstech.com/cvm/api/public/api/educations', {
                 $(div.children[i]).find('[name="inst_name"]').val(educationInfo.inst_name);
             })
         }
-
-        const educationForm = document.getElementById("education_from");
-        educationForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const formData = {
-                inst_name: e.target.elements["inst_name"].value,
-                degree: e.target.elements["degree"].value,
-                dept: e.target.elements["dept"].value,
-                pass_year: e.target.elements["pass_year"].value,
-                result: e.target.elements["result"].value,
-                board: e.target.elements["board"].value,
-            };
-
-            if (educationInfoData && educationInfoLength > 0) {
-                fetch(`https://xosstech.com/cvm/api/public/api/education/update/${educationInfoLength.id}`, {
-                    method: "POST", mode: "cors", headers: {
-                        "Content-Type": "application/json", Authorization: bearer,
-                    }, body: JSON.stringify(formData),
-                }).then((res) => {
-                    console.log('res=>', res);
-                    if (!res.ok) {
-                        throw Error("Could not fetch data for that resource");
-                    } else {
-                        return res.json();
-                    }
-                })
-                    .then((jsonRes) => {
-                        console.log('jsonRes =>', jsonRes);
-                        if (!jsonRes.success) {
-                            console.log('!jsonRes.success->', jsonRes);
-                            // window.location.href = "login.html";
-                        } else {
-                            console.log('jsonRes.success->', jsonRes);
-                            alert('Data has been successfully updated');
-                            // document.getElementById("education_from").reset();
-                        }
-                    })
-                    .catch((err) => {
-                        console.log('error->', err);
-                        // window.location.href = "/login.html";
-                    });
-            } else {
-                fetch("https://xosstech.com/cvm/api/public/api/education", {
-                    method: "POST", mode: "cors", headers: {
-                        "Content-Type": "application/json", Authorization: bearer,
-                    }, body: JSON.stringify(formData),
-                }).then((res) => {
-                    console.log('res=>', res);
-                    if (!res.ok) {
-                        throw Error("Could not fetch data for that resource");
-                    } else {
-                        return res.json();
-                    }
-                })
-                    .then((jsonRes) => {
-                        console.log('jsonRes =>', jsonRes);
-                        if (!jsonRes.success) {
-                            console.log('!jsonRes.success->', jsonRes);
-                            // window.location.href = "login.html";
-                        } else {
-                            console.log('jsonRes.success->', jsonRes);
-                            alert('Data has been successfully created');
-                            // document.getElementById("education_from").reset();
-                        }
-                    })
-                    .catch((err) => {
-                        console.log('error->', err);
-                        // window.location.href = "/login.html";
-                    });
-            }
-        });
     }
-
 }).catch((err) => console.log('error', err));
+
+const addUpdateEducation = () => {
+    let form = $(e.target).parent().parent();
+    let id = form.find('[name="inst_id"]').val();
+
+    const formData = {
+        inst_name: e.target.elements["inst_name"].value,
+        degree: e.target.elements["degree"].value,
+        dept: e.target.elements["dept"].value,
+        pass_year: e.target.elements["pass_year"].value,
+        result: e.target.elements["result"].value,
+        board: e.target.elements["board"].value,
+    };
+
+
+    fetch(id ? `https://xosstech.com/cvm/api/public/api/education/update/${id}` : `https://xosstech.com/cvm/api/public/api/education`, {
+        method: "POST", mode: "cors", headers: {
+            "Content-Type": "application/json", Authorization: bearer,
+        }, body: JSON.stringify(formData),
+    }).then((res) => {
+        console.log('res=>', res);
+        if (!res.ok) {
+            throw Error("Could not fetch data for that resource");
+        } else {
+            return res.json();
+        }
+    })
+        .then((jsonRes) => {
+            console.log('jsonRes =>', jsonRes);
+            if (!jsonRes.success) {
+                console.log('!jsonRes.success->', jsonRes);
+                // window.location.href = "login.html";
+            } else {
+                console.log('jsonRes.success->', jsonRes);
+                alert(id ? 'Data has been successfully updated' : 'Data has been successfully created');
+                // document.getElementById("education_from").reset();
+            }
+        })
+        .catch((err) => {
+            console.log('error->', err);
+            // window.location.href = "/login.html";
+        });
+}
 
