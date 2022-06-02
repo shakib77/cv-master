@@ -139,36 +139,43 @@ const deleteProject = (e) => {
     let form = $(e.target).parent().parent();
     let id = form.find('[name="project_id"]').val();
 
-    fetch(`https://xosstech.com/cvm/api/public/api/project/delete/${id}`, {
-        method: "DELETE",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json", Authorization: bearer,
-        },
-    }).then((res) => {
-        console.log('res=>', res);
-        if (!res.ok) {
-            throw Error("Could not fetch data for that resource");
-        } else {
-            return res.json();
-        }
-    })
-        .then((jsonRes) => {
-            console.log('jsonRes =>', jsonRes);
-            if (!jsonRes.success) {
-                console.log('!jsonRes.success->', jsonRes);
-                // window.location.href = "login.html";
+    if (id) {
+        fetch(`https://xosstech.com/cvm/api/public/api/project/delete/${id}`, {
+            method: "DELETE",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json", Authorization: bearer,
+            },
+        }).then((res) => {
+            console.log('res=>', res);
+            if (!res.ok) {
+                throw Error("Could not fetch data for that resource");
             } else {
-                console.log('delete jsonRes.success->', jsonRes);
-                alert('Data has been successfully deleted');
-                $('.project_from_cls').on('click', function () {
-                    // console.log('thisdfdf->', $("#project_id").val());
-                    $(this).remove();
-                });
+                return res.json();
             }
         })
-        .catch((err) => {
-            console.log('error->', err);
-            // window.location.href = "/login.html";
+            .then((jsonRes) => {
+                console.log('jsonRes =>', jsonRes);
+                if (!jsonRes.success) {
+                    console.log('!jsonRes.success->', jsonRes);
+                    // window.location.href = "login.html";
+                } else {
+                    console.log('delete jsonRes.success->', jsonRes);
+                    alert('Data has been successfully deleted');
+                    $('.project_from_cls').on('click', function () {
+                        // console.log('thisdfdf->', $("#project_id").val());
+                        $(this).remove();
+                    });
+                }
+            })
+            .catch((err) => {
+                console.log('error->', err);
+                // window.location.href = "/login.html";
+            });
+    } else {
+        $('.project_from_cls').on('click', function () {
+            // console.log('thisdfdf->', $("#project_id").val());
+            $(this).remove();
         });
+    }
 }
