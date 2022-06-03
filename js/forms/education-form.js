@@ -195,6 +195,7 @@ const deleteEducation = (e) => {
                         // $(this).parent('div.education_div').remove();
                         $(this).remove();
                     });
+                    window.location.reload();
                 }
             })
             .catch((err) => {

@@ -166,6 +166,7 @@ const deleteProject = (e) => {
                         // console.log('thisdfdf->', $("#project_id").val());
                         $(this).remove();
                     });
+                    window.location.reload();
                 }
             })
             .catch((err) => {

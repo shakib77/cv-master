@@ -183,9 +183,9 @@ const deleteReference = (e) => {
 
                     $('.reference_from_cls').on('click', function () {
                         $(this).remove();
-                        window.location.reload()
                         // $(this).parent('div.reference_div').remove();
                     });
+                    window.location.reload();
                 }
             })
             .catch((err) => {
