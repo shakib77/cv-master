@@ -231,34 +231,19 @@ let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
 const onClickCv3Download = () => {
     let nagadFormData = new FormData();
     nagadFormData.append('amount', cv3Obj?.price);
+    // createPDFfromHTML();
 
     fetch("https://xosstech.com/Payment/nagad/index.php", {
         method: "POST", mode: "cors", body: nagadFormData
 
     }).then((res) => {
-        console.log('nagad res=>', res);
         if (!res.ok) {
             throw Error("Could not fetch data for that resource!!!");
         } else {
-            return res.json();
+            return res.text();
         }
     })
         .then((jsonRes) => {
             console.log('Nagad jsonRes =>', jsonRes);
-            if (!jsonRes.success) {
-                console.log('!nagad jsonRes.success->', jsonRes);
-                // window.location.href = "login.html";
-            }
-            console.log('nagad jsonRes.success->', jsonRes);
-
-
-            /*let printContents = document.getElementById('print_cv').innerHTML;
-            let originalContents = document.body.innerHTML;
-
-            document.body.innerHTML = printContents;
-
-            window.print();
-
-            document.body.innerHTML = originalContents;*/
         }).catch((err) => console.log('err->', err))
 }
