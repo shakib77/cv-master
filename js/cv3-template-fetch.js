@@ -231,7 +231,8 @@ let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
 const onClickCv3Download = () => {
     let nagadFormData = new FormData();
     nagadFormData.append('amount', cv3Obj?.price);
-    // createPDFfromHTML();
+    $(".water-mark").hide();
+    createPdfFromHtmlCv3();
 
     fetch("https://xosstech.com/Payment/nagad/index.php", {
         method: "POST", mode: "cors", body: nagadFormData

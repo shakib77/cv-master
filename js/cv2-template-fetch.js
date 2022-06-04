@@ -263,38 +263,22 @@ const onClickCv2Download = () => {
     let nagadFormData = new FormData();
     nagadFormData.append('amount', cv2Obj?.price);
 
+    $(".water-mark").hide();
+    createPdfFromHtmlCv2();
+
     fetch("https://xosstech.com/Payment/nagad/index.php", {
-        method: "POST",
-        mode: "cors",
-        body: nagadFormData,
-        redirect: 'follow'
+        method: "POST", mode: "cors", body: nagadFormData
 
     }).then((res) => {
-        console.log('res=>', res);
         if (!res.ok) {
             throw Error("Could not fetch data for that resource!!!");
         } else {
-            return res.json();
+            return res.text();
         }
     })
         .then((jsonRes) => {
-            console.log('jsonRes =>', jsonRes);
-            if (!jsonRes.success) {
-                console.log('!jsonRes.success->', jsonRes);
-                // window.location.href = "login.html";
-            } else {
-                console.log('jsonRes.success->', jsonRes);
-
-                let printContents = document.getElementById('print_cv').innerHTML;
-                let originalContents = document.body.innerHTML;
-
-                document.body.innerHTML = printContents;
-
-                window.print();
-
-                document.body.innerHTML = originalContents;
-            }
-        })
+            console.log('Nagad jsonRes =>', jsonRes);
+        }).catch((err) => console.log('err->', err))
 }
 
 const onClickCv2DownloadBdApp = () => {

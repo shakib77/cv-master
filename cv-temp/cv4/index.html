@@ -1,15 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CV Using HTML & CSS</title>
+    <title>CV Master</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous">
+    </script>
 
     <style>
-        * {margin: 0;padding: 0;}
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-        body{font-family: 'Montserrat', sans-serif;}
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
 
         #page {
             min-height: 200px;
@@ -40,6 +48,7 @@
         .name {
             margin-bottom: -5px;
         }
+
         .job-title {
             /*display: inline-block;*/
             padding: 5px;
@@ -158,43 +167,43 @@
             display: block;
         }
 
-         .s1 {
+        .s1 {
             padding-left: 121px;
         }
 
-         .s2 {
+        .s2 {
             padding-left: 62px;
         }
 
-         .s3 {
+        .s3 {
             padding-left: 57px;
         }
 
-         .s4 {
+        .s4 {
             padding-left: 112px;
         }
 
-         .s5 {
+        .s5 {
             padding-left: 74px;
         }
 
-         .s6 {
+        .s6 {
             padding-left: 67px;
         }
 
-         .s7 {
+        .s7 {
             padding-left: 87px;
         }
 
-         .s8 {
+        .s8 {
             padding-left: 105px;
         }
 
-         .s9 {
+        .s9 {
             padding-left: 48px;
         }
 
-         .s10 {
+        .s10 {
             padding-left: 22px;
         }
 
@@ -219,131 +228,215 @@
         #bio-data table tr td:nth-child(2) {
             width: 300px;
         }
+
+        .download-div {
+            margin-top: 16px;
+        }
+
+        .top-button-q-pre {
+            white-space: nowrap;
+            margin-right: 20px;
+            margin-top: 3px;
+            float: right;
+        }
+
+        .top-button {
+            background: #f3f3f3 url(../../Images/bg_button.png) repeat-x bottom left;
+            padding: 2px 10px 3px 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #666;
+            text-shadow: 1px 1px #ddd;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .top-button:hover {
+            background: #18c7e1 url(../../Images/bg_button2.png) repeat-x bottom left;
+            color: #fff;
+            text-shadow: 1px 1px #089fb3;
+            border-color: #089fb3;
+            box-shadow: none;
+        }
+
+        .water-mark {
+            position: absolute;
+            top: 320px;
+            right: 608px;
+            opacity: 0.3;
+            z-index: 999;
+            color: #db2828;
+        }
+
     </style>
 </head>
 <body>
 
-<div id="page">
-    <div class="photo-and-name">
-        <img src="images/profile.png" class="photo" alt="Profile Picture">
-        <div class="contact-info-box">
-            <h1 class="name">Muhammad Owais</h1>
-            <br>
-            <p class="job-title">Address:</p>
-            <p class="job-title">Mobile:</p>
-            <p class="job-title">E-mail:</p>
+<div>
+    <div class="download-div">
+        <div class="water-mark"><h1 style="font-size: 3rem">CV MASTER</h1></div>
+
+        <div class="download-div">
+            <button type="button" class="top-button top-button-q-pre" onclick="onClickCv4Download()">
+                Download
+            </button>
+
+            <!--<button type="button" class="top-button top-button-q-pre"
+                    data-toggle="modal" data-target="#mobile_no_modal">Download
+            </button>-->
         </div>
     </div>
-    <div id="objective">
-        <h3>Career Objective</h3>
-        <p>
-            To take a challenging and managerial role in the field of Computer programming and implement the expertise and experience gained in this field to develop complex project with efficiency and quality.
-        </p>
-    </div>
-    <div id="education">
-        <h3>Education</h3>
-        <table>
-            <tr>
-                <th>Exam Title</th>
-                <th>Concentration</th>
-                <th>Institute</th>
-                <th>Board</th>
-                <th>Result</th>
-                <th>Passing Year</th>
-            </tr>
-            <tr class="school-1">
-                <td>SSC</td>
-                <td>Science</td>
-                <td>School</td>
-                <td>Board</td>
-                <td>Result</td>
-                <td>Passing Year</td>
-            </tr>
-            <tr class="school-1">
-                <td>SSC</td>
-                <td>Science</td>
-                <td>School</td>
-                <td>Board</td>
-                <td>Result</td>
-                <td>Passing Year</td>
-            </tr>
-            <tr class="school-1">
-            <td>SSC</td>
-            <td>Science</td>
-            <td>School</td>
-            <td>Board</td>
-            <td>Result</td>
-            <td>Passing Year</td>
-        </tr>
-        </table>
-    </div>
-    <div id="work">
-        <h3>Special Qualities</h3>
-        <ul>
-            <li>
-                <div class="skill">Microsoft Word, </div>
-            </li>
-            <li>
-                <div class="skill">Microsoft Excel, </div>
-            </li>
-            <li>
-                <div class="skill">Microsoft Power Point </div>
-            </li>
-        </ul>
-    </div>
-    <div id="language">
-        <h3>Language Proficiency</h3>
-        <table>
-            <tr>
-                <th>Language Name</th>
-                <th>Eficiency</th>
-            </tr>
-            <tr>
-                <td>Bangla</td>
-                <td>Good</td>
-            </tr>
-            <tr>
-                <td>English</td>
-                <td>Good</td>
-            </tr>
-        </table>
-    </div>
-    <div id="bio-data">
-        <h3>Personal Details</h3>
-        <ul>
-            <li>
-                <div class="skill">Name<span class="s1">:</span> </div>
-            </li>
-            <li>
-                <div class="skill">Father's Name<span class="s2">:</span> </div>
-            </li>
-            <li>
-                <div class="skill">Mother's Name<span class="s3">:</span> </div>
-            </li>
-            <li>
-                <div class="skill">Gender<span class="s4">:</span> </div>
-            </li>
-            <li>
-                <div class="skill">Date of Birth<span class="s5">:</span> </div>
-            </li>
-            <li>
-                <div class="skill">Marital Status<span class="s6">:</span> </div>
-            </li>
-            <li>
-                <div class="skill">Nationality<span class="s7">:</span> </div>
-            </li>
-            <li>
-                <div class="skill">Religion<span class="s8">:</span> </div>
-            </li>
-            <li>
-                <div class="skill">Present Address<span class="s9">:</span> </div>
-            </li>
-            <li>
-                <div class="skill">Permanent Address<span class="s10">:</span> </div>
-            </li>
-        </ul>
+
+    <div class="print_cv">
+        <div id="page">
+            <div class="photo-and-name">
+                <img src="images/profile.png" class="photo" alt="Profile Picture">
+                <div class="contact-info-box">
+                    <h1 class="name">Muhammad Owais</h1>
+                    <br>
+                    <p class="job-title">Address:</p>
+                    <p class="job-title">Mobile:</p>
+                    <p class="job-title">E-mail:</p>
+                </div>
+            </div>
+            <div id="objective" class="career_objective">
+                <h3>Career Objective</h3>
+                <p>
+                    To take a challenging and managerial role in the field of Computer programming and implement the
+                    expertise and experience gained in this field to develop complex project with efficiency and
+                    quality.
+                </p>
+            </div>
+            <div id="education">
+                <h3>Education</h3>
+                <table>
+                    <tr>
+                        <th>Exam Title</th>
+                        <th>Concentration</th>
+                        <th>Institute</th>
+                        <th>Board</th>
+                        <th>Result</th>
+                        <th>Passing Year</th>
+                    </tr>
+                    <tbody class="education">
+                    <tr class="school-1">
+                        <td>SSC</td>
+                        <td>Science</td>
+                        <td>School</td>
+                        <td>Board</td>
+                        <td>Result</td>
+                        <td>Passing Year</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="work">
+                <h3>Special Qualities</h3>
+                <ul class="profile_skills">
+                    <li>
+                        <div class="skill">Microsoft Word,</div>
+                    </li>
+                    <li>
+                        <div class="skill">Microsoft Excel,</div>
+                    </li>
+                    <li>
+                        <div class="skill">Microsoft Power Point</div>
+                    </li>
+                </ul>
+            </div>
+            <div id="language">
+                <h3>Language Proficiency</h3>
+                <table>
+                    <tr>
+                        <th>Language Name</th>
+                        <th>Eficiency</th>
+                    </tr>
+                    <tbody class="language_proficiency">
+                    <tr>
+                        <td>Bangla</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <td>English</td>
+                        <td>Good</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="bio-data">
+                <h3>Personal Details</h3>
+                <ul class="personal_details">
+                    <li>
+                        <div class="skill">Name<span class="s1">:</span></div>
+                    </li>
+                    <li>
+                        <div class="skill">Father's Name<span class="s2">:</span></div>
+                    </li>
+                    <li>
+                        <div class="skill">Mother's Name<span class="s3">:</span></div>
+                    </li>
+                    <li>
+                        <div class="skill">Gender<span class="s4">:</span></div>
+                    </li>
+                    <li>
+                        <div class="skill">Date of Birth<span class="s5">:</span></div>
+                    </li>
+                    <li>
+                        <div class="skill">Marital Status<span class="s6">:</span></div>
+                    </li>
+                    <li>
+                        <div class="skill">Nationality<span class="s7">:</span></div>
+                    </li>
+                    <li>
+                        <div class="skill">Religion<span class="s8">:</span></div>
+                    </li>
+                    <li>
+                        <div class="skill">Present Address<span class="s9">:</span></div>
+                    </li>
+                    <li>
+                        <div class="skill">Permanent Address<span class="s10">:</span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
+
+<script src="../../js/get-bearer-token.js"></script>
+
+<script src="../../js/cv4-template-fetch.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+<script>
+    function createPdfFromHtmlCv4() {
+        let HTML_Width = $(".print_cv").width();
+        let HTML_Height = $(".print_cv").height();
+        let top_left_margin = 15;
+        let PDF_Width = HTML_Width + (top_left_margin * 2);
+        let PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+        let canvas_image_width = HTML_Width;
+        let canvas_image_height = HTML_Height;
+
+        let totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+        html2canvas($(".print_cv")[0]).then(function (canvas) {
+            let imgData = canvas.toDataURL("image/jpeg", 1.0);
+            let pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+            for (let i = 1; i <= totalPDFPages; i++) {
+                pdf.addPage(PDF_Width, PDF_Height);
+                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+            }
+            pdf.save("resume.pdf");
+            // $(".print_cv").hide();
+        });
+    }
+</script>
 
 </body>
 </html>

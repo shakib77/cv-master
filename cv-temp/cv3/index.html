@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous">
+    </script>
 
     <style>
         body {
@@ -176,12 +177,23 @@
             border-color: #089fb3;
             box-shadow: none;
         }
+
+        .water-mark {
+            position: absolute;
+            top: 320px;
+            right: 608px;
+            opacity: 0.3;
+            z-index: 999;
+            color: #db2828;
+        }
+
     </style>
 
 </head>
 <body>
 
 <div>
+    <div class="water-mark"><h1 style="font-size: 3rem">CV MASTER</h1></div>
     <div class="download-div">
         <button type="button" class="top-button top-button-q-pre" id="cv3_download" onclick="onClickCv3Download()">
             Download
@@ -287,24 +299,29 @@
                         <div class="experience_info">
                             <p>UI DESIGNER IN LOREM IPSUM (2018 - NOW)</p>
                             <p class="p-4">
-                                Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has
+                                Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum
+                                Has
                                 Been The
-                                Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown Printer Took A Galley
+                                Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown Printer Took A
+                                Galley
                                 Of Type And
                                 Scrambled It To Make A Type Specimen Book.</p>
 
                             <p>UI DESIGNER (2013 - 2015)</p>
                             <p class="p-4">
-                                Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has
+                                Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum
+                                Has
                                 Been The
                                 Industry's Standard Dummy Text Ever Since The 1500s
                             </p>
 
                             <p>GRAPIC DESIGNER(2010)</p>
                             <p class="p-4">
-                                Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum Has
+                                Lorem Ipsum Is Simply Dummy Text Of The Printing And Typesetting Industry. Lorem Ipsum
+                                Has
                                 Been The
-                                Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown Printer Took A Galley
+                                Industry's Standard Dummy Text Ever Since The 1500s, When An Unknown Printer Took A
+                                Galley
                                 Of Type And
                                 Scrambled It To Make A Type Specimen Book.</p>
                         </div>
@@ -314,7 +331,7 @@
 
                     <br/>
 
-                    <div >
+                    <div>
                         <p class="head">Education</p>
                         <div class="education_info">
                             <p class="p-4">High School from CBSE&nbsp;&nbsp;&nbsp;&nbsp; Dhaka University&nbsp;&nbsp;&nbsp;&nbsp;
@@ -390,13 +407,11 @@
 
 <script src="../../js/cv3-template-fetch.js"></script>
 
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
 <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
-
 <script>
-    function createPDFfromHTML() {
+    function createPdfFromHtmlCv3() {
         let HTML_Width = $(".print_cv").width();
         let HTML_Height = $(".print_cv").height();
         let top_left_margin = 15;
@@ -413,7 +428,7 @@
             pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
             for (let i = 1; i <= totalPDFPages; i++) {
                 pdf.addPage(PDF_Width, PDF_Height);
-                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
+                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
             }
             pdf.save("resume.pdf");
             // $(".print_cv").hide();

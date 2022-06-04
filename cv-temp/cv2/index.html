@@ -281,22 +281,33 @@
             box-shadow: none;
         }
 
+        .water-mark {
+            position: absolute;
+            top: 320px;
+            right: 608px;
+            opacity: 0.3;
+            z-index: 999;
+            color: #db2828;
+        }
+
     </style>
 </head>
 <body>
 
 <div>
-    <div class="download-div">
-        <!--<button type="button" class="top-button top-button-q-pre" id="cv2_download" onclick="onClickCv2Download()">
-            Download
-        </button>-->
+    <div class="water-mark"><h1 style="font-size: 3rem">CV MASTER</h1></div>
 
-        <button type="button" class="top-button top-button-q-pre" id="cv2_download"
-                data-toggle="modal" data-target="#mobile_no_modal">Download
+    <div class="download-div">
+        <button type="button" class="top-button top-button-q-pre" onclick="onClickCv2Download()">
+            Download
         </button>
+
+        <!--<button type="button" class="top-button top-button-q-pre"
+                data-toggle="modal" data-target="#mobile_no_modal">Download
+        </button>-->
     </div>
 
-    <div id="print_cv">
+    <div id="print_cv" class="print_cv">
         <div class="resume">
             <div class="resume_left1">
                 <div class="resume_left">
@@ -526,6 +537,35 @@
 <script src="../../js/get-bearer-token.js"></script>
 
 <script src="../../js/cv2-template-fetch.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+<script>
+    function createPdfFromHtmlCv2() {
+        let HTML_Width = $(".print_cv").width();
+        let HTML_Height = $(".print_cv").height();
+        let top_left_margin = 15;
+        let PDF_Width = HTML_Width + (top_left_margin * 2);
+        let PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+        let canvas_image_width = HTML_Width;
+        let canvas_image_height = HTML_Height;
+
+        let totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+        html2canvas($(".print_cv")[0]).then(function (canvas) {
+            let imgData = canvas.toDataURL("image/jpeg", 1.0);
+            let pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+            for (let i = 1; i <= totalPDFPages; i++) {
+                pdf.addPage(PDF_Width, PDF_Height);
+                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+            }
+            pdf.save("resume.pdf");
+            // $(".print_cv").hide();
+        });
+    }
+</script>
 
 </body>
 </html>
