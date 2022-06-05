@@ -5,11 +5,15 @@
     <title>Responsive Resume UI Design in HTML and CSS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous">
+    </script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-        *{
+        * {
             margin: 0;
             padding: 0;
             list-style: none;
@@ -17,13 +21,13 @@
             font-family: 'Roboto', sans-serif;
         }
 
-        body{
+        body {
             background: #c4c4c4;
             font-size: 14px;
             line-height: 20px;
         }
 
-        .resume_wrapper{
+        .resume_wrapper {
             display: flex;
             width: 800px;
             margin: auto;
@@ -56,14 +60,14 @@
             margin-bottom: 20px;
         }
 
-        .resume_wrapper .resume_top{
+        .resume_wrapper .resume_top {
             background: #41424C;
             position: absolute;
             height: 200px;
             width: 800px;
         }
 
-        .resume_wrapper .resume_left{
+        .resume_wrapper .resume_left {
             width: 53%;
             background: #F9E5BC;
             margin-left: 35px;
@@ -71,11 +75,11 @@
             z-index: 1;
         }
 
-        .resume_wrapper .resume_left .resume_image{
+        .resume_wrapper .resume_left .resume_image {
             width: 100%;
         }
 
-        .resume_wrapper .resume_left .resume_image img{
+        .resume_wrapper .resume_left .resume_image img {
             display: block;
             border-radius: 50%;
             width: 150px;
@@ -83,7 +87,7 @@
             margin: 25px 0px 0px 51px;
         }
 
-        .resume_wrapper .resume_title{
+        .resume_wrapper .resume_title {
             color: #000000;
             text-transform: uppercase;
             font-weight: 700;
@@ -91,31 +95,31 @@
             margin-bottom: 10px;
         }
 
-        .resume_wrapper .resume_left .resume_info{
+        .resume_wrapper .resume_left .resume_info {
             color: #000000;
             display: flex;
             font-weight: bold;
             text-transform: uppercase;
         }
 
-        .resume_wrapper .resume_left .resume_bottom{
+        .resume_wrapper .resume_left .resume_bottom {
             padding: 20px 30px;
         }
 
-        .resume_wrapper .resume_item{
+        .resume_wrapper .resume_item {
             padding: 20px 0;
             /*border-bottom: 1px solid #0175b2;*/
         }
 
-        .resume_wrapper  .resume_item:last-child{
+        .resume_wrapper .resume_item:last-child {
             border-bottom: 0;
         }
 
-        .resume_wrapper .resume_left .resume_namerole{
+        .resume_wrapper .resume_left .resume_namerole {
             /*display: none;*/
         }
 
-        .resume_wrapper .resume_namerole .name{
+        .resume_wrapper .resume_namerole .name {
             font-size: 20px;
             color: #000000;
             text-transform: uppercase;
@@ -125,7 +129,7 @@
             text-align: center;
         }
 
-        .resume_wrapper .resume_left .resume_namerole .role{
+        .resume_wrapper .resume_left .resume_namerole .role {
             color: #000000;
             text-transform: uppercase;
             text-align: center;
@@ -150,30 +154,37 @@
             align-items: center;
         }
 
-        #icon{
+        #icon {
             font-size: 22px;
             position: absolute;
             left: -23px;
             top: -2px;
         }
 
-        #icon1{
+        #icon3 {
+            font-size: 22px;
+            position: absolute;
+            left: -23px;
+            top: -2px;
+        }
+
+        #icon1 {
             font-size: 22px;
             position: absolute;
             left: 157px;
             top: -2px;
         }
 
-        .resume_wrapper .resume_top .data{
+        .resume_wrapper .resume_top .data {
             margin-left: 10px;
         }
 
-        .resume_wrapper .resume_top .data1{
+        .resume_wrapper .resume_top .data1 {
             margin-top: 40px;
             margin-left: 10px;
         }
 
-        .resume_wrapper .resume_top .data2{
+        .resume_wrapper .resume_top .data2 {
             margin-left: 190px;
             margin-top: -30px;
         }
@@ -187,18 +198,18 @@
             font-style: italic;
         }
 
-        .resume_wrapper .resume_left .resume_contact .resume_info:last-child{
+        .resume_wrapper .resume_left .resume_contact .resume_info:last-child {
             margin-top: 10px;
         }
 
-        .resume_wrapper .resume_left .resume_skills .skills_list .skills_bar p{
+        .resume_wrapper .resume_left .resume_skills .skills_list .skills_bar p {
             position: relative;
             width: 125px;
             height: 20px;
             background: #fff;
         }
 
-        .resume_wrapper .resume_left .resume_skills .skills_list .skills_bar p span{
+        .resume_wrapper .resume_left .resume_skills .skills_list .skills_bar p span {
             position: absolute;
             top: 0;
             left: 0;
@@ -207,389 +218,495 @@
             height: 100%;
         }
 
-        .resume_wrapper .resume_right{
+        .resume_wrapper .resume_right {
             width: 100%;
             padding: 210px 40px;
             color: #26252d;
             z-index: 1;
         }
 
-        .resume_wrapper .resume_right .resume_namerole .name{
+        .resume_wrapper .resume_right .resume_namerole .name {
             color: #26252d;
             font-size: 32px;
         }
 
-        .resume_wrapper .resume_right .resume_namerole .role{
+        .resume_wrapper .resume_right .resume_namerole .role {
             font-size: 14px;
             text-transform: uppercase;
         }
 
-        .resume_wrapper .resume_right .resume_item .resume_title{
+        .resume_wrapper .resume_right .resume_item .resume_title {
             color: #26252d;
             margin-bottom: 30px;
         }
 
-        .resume_wrapper .resume_right .resmue_interests .resume_info ul li{
+        .resume_wrapper .resume_right .resmue_interests .resume_info ul li {
             margin-top: 9px;
         }
 
-        .resume_wrapper .resume_right .resmue_interests .resume_info{
+        .resume_wrapper .resume_right .resmue_interests .resume_info {
             display: flex;
             justify-content: space-between;
         }
 
-        .resume_wrapper .resume_right .resmue_interests .resume_info .data1{
+        .resume_wrapper .resume_right .resmue_interests .resume_info .data1 {
             font-style: italic;
             font-weight: 600;
         }
 
-        @media screen and (max-width: 800px){
-            .resume_wrapper .resume_right .resume_namerole{
+        @media screen and (max-width: 800px) {
+            .resume_wrapper .resume_right .resume_namerole {
                 display: none;
             }
-            .resume_wrapper .resume_left .resume_namerole{
+
+            .resume_wrapper .resume_left .resume_namerole {
                 display: block;
             }
-            .resume_wrapper{
+
+            .resume_wrapper {
                 width: 95%;
                 margin: 10px auto;
                 flex-direction: column;
             }
+
             .resume_wrapper .resume_left,
-            .resume_wrapper .resume_right{
+            .resume_wrapper .resume_right {
                 width: 100%;
             }
         }
 
-        @media screen and (max-width: 424px){
-            .resume_wrapper .resume_right{
+        @media screen and (max-width: 424px) {
+            .resume_wrapper .resume_right {
                 padding: 20px 30px;
             }
+        }
+
+        .download-div {
+            margin-top: 16px;
+        }
+
+        .top-button-q-pre {
+            white-space: nowrap;
+            margin-right: 20px;
+            margin-top: 3px;
+            float: right;
+        }
+
+        .top-button {
+            background: #f3f3f3 url(../../Images/bg_button.png) repeat-x bottom left;
+            padding: 2px 10px 3px 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #666;
+            text-shadow: 1px 1px #ddd;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .top-button:hover {
+            background: #18c7e1 url(../../Images/bg_button2.png) repeat-x bottom left;
+            color: #fff;
+            text-shadow: 1px 1px #089fb3;
+            border-color: #089fb3;
+            box-shadow: none;
+        }
+
+        .water-mark {
+            position: absolute;
+            top: 320px;
+            right: 608px;
+            opacity: 0.3;
+            z-index: 999;
+            color: #db2828;
         }
     </style>
 </head>
 <body>
 
 
-<div class="resume_wrapper">
-    <div class="resume_top">
-        <ul>
-            <li>
-                <div class="data">
-                    <i class="fas fa-map-marker-alt" id="icon"></i>
-                    <p>109 Green Road, Dhaka, Bangladesh</p>
-                </div>
+<div>
+    <div class="download-div">
+        <div class="water-mark"><h1 style="font-size: 3rem">CV MASTER</h1></div>
 
-            </li>
-            <li>
-                <div class="data1">
-                    <i class="fas fa-phone-alt" id="icon"></i>
-                    <p>+09876578078789</p>
-                </div>
-            </li>
-            <li>
-                <div class="data2">
-                    <i class="fas fa-envelope" id="icon1"></i>
-                    <p>example@gmail.com</p>
-                </div>
-            </li>
-        </ul>
+        <button type="button" class="top-button top-button-q-pre" onclick="onClickCv7Download()">
+            Download
+        </button>
+
+        <!--<button type="button" class="top-button top-button-q-pre"
+                data-toggle="modal" data-target="#mobile_no_modal">Download
+        </button>-->
     </div>
-    <div class="resume_left">
-        <div class="resume_image">
-            <img src="images/pic.jpg" alt="Resume_image">
-        </div>
-        <div class="resume_bottom">
-            <div class="resume_item resume_namerole">
-                <div class="name">Rosie Jackson</div>
-                <div class="role">UI Designer</div>
-            </div>
-            <div class="resume_item resume_skills">
-                <div class="resume_title">Skills</div>
-                <ul>
-                    <li>
-                        <div class="skill_name">
-                            HTML,
-                        </div>
-                    </li>
-                    <li>
-                        <div class="skill_name">
-                            CSS,
-                        </div>
-                    </li>
-                    <li>
-                        <div class="skill_name">
-                            SASS,
-                        </div>
-                    </li>
-                    <li>
-                        <div class="skill_name">
-                            JS,
-                        </div>
-                    </li>
-                    <li>
-                        <div class="skill_name">
-                            JQUERY,
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="skill_name">
-                            JQUERY,
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="skill_name">
-                            JQUERY
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="resume_item resume_address">
-                <div class="resume_title">Education</div>
-                <div class="resume_info">
-                    ssc
-                </div>
-
-                <div class="skill_name1">
-                    School Name
-                </div>
-
-                <div class="skill_name2">
-                    Passing year
-                </div>
-                <div class="skill_name2">
-                    Result
-                </div>
-                <div class="skill_name2">
-                    Board
-                </div>
-                <br>
-                <div class="resume_info">
-                    hsc
-                </div>
-
-                <div class="skill_name1">
-                    College Name
-                </div>
-
-                <div class="skill_name2">
-                    Passing year
-                </div>
-                <div class="skill_name2">
-                    Result
-                </div>
-                <div class="skill_name2">
-                    Board
-                </div>
-                <br>
-                <div class="resume_info">
-                    honors
-                </div>
-
-                <div class="skill_name1">
-                    University Name
-                </div>
-
-                <div class="skill_name2">
-                    Passing year
-                </div>
-                <div class="skill_name2">
-                    Result
-                </div>
-                <div class="skill_name2">
-                    Board
-                </div>
-                <br>
-                <div class="resume_info">
-                    bsc
-                </div>
-
-                <div class="skill_name1">
-                    University Name
-                </div>
-
-                <div class="skill_name2">
-                    Passing year
-                </div>
-                <div class="skill_name2">
-                    Result
-                </div>
-                <div class="skill_name2">
-                    Board
-                </div>
-                <br>
-                <div class="resume_info">
-                    masters
-                </div>
-
-                <div class="skill_name1">
-                    University Name
-                </div>
-
-                <div class="skill_name2">
-                    Passing year
-                </div>
-                <div class="skill_name2">
-                    Result
-                </div>
-                <div class="skill_name2">
-                    Board
-                </div>
-            </div>
-            <div class="resume_item resume_contact">
-                <div class="resume_title">References</div>
+    <div class="print_cv">
+        <div class="resume_wrapper">
+            <div class="resume_top">
                 <ul>
                     <li>
                         <div class="data">
-                            <p>Name</p>
+                            <i class="fas fa-map-marker-alt" id="icon"></i>
+                            <p>109 Green Road, Dhaka, Bangladesh</p>
                         </div>
-                    </li>
-                    <li>
-                        <div class="data">
-                            <p>Designation</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="data">
-                            <p>Company Name</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="data">
-                            <p>Email</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="data">
-                            <p>Contact Number</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
 
-        </div>
-    </div>
-    <div class="resume_right">
-        <div class="resume_item resume_education">
-            <div class="resume_title">Profile</div>
-            <div class="resume_info">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, deleniti earum error et maiores modi odio perferendis quis rem unde! Ab aspernatur autem eius in, itaque laudantium non perspiciatis quae.</p>
-            </div>
-        </div>
-        <div class="resume_item resume_experience">
-            <div class="resume_title">Work Experience</div>
-            <div class="resume_info">
-                <ul>
-                    <li>
-                        <div class="date">Company Name</div>
-                        <div class="title">
-                            <p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>
-                        </div>
-                        <div class="info">
-                            <p class="semi-bold">Duration</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="date">Company Name</div>
-                        <div class="title">
-                            <p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>
-                        </div>
-                        <div class="info">
-                            <p class="semi-bold">Duration</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="date">Company Name</div>
-                        <div class="title">
-                            <p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>
-                        </div>
-                        <div class="info">
-                            <p class="semi-bold">Duration</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="resume_item resume_experience">
-            <div class="resume_title">Award & Achievement</div>
-            <div class="resume_info">
-                <ul>
-                    <li>
-                        <div class="date">Training Name</div>
-                        <div class="title">
-                            <p class="regular">Institute Name</p>
-                        </div>
-                        <div class="info">
-                            <p class="semi-bold">Duration</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="date">Training Name</div>
-                        <div class="title">
-                            <p class="regular">Institute Name</p>
-                        </div>
-                        <div class="info">
-                            <p class="semi-bold">Duration</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="resume_item resume_experience">
-            <div class="resume_title">Projects</div>
-            <div class="resume_info">
-                <ul>
-                    <li>
-                        <div class="date">Project Name</div>
-                        <div class="info">
-                            <p class="semi-bold" style="margin-top: -34px;">Duration</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="date">Project Name</div>
-                        <div class="info">
-                            <p class="semi-bold" style="margin-top: -34px;">Duration</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="resume_item resmue_interests">
-            <div class="resume_title">Language</div>
-            <div class="resume_info">
-                <ul>
-                    <li>
-                        <div class="data">
-                            <p>Bangla</p>
-                        </div>
                     </li>
                     <li>
                         <div class="data1">
-                            <p>Good</p>
+                            <i class="fas fa-phone-alt" id="icon3"></i>
+                            <p>+09876578078789</p>
                         </div>
                     </li>
                     <li>
-                        <div class="data">
-                            <p>English</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="data1">
-                            <p>Good</p>
+                        <div class="data2">
+                            <i class="fas fa-envelope" id="icon1"></i>
+                            <p>example@gmail.com</p>
                         </div>
                     </li>
                 </ul>
+            </div>
+            <div class="resume_left">
+                <div class="resume_image">
+                    <img src="images/pic.jpg" alt="Resume_image">
+                </div>
+                <div class="resume_bottom">
+                    <div class="resume_item resume_namerole">
+                        <div class="name">Rosie Jackson</div>
+                        <div class="role">UI Designer</div>
+                    </div>
+                    <div class="resume_item resume_skills">
+                        <div class="resume_title">Skills</div>
+                        <ul class="profile_skills">
+                            <li>
+                                <div class="skill_name">
+                                    HTML,
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill_name">
+                                    CSS,
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill_name">
+                                    SASS,
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill_name">
+                                    JS,
+                                </div>
+                            </li>
+                            <li>
+                                <div class="skill_name">
+                                    JQUERY,
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="skill_name">
+                                    JQUERY,
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="skill_name">
+                                    JQUERY
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="resume_item resume_address">
+                        <div class="resume_title">Education</div>
+                        <div class="education_info">
+                            <div class="resume_info">
+                                ssc
+                            </div>
+
+                            <div class="skill_name1">
+                                School Name
+                            </div>
+
+                            <div class="skill_name2">
+                                Passing year
+                            </div>
+                            <div class="skill_name2">
+                                Result
+                            </div>
+                            <div class="skill_name2">
+                                Board
+                            </div>
+                            <br>
+                            <div class="resume_info">
+                                hsc
+                            </div>
+
+                            <div class="skill_name1">
+                                College Name
+                            </div>
+
+                            <div class="skill_name2">
+                                Passing year
+                            </div>
+                            <div class="skill_name2">
+                                Result
+                            </div>
+                            <div class="skill_name2">
+                                Board
+                            </div>
+                            <br>
+                            <div class="resume_info">
+                                honors
+                            </div>
+
+                            <div class="skill_name1">
+                                University Name
+                            </div>
+
+                            <div class="skill_name2">
+                                Passing year
+                            </div>
+                            <div class="skill_name2">
+                                Result
+                            </div>
+                            <div class="skill_name2">
+                                Board
+                            </div>
+                            <br>
+                            <div class="resume_info">
+                                bsc
+                            </div>
+
+                            <div class="skill_name1">
+                                University Name
+                            </div>
+
+                            <div class="skill_name2">
+                                Passing year
+                            </div>
+                            <div class="skill_name2">
+                                Result
+                            </div>
+                            <div class="skill_name2">
+                                Board
+                            </div>
+                            <br>
+                            <div class="resume_info">
+                                masters
+                            </div>
+
+                            <div class="skill_name1">
+                                University Name
+                            </div>
+
+                            <div class="skill_name2">
+                                Passing year
+                            </div>
+                            <div class="skill_name2">
+                                Result
+                            </div>
+                            <div class="skill_name2">
+                                Board
+                            </div>
+                        </div>
+                    </div>
+                    <div class="resume_item resume_contact">
+                        <div class="resume_title">References</div>
+
+                        <div class="reference">
+                            <ul>
+                                <li>
+                                    <div class="data">
+                                        <p>Name</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="data">
+                                        <p>Designation</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="data">
+                                        <p>Company Name</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="data">
+                                        <p>Email</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="data">
+                                        <p>Contact Number</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="resume_right">
+                <div class="resume_item resume_education">
+                    <div class="resume_title">Profile</div>
+                    <div class="resume_info pro_summery">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, deleniti earum error et maiores
+                            modi odio perferendis quis rem unde! Ab aspernatur autem eius in, itaque laudantium non
+                            perspiciatis quae.</p>
+                    </div>
+                </div>
+                <div class="resume_item resume_experience">
+                    <div class="resume_title">Work Experience</div>
+                    <div class="resume_info job_info">
+                        <ul>
+                            <li>
+                                <div class="date">Company Name</div>
+                                <div class="title">
+                                    <p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>
+                                </div>
+                                <div class="info">
+                                    <p class="semi-bold">Duration</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+                                        voluptatibus!</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="date">Company Name</div>
+                                <div class="title">
+                                    <p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>
+                                </div>
+                                <div class="info">
+                                    <p class="semi-bold">Duration</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+                                        voluptatibus!</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="date">Company Name</div>
+                                <div class="title">
+                                    <p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>
+                                </div>
+                                <div class="info">
+                                    <p class="semi-bold">Duration</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+                                        voluptatibus!</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="resume_item resume_experience">
+                    <div class="resume_title">Award & Achievement</div>
+                    <div class="resume_info">
+                        <ul class="training_info">
+                            <li>
+                                <div class="date">Training Name</div>
+                                <div class="title">
+                                    <p class="regular">Institute Name</p>
+                                </div>
+                                <div class="info">
+                                    <p class="semi-bold">Duration</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="date">Training Name</div>
+                                <div class="title">
+                                    <p class="regular">Institute Name</p>
+                                </div>
+                                <div class="info">
+                                    <p class="semi-bold">Duration</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="resume_item resume_experience">
+                    <div class="resume_title">Projects</div>
+                    <div class="resume_info">
+                        <ul class="project_info">
+                            <li>
+                                <div class="date">Project Name</div>
+                                <div class="info">
+                                    <p class="semi-bold" style="margin-top: -34px;">Duration</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+                                        voluptatibus!</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="date">Project Name</div>
+                                <div class="info">
+                                    <p class="semi-bold" style="margin-top: -34px;">Duration</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,
+                                        voluptatibus!</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="resume_item resmue_interests">
+                    <div class="resume_title">Language</div>
+                    <div class="resume_info">
+                        <ul class="language_info">
+                            <li>
+                                <div class="data">
+                                    <p>Bangla</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="data1">
+                                    <p>Good</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="data">
+                                    <p>English</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="data1">
+                                    <p>Good</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="../../js/get-bearer-token.js"></script>
+
+<script src="../../js/cv7-template-fetch.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+<script>
+    function createPdfFromHtmlCv7() {
+        let HTML_Width = $(".print_cv").width();
+        let HTML_Height = $(".print_cv").height();
+        let top_left_margin = 15;
+        let PDF_Width = HTML_Width + (top_left_margin * 2);
+        let PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+        let canvas_image_width = HTML_Width;
+        let canvas_image_height = HTML_Height;
+
+        let totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+        html2canvas($(".print_cv")[0], {useCORS: true}).then(function (canvas) {
+            let imgData = canvas.toDataURL("image/jpeg", 1.0);
+            let pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+            for (let i = 1; i <= totalPDFPages; i++) {
+                pdf.addPage(PDF_Width, PDF_Height);
+                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+            }
+            pdf.save("resume.pdf");
+            // $(".print_cv").hide();
+        });
+    }
+</script>
+
 
 </body>
 </html>
