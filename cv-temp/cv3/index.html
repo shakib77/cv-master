@@ -422,7 +422,7 @@
 
         let totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
 
-        html2canvas($(".print_cv")[0]).then(function (canvas) {
+        html2canvas($(".print_cv")[0], {useCORS: true}).then(function (canvas) {
             let imgData = canvas.toDataURL("image/jpeg", 1.0);
             let pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
             pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
