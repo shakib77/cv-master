@@ -1,4 +1,3 @@
-
 <!-- Responsive HTML/CSS CV template -->
 <!-- Originally by Thomas Hardy; adapted by William Chase and Leslie Myint -->
 
@@ -11,22 +10,23 @@
     <meta name="description" content="The Curriculum Vitae of Hermione Granger."/>
     <meta charset="UTF-8">
 
-    <link href='https://fonts.googleapis.com/css?family=Rokkitt:regular,bold|Lato:regular,black' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Rokkitt:regular,bold|Lato:regular,black' rel='stylesheet'
+          type='text/css'>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
     <style>
 
-        html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video {
-            border:0;
-            font:inherit;
-            font-size:100%;
-            margin:0;
-            padding:0;
-            vertical-align:baseline;
+        html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+            border: 0;
+            font: inherit;
+            font-size: 100%;
+            margin: 0;
+            padding: 0;
+            vertical-align: baseline;
         }
 
-        article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
-            display:block;
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+            display: block;
         }
 
         html, body {
@@ -227,6 +227,7 @@
             hr {
                 display: none;
             }
+
             .mainDetails {
                 padding: 15px 15px;
             }
@@ -251,172 +252,287 @@
             }
         }
 
+        .download-div {
+            margin-top: 16px;
+        }
+
+        .top-button-q-pre {
+            white-space: nowrap;
+            margin-right: 20px;
+            margin-top: 3px;
+            float: right;
+        }
+
+        .top-button {
+            background: #f3f3f3 url(../../Images/bg_button.png) repeat-x bottom left;
+            padding: 2px 10px 3px 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #666;
+            text-shadow: 1px 1px #ddd;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .top-button:hover {
+            background: #18c7e1 url(../../Images/bg_button2.png) repeat-x bottom left;
+            color: #fff;
+            text-shadow: 1px 1px #089fb3;
+            border-color: #089fb3;
+            box-shadow: none;
+        }
+
+        .water-mark {
+            position: absolute;
+            top: 320px;
+            right: 608px;
+            opacity: 0.3;
+            z-index: 999;
+            color: #db2828;
+        }
+
     </style>
 </head>
 <body id="top">
-<div id="cv" class="instaFade">
-    <div class="mainDetails">
-        <div id="name">
-            <div class="name_left">
-                <h1 class="quickFade delayOne">Hermione Granger</h1>
-                <p class="quickFade delayOne">Job Title</p>
+
+<div>
+    <div>
+        <div class="download-div">
+            <div class="water-mark"><h1 style="font-size: 3rem">CV MASTER</h1></div>
+
+            <button type="button" class="top-button top-button-q-pre" onclick="onClickCv9Download()">
+                Download
+            </button>
+
+            <!--<button type="button" class="top-button top-button-q-pre"
+                    data-toggle="modal" data-target="#mobile_no_modal">Download
+            </button>-->
+        </div>
+    </div>
+
+    <div class="print_cv">
+        <div id="cv" class="instaFade">
+            <div class="mainDetails">
+                <div id="name">
+                    <div class="name_left">
+                        <h1 class="quickFade delayOne">Hermione Granger</h1>
+                        <p class="quickFade delayOne">Job Title</p>
+                    </div>
+                    <div class="name_right">
+                        <img src="images/pic.jpg" alt="Resume_image">
+                    </div>
+                </div>
+                <br/>
+                <div class="clear"></div>
             </div>
-            <div class="name_right">
-                <img src="images/pic.jpg" alt="Resume_image">
+            <div class="mainDetails1">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, deleniti earum error et maiores modi
+                    odio perferendis quis rem unde! Ab aspernatur autem eius in, itaque laudantium non perspiciatis
+                    quae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, deleniti earum error et maiores
+                    modi odio perferendis quis rem unde! Ab aspernatur autem eius in, itaque laudantium non perspiciatis
+                    quae.</p>
+                <div class="clear"></div>
+            </div>
+
+            <div id="mainArea" class="quickFade delayThree">
+                <section>
+                    <div class="sectionContent">
+                        <div class="body_left contact_info">
+                            <div class="title1">Contact Me</div>
+                            <br>
+                            <div class="title2">Mobile</div>
+                            <p style="margin-bottom: 1px;">+0097886097</p>
+                            <div class="title2">E-mail</div>
+                            <p style="margin-bottom: 1px;">example@gmail.com</p>
+                            <div class="title2">Address</div>
+                            <p style="margin-bottom: 1px;">109 Greeen Road, Dhaka</p>
+                            <div class="title2">Birth Date</div>
+                            <p style="margin-bottom: 1px;">09/Nov/1996</p>
+
+                        </div>
+                        <div class="body_right">
+                            <div class="title1">Education</div>
+                            <div class="education_info">
+                                <br>
+                                <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
+                                <div class="body_right_right">
+                                    <div class="title1" style="font-weight: 200;">2015 - 2021</div>
+                                </div>
+                                <br>
+                                <div class="title3">United International University</div>
+                                <div class="title3">Bsc In CSE</div>
+                                <p>Passed with CGPA 4.00</p>
+                                <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
+                                <div class="body_right_right">
+                                    <div class="title1" style="font-weight: 200;">2012 - 2014</div>
+                                </div>
+                                <br>
+                                <div class="title3">Dhaka College</div>
+                                <div class="title3">Hsc</div>
+                                <p>Passed with GPA 5.00</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </section>
+
+                <section>
+
+                    <div class="sectionContent">
+                        <div class="body_left">
+                            <div class="title1">Skills</div>
+                            <br>
+                            <p class="profile_skills"><span>Java, Laravel, Android, PHP, Java, Java, Laravel</span></p>
+                            <br>
+                            <div class="title1">Language</div>
+                            <br>
+                            <p class="language"><span>English, Bangla</span></p>
+                            <br>
+                            <div class="title1">Interest</div>
+                            <br>
+                            <p class="hobby"><span>Travelling</span></p>
+
+                        </div>
+                        <div class="body_right">
+                            <div class="title1">Experience</div>
+                            <div class="experience_info">
+                                <br>
+                                <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
+                                <div class="body_right_right">
+                                    <div class="title1" style="font-weight: 200;">May, 2021 - Running</div>
+                                </div>
+                                <br>
+                                <div class="title3">Company Name</div>
+                                <div class="title3">Designation</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet iusto laboriosam
+                                    molestias perspiciatis rem sequi! Alias architecto beatae debitis delectus eligendi
+                                    eos exercitationem nemo, non sapiente tempore, temporibus ullam ut.</p>
+                                <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
+                                <div class="body_right_right">
+                                    <div class="title1" style="font-weight: 200;">May, 2021 - Running</div>
+                                </div>
+                                <br>
+                                <div class="title3">Company Name</div>
+                                <div class="title3">Designation</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda aut
+                                    ducimus eaque et eum, expedita laudantium libero magni optio quam qui quo
+                                    repellendus repudiandae sunt? Aut doloribus repellat sequi.</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="clear"></div>
+                    <br/>
+
+                </section>
+
+                <section>
+                    <div class="sectionContent">
+                        <div class="body_left">
+
+                        </div>
+
+                        <div class="body_right">
+                            <div class="title1">Award & Achievement</div>
+                            <div class="training_info">
+                                <br>
+                                <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
+                                <div class="body_right_right">
+                                    <div class="title1" style="font-weight: 200;">Duration</div>
+                                </div>
+                                <br>
+                                <p>Institute Name</p>
+                                <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
+                                <div class="body_right_right">
+                                    <div class="title1" style="font-weight: 200;">Duration</div>
+                                </div>
+                                <br>
+                                <p>Institute Name</p>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </section>
+
+                <section>
+                    <div class="sectionContent">
+                        <div class="body_left">
+
+                        </div>
+
+                        <div class="body_right">
+                            <div class="title1">Projects</div>
+                            <div class="project_info">
+                                <br>
+                                <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
+                                <div class="body_right_right">
+                                    <div class="title1" style="font-weight: 200;">2019 - 2020</div>
+                                </div>
+                                <br>
+                                <div class="title3">Project Name</div>
+                                <div class="title3">Company Name</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet iusto laboriosam
+                                    molestias perspiciatis rem sequi! Alias architecto beatae debitis delectus eligendi eos
+                                    exercitationem nemo, non sapiente tempore, temporibus ullam ut.</p>
+                                <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
+                                <div class="body_right_right">
+                                    <div class="title1" style="font-weight: 200;">2019 - Running</div>
+                                </div>
+                                <br>
+                                <div class="title3">Project Name</div>
+                                <div class="title3">Company Name</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda aut
+                                    ducimus eaque et eum, expedita laudantium libero magni optio quam qui quo repellendus
+                                    repudiandae sunt? Aut doloribus repellat sequi.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </section>
             </div>
         </div>
-        <br />
-        <div class="clear"></div>
-    </div>
-    <div class="mainDetails1">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, deleniti earum error et maiores modi odio perferendis quis rem unde! Ab aspernatur autem eius in, itaque laudantium non perspiciatis quae.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, deleniti earum error et maiores modi odio perferendis quis rem unde! Ab aspernatur autem eius in, itaque laudantium non perspiciatis quae.</p>
-        <div class="clear"></div>
-    </div>
-
-    <div id="mainArea" class="quickFade delayThree">
-        <section>
-            <div class="sectionContent">
-                <div class="body_left">
-                    <div class="title1">Contact Me</div>
-                    <br>
-                    <div class="title2">Mobile</div>
-                    <p style="margin-bottom: 1px;">+0097886097</p>
-                    <div class="title2">E-mail</div>
-                    <p style="margin-bottom: 1px;">example@gmail.com</p>
-                    <div class="title2">Address</div>
-                    <p style="margin-bottom: 1px;">109 Greeen Road, Dhaka</p>
-                    <div class="title2">Birth Date</div>
-                    <p style="margin-bottom: 1px;">09/Nov/1996</p>
-
-                </div>
-                <div class="body_right">
-                    <div class="title1">Education</div>
-                    <br>
-                    <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
-                    <div class="body_right_right">
-                        <div class="title1" style="font-weight: 200;">2015 - 2021</div>
-                    </div>
-                    <br>
-                    <div class="title3">United International University</div>
-                    <div class="title3">Bsc In CSE</div>
-                    <p>Passed with CGPA 4.00</p>
-                    <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
-                    <div class="body_right_right">
-                    <div class="title1" style="font-weight: 200;">2012 - 2014</div>
-                    </div>
-                    <br>
-                    <div class="title3">Dhaka College</div>
-                    <div class="title3">Hsc</div>
-                    <p>Passed with GPA 5.00</p>
-
-                </div>
-            </div>
-            <div class="clear"></div>
-        </section>
-
-        <section>
-
-            <div class="sectionContent">
-                <div class="body_left">
-                    <div class="title1">Skills</div>
-                    <br>
-                    <p>Java, Laravel, Android, PHP, Java, Java, Laravel</p>
-                    <br>
-                    <div class="title1">Language</div>
-                    <br>
-                    <p>English, Bangla</p>
-                    <br>
-                    <div class="title1">Interest</div>
-                    <br>
-                    <p>Travelling</p>
-
-                </div>
-                <div class="body_right">
-                    <div class="title1">Experience</div>
-                    <br>
-                    <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
-                    <div class="body_right_right">
-                    <div class="title1" style="font-weight: 200;">May, 2021 - Running</div>
-                    </div>
-                    <br>
-                    <div class="title3">Company Name</div>
-                    <div class="title3">Designation</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet iusto laboriosam molestias perspiciatis rem sequi! Alias architecto beatae debitis delectus eligendi eos exercitationem nemo, non sapiente tempore, temporibus ullam ut.</p>
-                    <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
-                    <div class="body_right_right">
-                    <div class="title1" style="font-weight: 200;">May, 2021 - Running</div>
-                    </div>
-                    <br>
-                    <div class="title3">Company Name</div>
-                    <div class="title3">Designation</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda aut ducimus eaque et eum, expedita laudantium libero magni optio quam qui quo repellendus repudiandae sunt? Aut doloribus repellat sequi.</p>
-
-                </div>
-
-            </div>
-            <div class="clear"></div>
-            <br />
-
-        </section>
-
-        <section>
-            <div class="sectionContent">
-                <div class="body_left">
-
-                </div>
-
-                <div class="body_right">
-                    <div class="title1">Award & Achievement</div>
-                    <br>
-                    <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
-                    <div class="body_right_right">
-                        <div class="title1" style="font-weight: 200;">Duration</div>
-                    </div>
-                    <br>
-                    <p>Institute Name</p>
-                    <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
-                    <div class="body_right_right">
-                        <div class="title1" style="font-weight: 200;">Duration</div>
-                    </div>
-                    <br>
-                    <p>Institute Name</p>
-
-                </div>
-            </div>
-            <div class="clear"></div>
-        </section>
-
-        <section>
-            <div class="sectionContent">
-                <div class="body_left">
-
-                </div>
-
-                <div class="body_right">
-                    <div class="title1">Projects</div>
-                    <br>
-                    <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
-                    <div class="body_right_right">
-                        <div class="title1" style="font-weight: 200;">2019 - 2020</div>
-                    </div>
-                    <br>
-                    <div class="title3">Project Name</div>
-                    <div class="title3">Company Name</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet iusto laboriosam molestias perspiciatis rem sequi! Alias architecto beatae debitis delectus eligendi eos exercitationem nemo, non sapiente tempore, temporibus ullam ut.</p>
-                    <hr style="border: 1px solid #BEC2CE; position: absolute; width: 334px;">
-                    <div class="body_right_right">
-                        <div class="title1" style="font-weight: 200;">2019 - Running</div>
-                    </div>
-                    <br>
-                    <div class="title3">Project Name</div>
-                    <div class="title3">Company Name</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda aut ducimus eaque et eum, expedita laudantium libero magni optio quam qui quo repellendus repudiandae sunt? Aut doloribus repellat sequi.</p>
-
-                </div>
-            </div>
-            <div class="clear"></div>
-        </section>
     </div>
 </div>
+
+<script src="../../js/get-bearer-token.js"></script>
+
+<script src="../../js/cv9-template-fetch.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+<script>
+    function createPdfFromHtmlCv9() {
+        let HTML_Width = $(".print_cv").width();
+        let HTML_Height = $(".print_cv").height();
+        let top_left_margin = 15;
+        let PDF_Width = HTML_Width + (top_left_margin * 2);
+        let PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+        let canvas_image_width = HTML_Width;
+        let canvas_image_height = HTML_Height;
+
+        let totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+        html2canvas($(".print_cv")[0], {useCORS: true}).then(function (canvas) {
+            let imgData = canvas.toDataURL("image/jpeg", 1.0);
+            let pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+            for (let i = 1; i <= totalPDFPages; i++) {
+                pdf.addPage(PDF_Width, PDF_Height);
+                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+            }
+            pdf.save("resume.pdf");
+            // $(".print_cv").hide();
+        });
+    }
+</script>
+
 </body>
 </html>

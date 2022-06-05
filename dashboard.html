@@ -129,6 +129,13 @@
                     </span></h2>
                     <form id="personal_info_from">
                         <div class="row">
+                            <div class="col-6 d-none">
+                                <div class="form-group">
+                                    <label for="info_id">Id</label>
+                                    <input type="text" class="form-control" id="info_id" name="info_id"
+                                           placeholder=" id...">
+                                </div>
+                            </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="name">Full Name</label>
@@ -254,7 +261,7 @@
                             </div>
                         </div>
                         <div class="mb-4">
-                            <button type="submit" class="top-button top-button-q-pre float-right">Save</button>
+                            <button type="button" class="top-button top-button-q-pre float-right" onclick="savePersonalInfo()">Save</button>
                         </div>
                     </form>
                 </div>
@@ -304,6 +311,13 @@
                     </span></h2>
                     <form id="additional_info_from">
                         <div class="row">
+                            <div class="col-6 d-none">
+                                <div class="form-group">
+                                    <label for="skills_id">skills id</label>
+                                    <input type="text" class="form-control" id="skills_id" name="skills_id"
+                                           placeholder="Write your skills...">
+                                </div>
+                            </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="skills">Skills</label>
@@ -356,7 +370,7 @@
 
                         </div>
                         <div class="mb-4">
-                            <button type="submit" class="top-button top-button-q-pre float-right">Save</button>
+                            <button type="button" class="top-button top-button-q-pre float-right" onclick="saveAdditionalInfo()">Save</button>
                         </div>
                     </form>
                 </div>
