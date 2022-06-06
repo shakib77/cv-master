@@ -1,357 +1,481 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <style>
-    body{
-      margin: 0px;
-      padding: 0px;
-      background-image: radial-gradient(#c7c7c7 25%, #c7c7c7 74%);
-      height: 100vh;
-      font-family: system-ui;
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous">
+    </script>
 
-    }
-    .clearfix{
-      clear: both;
-    }
-    .main{
-      width: 210mm;
-      height: auto;
-      background-color: #FAFAFA;
-      box-shadow: 5px 7px 15px 5px #b9b6b6;
-      margin: auto;
+    <style>
+        .download-div {
+            margin-top: 16px;
+        }
 
-    }
+        .top-button-q-pre {
+            white-space: nowrap;
+            margin-right: 20px;
+            margin-top: 3px;
+            float: right;
+        }
 
-    .p1 span{
-      font-weight: 100;
-      color: #c7c7c7;
-    }
-    .col-div-4{
-      width: 30%;
-      float: left;
+        .top-button {
+            background: #f3f3f3 url(../../Images/bg_button.png) repeat-x bottom left;
+            padding: 2px 10px 3px 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #666;
+            text-shadow: 1px 1px #ddd;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+            display: inline-block;
+        }
 
-    }
+        .top-button:hover {
+            background: #18c7e1 url(../../Images/bg_button2.png) repeat-x bottom left;
+            color: #fff;
+            text-shadow: 1px 1px #089fb3;
+            border-color: #089fb3;
+            box-shadow: none;
+        }
 
-     img {
-       width: 170px;
-       height: 200px;
-       margin-top: 10px;
-       margin-left: 10px;
-    }
-    .col-div-8{
-      width: 54%;
-      float: left;
-    }
+        .water-mark {
+            position: absolute;
+            top: 320px;
+            right: 608px;
+            opacity: 0.3;
+            z-index: 999;
+            color: #db2828;
+        }
 
-    .bg {
-      background: #008AD3;
-      height: 200px;
-      width: 555px;
-      margin-top: 10px;
-    }
-    .content-box{
-      padding: 20px;
-    }
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-image: radial-gradient(#c7c7c7 25%, #c7c7c7 74%);
+            height: 100vh;
+            font-family: system-ui;
 
-    .head{
-      font-size: 20px;
-      /*text-transform: uppercase;*/
-      font-weight: 700;
-      color: #008AD3;
-      margin-bottom: -5px;
-    }
+        }
 
-    .head21{
-      font-size: 27px;
-      /*text-transform: uppercase;*/
-      font-weight: 600;
-      /*float: right;*/
-      margin-top: 2px;
-      /*margin-right: -39px;*/
-      /*padding-top: 20px;*/
-      padding: 20px;
-      color: #FAFAFA;
-    }
+        .clearfix {
+            clear: both;
+        }
 
-    .head1 {
-      font-size: 20px;
-      /*text-transform: uppercase;*/
-      font-weight: 600;
-      color: #008AD3;
-      margin-bottom: 4px;
-      margin-top: 20px;
-    }
+        .main {
+            width: 210mm;
+            height: auto;
+            background-color: #FAFAFA;
+            box-shadow: 5px 7px 15px 5px #b9b6b6;
+            margin: auto;
 
-    .skill_name1 {
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
+        }
 
-    .p3{
-      /*color: #7b7b7b;*/
-      margin-bottom: -10px;
+        .p1 span {
+            font-weight: 100;
+            color: #c7c7c7;
+        }
 
-    }
+        .col-div-4 {
+            width: 30%;
+            float: left;
 
-    .p4{
-      color: #008AD3;
-      margin-bottom: -14px;
-      font-style: italic;
-      font-weight: 400;
+        }
 
-    }
+        img {
+            width: 170px;
+            height: 200px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        .col-div-8 {
+            width: 54%;
+            float: left;
+        }
+
+        .bg {
+            background: #008AD3;
+            height: 200px;
+            width: 555px;
+            margin-top: 10px;
+        }
+
+        .content-box {
+            padding: 20px;
+        }
+
+        .head {
+            font-size: 20px;
+            /*text-transform: uppercase;*/
+            font-weight: 700;
+            color: #008AD3;
+            margin-bottom: -5px;
+        }
+
+        .head21 {
+            font-size: 27px;
+            /*text-transform: uppercase;*/
+            font-weight: 600;
+            /*float: right;*/
+            margin-top: 2px;
+            /*margin-right: -39px;*/
+            /*padding-top: 20px;*/
+            padding: 20px;
+            color: #FAFAFA;
+        }
+
+        .head1 {
+            font-size: 20px;
+            /*text-transform: uppercase;*/
+            font-weight: 600;
+            color: #008AD3;
+            margin-bottom: 4px;
+            margin-top: 20px;
+        }
+
+        .skill_name1 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .p3 {
+            /*color: #7b7b7b;*/
+            margin-bottom: -10px;
+
+        }
+
+        .p4 {
+            color: #008AD3;
+            margin-bottom: -14px;
+            font-style: italic;
+            font-weight: 400;
+
+        }
 
 
-    .p6{
-      color: #008AD3;
-      /*margin-bottom: -5px;*/
-      /*font-style: italic;*/
-      font-weight: 400;
-      margin-bottom: -10px;
+        .p6 {
+            color: #008AD3;
+            /*margin-bottom: -5px;*/
+            /*font-style: italic;*/
+            font-weight: 400;
+            margin-bottom: -10px;
 
-    }
+        }
 
 
-    .p7{
-      color: #FAFAFA;
-      padding: 20px;
-      /*margin-bottom: -5px;*/
-      /*font-style: italic;*/
-      font-weight: 400;
-      margin-top: -61px;
-      /*margin-bottom: -10px;*/
+        .p7 {
+            color: #FAFAFA;
+            padding: 20px;
+            /*margin-bottom: -5px;*/
+            /*font-style: italic;*/
+            font-weight: 400;
+            margin-top: -61px;
+            /*margin-bottom: -10px;*/
 
-    }
+        }
 
-    .content-box .resume_info ul li {
-      list-style: none;
-      margin-left: -40px;
-    }
+        .content-box .resume_info ul li {
+            list-style: none;
+            margin-left: -40px;
+        }
 
-    .ref{
-      list-style: none;
-      margin-left: -40px;
-      /*margin-top: 58px;*/
-    }
+        .ref {
+            list-style: none;
+            margin-left: -40px;
+            /*margin-top: 58px;*/
+        }
 
-    .content-box .p3 li{
-      display: block;
-      color: #7b7b7b;
-      margin-bottom: -5px;
+        .content-box .p3 li {
+            display: block;
+            color: #7b7b7b;
+            margin-bottom: -5px;
 
-    }
-    .fa{
-      color: #151b29;
-    }
-    .skills{
-      margin-left: -44px;
-      margin-bottom: 0px;
-    }
-    .skills li{
-      padding: 2px;
-      display: inline-block;
-    }
-  </style>
+        }
+
+        .fa {
+            color: #151b29;
+        }
+
+        .skills {
+            margin-left: -44px;
+            margin-bottom: 0px;
+        }
+
+        .skills li {
+            padding: 2px;
+            display: inline-block;
+        }
+    </style>
 
 </head>
 <body>
 
-<div class="main" id="printpls">
-  <div class="clearfix"></div>
+<div>
+    <div class="download-div">
+        <div class="water-mark"><h1 style="font-size: 3rem">CV MASTER</h1></div>
 
-  <div class="col-div-4">
-    <div class="img">
-      <img src="images/profile.png" alt="Resume_image">
+        <button type="button" class="top-button top-button-q-pre" onclick="onClickCv11Download()">
+            Download
+        </button>
+
+        <!--<button type="button" class="top-button top-button-q-pre"
+                data-toggle="modal" data-target="#mobile_no_modal">Download
+        </button>-->
     </div>
-    <div class="content-box">
-      <p class="p5"><i class="fa fa-envelope" aria-hidden="true" style="display: block; font-size: 23px; color: #008AD3;"></i>example@gmail.com</p>
-      <p class="p5"><i class="fa fa-mobile" aria-hidden="true" style="display: block; font-size: 33px; color: #008AD3;"></i>+00897647865</p>
-      <p class="p5"><i class="fa fa-map-marker" aria-hidden="true" style="display: block; font-size: 24px; color: #008AD3;"></i>United Kingdom</p>
-      <p class="head">Skills</p>
-      <hr style="border: 1px solid #008AD3;">
-      <ul class="skills">
-        <li>Web Design,</li>
-        <li>Grapic Design,</li>
-        <li>HTML-5,</li>
-        <li>CSS-3,</li>
-        <li>Java Script,</li>
-        <li>Jquery</li>
+    <div class="print_cv">
+        <div class="main" id="printpls">
+            <div class="clearfix"></div>
 
-      </ul>
+            <div class="col-div-4">
+                <div class="img">
+                    <img src="images/profile.png" alt="Resume_image">
+                </div>
+                <div class="content-box">
+                    <div class="content_info">
+                        <p class="p5"><i class="fa fa-envelope" aria-hidden="true"
+                                         style="display: block; font-size: 23px; color: #008AD3;"></i>example@gmail.com
+                        </p>
+                        <p class="p5"><i class="fa fa-mobile" aria-hidden="true"
+                                         style="display: block; font-size: 33px; color: #008AD3;"></i>+00897647865</p>
+                        <p class="p5"><i class="fa fa-map-marker" aria-hidden="true"
+                                         style="display: block; font-size: 24px; color: #008AD3;"></i>United Kingdom</p>
+                        <p class="head">Skills</p>
+                        <hr style="border: 1px solid #008AD3;">
+                        <ul class="skills">
+                            <li>Web Design,</li>
+                            <li>Grapic Design,</li>
+                            <li>HTML-5,</li>
+                            <li>CSS-3,</li>
+                            <li>Java Script,</li>
+                            <li>Jquery</li>
 
-      <p class="head">Languages</p>
-      <hr style="border: 1px solid #008AD3;">
-      <p class="p3">Bangla</p>
-      <p class="p4">Good</p>
-      <p class="p3">English</p>
-      <p class="p4">Good</p>
+                        </ul>
 
-      <p class="head">References</p>
-      <hr style="border: 1px solid #008AD3;">
-      <ul class="ref">
-        <li>
-          <div class="p6">
-            <p>Name</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Designation</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Company Name</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Email</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Contact Number</p>
-          </div>
-        </li>
-      </ul>
-      <br>
-      <ul class="ref">
-        <li>
-          <div class="p6">
-            <p>Name</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Designation</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Company Name</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Email</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Contact Number</p>
-          </div>
-        </li>
-      </ul>
+                        <p class="head">Languages</p>
+                        <hr style="border: 1px solid #008AD3;">
+                        <p class="p3">Bangla</p>
+                        <p class="p4">Good</p>
+                        <p class="p3">English</p>
+                        <p class="p4">Good</p>
+                    </div>
 
-      <p class="head">Award & Achievement</p>
-      <hr style="border: 1px solid #008AD3;">
-      <ul class="ref">
-        <li>
-          <div class="head1">
-            <p>Training Name</p>
-          </div>
-        </li>
-        <li>
-          <div class="p6">
-            <p>Institute Name</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Duration</p>
-          </div>
-        </li>
-      </ul>
-      <br>
-      <ul class="ref">
-        <li>
-          <div class="head1">
-            <p>Training Name</p>
-          </div>
-        </li>
-        <li>
-          <div class="p6">
-            <p>Institute Name</p>
-          </div>
-        </li>
-        <li>
-          <div class="p3">
-            <p>Duration</p>
-          </div>
-        </li>
-      </ul>
+                    <p class="head">References</p>
+                    <div class="reference">
+                        <hr style="border: 1px solid #008AD3;">
+                        <ul class="ref">
+                            <li>
+                                <div class="p6">
+                                    <p>Name</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Designation</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Company Name</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Email</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Contact Number</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <ul class="ref">
+                            <li>
+                                <div class="p6">
+                                    <p>Name</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Designation</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Company Name</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Email</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Contact Number</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p class="head">Award & Achievement</p>
+                    <hr style="border: 1px solid #008AD3;">
+                    <div class="training_info">
+                        <ul class="ref">
+                            <li>
+                                <div class="head1">
+                                    <p>Training Name</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p6">
+                                    <p>Institute Name</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Duration</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <br>
+                        <ul class="ref">
+                            <li>
+                                <div class="head1">
+                                    <p>Training Name</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p6">
+                                    <p>Institute Name</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="p3">
+                                    <p>Duration</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-div-8">
+                <div class="bg">
+                    <p class="head21">Proloy Chandra Deb</p>
+                    <p class="p7" style="font-size: 14px;">Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                        1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                        book.<br>
+
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                </div>
+                <div class="content-box">
+                    <p class="head">Educational Qualification</p>
+                    <hr style="border: 1px solid #008AD3; width: 137%;">
+                    <div class="education_info">
+                        <div class="head1">Secondary School Certificate</div>
+                        <div class="skill_name1">School Name</div>
+                        <p class="p4">Passing Year</p>
+                        <p class="p4">Result</p>
+                        <p class="p4">Board</p>
+                        <div class="head1">Higher Secondary Certificate</div>
+                        <div class="skill_name1">College Name</div>
+                        <p class="p4">Passing Year</p>
+                        <p class="p4">Result</p>
+                        <p class="p4">Board</p>
+                        <div class="head1">Bachelor/Honors</div>
+                        <div class="skill_name1">University Name</div>
+                        <p class="p4">Passing Year</p>
+                        <p class="p4">Result</p>
+                        <p class="p4">Board</p>
+                        <div class="head1">Masters</div>
+                        <div class="skill_name1">University Name</div>
+                        <p class="p4">Passing Year</p>
+                        <p class="p4">Result</p>
+                        <p class="p4">Board</p>
+                    </div>
+                    <br>
+
+                    <p class="head">Professional Experience</p>
+                    <hr style="border: 1px solid #008AD3; width: 137%;">
+                    <div class="experience_info">
+                        <div class="head1">Position 1</div>
+                        <div class="skill_name1">Company Name</div>
+                        <p class="p4">Address</p>
+                        <p class="p4">Service Year</p>
+                        <div class="head1">Position 2</div>
+                        <div class="skill_name1">Company Name</div>
+                        <p class="p4">Address</p>
+                        <p class="p4">Service Year</p>
+                        <div class="head1">Position 3</div>
+                        <div class="skill_name1">Company Name</div>
+                        <p class="p4">Address</p>
+                        <p class="p4">Service Year</p>
+                    </div>
+                    <br>
+
+                    <p class="head">Projects</p>
+                    <hr style="border: 1px solid #008AD3; width: 137%;">
+                    <div class="project_info">
+                        <div class="head1">Project Name</div>
+                        <p class="p4">2019-2020</p>
+                        <p class="p3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus exercitationem in
+                            placeat recusandae ut vero vitae! Accusantium cumque ea, id ipsa iure modi mollitia nam, nihil
+                            quasi quo recusandae vel.</p>
+                        <div class="head1">Project Name</div>
+                        <p class="p4">2019-Running</p>
+                        <p class="p3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus exercitationem in
+                            placeat recusandae ut vero vitae! Accusantium cumque ea, id ipsa iure modi mollitia nam, nihil
+                            quasi quo recusandae vel.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
     </div>
-  </div>
-  <div class="col-div-8">
-      <div class="bg">
-        <p class="head21">Proloy Chandra Deb</p>
-        <p class="p7" style="font-size: 14px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
-
-          Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-      </div>
-    <div class="content-box">
-      <p class="head">Educational Qualification</p>
-      <hr style="border: 1px solid #008AD3; width: 137%;">
-      <div class="head1">Secondary School Certificate</div>
-      <div class="skill_name1">School Name</div>
-      <p class="p4">Passing Year</p>
-      <p class="p4">Result</p>
-      <p class="p4">Board</p>
-      <div class="head1">Higher Secondary Certificate</div>
-      <div class="skill_name1">College Name</div>
-      <p class="p4">Passing Year</p>
-      <p class="p4">Result</p>
-      <p class="p4">Board</p>
-      <div class="head1">Bachelor/Honors</div>
-      <div class="skill_name1">University Name</div>
-      <p class="p4">Passing Year</p>
-      <p class="p4">Result</p>
-      <p class="p4">Board</p>
-      <div class="head1">Masters</div>
-      <div class="skill_name1">University Name</div>
-      <p class="p4">Passing Year</p>
-      <p class="p4">Result</p>
-      <p class="p4">Board</p>
-
-      <p class="head">Professional Experience</p>
-      <hr style="border: 1px solid #008AD3; width: 137%;">
-      <div class="head1">Position 1</div>
-      <div class="skill_name1">Company Name</div>
-      <p class="p4">Address</p>
-      <p class="p4">Service Year</p>
-      <div class="head1">Position 2</div>
-      <div class="skill_name1">Company Name</div>
-      <p class="p4">Address</p>
-      <p class="p4">Service Year</p>
-      <div class="head1">Position 3</div>
-      <div class="skill_name1">Company Name</div>
-      <p class="p4">Address</p>
-      <p class="p4">Service Year</p>
-
-      <p class="head">Projects</p>
-      <hr style="border: 1px solid #008AD3; width: 137%;">
-      <div class="head1">Project Name</div>
-      <p class="p4">2019-2020</p>
-      <p class="p3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus exercitationem in placeat recusandae ut vero vitae! Accusantium cumque ea, id ipsa iure modi mollitia nam, nihil quasi quo recusandae vel.</p>
-      <div class="head1">Project Name</div>
-      <p class="p4">2019-Running</p>
-      <p class="p3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus exercitationem in placeat recusandae ut vero vitae! Accusantium cumque ea, id ipsa iure modi mollitia nam, nihil quasi quo recusandae vel.</p>
-
-
-
-
-    </div>
-  </div>
-
-  <div class="clearfix"></div>
 </div>
+
 <br/>
+
+<script src="../../js/get-bearer-token.js"></script>
+
+<script src="../../js/cv11-template-fetch.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+<script>
+    function createPdfFromHtmlCv11() {
+        let HTML_Width = $(".print_cv").width();
+        let HTML_Height = $(".print_cv").height();
+        let top_left_margin = 15;
+        let PDF_Width = HTML_Width + (top_left_margin * 2);
+        let PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+        let canvas_image_width = HTML_Width;
+        let canvas_image_height = HTML_Height;
+
+        let totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
+
+        html2canvas($(".print_cv")[0], {useCORS: true}).then(function (canvas) {
+            let imgData = canvas.toDataURL("image/jpeg", 1.0);
+            let pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
+            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
+            for (let i = 1; i <= totalPDFPages; i++) {
+                pdf.addPage(PDF_Width, PDF_Height);
+                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+            }
+            pdf.save("resume.pdf");
+            // $(".print_cv").hide();
+        });
+    }
+</script>
 </body>
 </html>

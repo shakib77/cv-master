@@ -104,7 +104,6 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             languageContainer.innerHTML = language;
 
             let referenceInfo = '';
-
             let referenceInfoSegment = reference.map((reference) => {
                 return (`
                 <li>
