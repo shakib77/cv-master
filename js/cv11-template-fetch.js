@@ -42,7 +42,8 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let projects = data?.projects_data?.projects
 
             let profileImage = '';
-            let image = personalInfo.image
+            let image = personalInfo.image;
+            // let image = 'https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0';
             let profileImageSegment = `
             <img src='${image}' alt="profile_pic">`;
 
