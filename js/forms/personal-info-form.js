@@ -35,7 +35,7 @@ fetch('https://xosstech.com/cvm/api/public/api/infos', {
 const savePersonalInfo = () => {
     const id = document.getElementById('info_id').value;
 
-    const formData = {
+    /*const formData = {
         name: document.getElementById("name").value,
         mobile: document.getElementById("mobile").value,
         email: document.getElementById("email").value,
@@ -51,7 +51,25 @@ const savePersonalInfo = () => {
         father_name: document.getElementById("father_name").value,
         mother_name: document.getElementById("mother_name").value,
         image: document.getElementById("image").value,
-    };
+    };*/
+
+    // fileInput.files[0], "file")
+    const formData = new FormData();
+    formData.append("name", document.getElementById("name").value);
+    formData.append("image", document.getElementById("image").files[0]);
+    formData.append("mobile", document.getElementById("mobile").value);
+    formData.append("email", document.getElementById("email").value);
+    formData.append("present_address", document.getElementById("present_address").value);
+    formData.append("permanent_address", document.getElementById("permanent_address").value);
+    formData.append("job_title", document.getElementById("job_title").value);
+    formData.append("marital_status", document.getElementById("marital_status").value);
+    formData.append("religion", document.getElementById("religion").value);
+    formData.append("nationality", document.getElementById("nationality").value);
+    formData.append("gender", document.getElementById("gender").value);
+    formData.append("dob", document.getElementById("dob").value);
+    formData.append("profile_summary", document.getElementById("profile_summary").value);
+    formData.append("father_name", document.getElementById("father_name").value);
+    formData.append("mother_name", document.getElementById("mother_name").value);
 
     fetch(id ? `https://xosstech.com/cvm/api/public/api/info/update/${id}` : 'https://xosstech.com/cvm/api/public/api/info', {
         method: "POST",
@@ -60,7 +78,7 @@ const savePersonalInfo = () => {
             "Content-Type": "application/json",
             Authorization: bearer,
         },
-        body: JSON.stringify(formData),
+        body: formData,
     }).then((res) => {
         console.log('res=>', res);
         if (!res.ok) {

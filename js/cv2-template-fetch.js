@@ -190,9 +190,6 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
                     `
                  <li>
                     <div class="date">${training.training_name}</div>
-                    <!--<div class="title">
-                        <p class="regular">Institute Name</p>
-                    </div>-->
                     <div class="info">
                         <p class="semi-bold1">${training.end}</p>
                     </div>
@@ -231,7 +228,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
 
 let cv2Obj = {};
 
-let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
+fetch('https://xosstech.com/cvm/api/public/api/cv', {
     method: "GET", headers: {
         "Content-Type": "application/json",
     }, mode: "cors", cache: "default",
@@ -245,10 +242,25 @@ let image = fetch('https://xosstech.com/cvm/api/public/api/cv', {
 
     cv2Obj = jsonRes?.cv[2];
 
-}).catch((err) => console.log('error', err))
+}).catch((err) => console.log('error', err));
 
 
-const onClickCv2Download = () => {
+const onClickPay = () => {
+    const radioValue = document.querySelector('input[name="payment_radio"]:checked').value;
+
+    switch (radioValue) {
+        case '1':
+            nagadPayment();
+            break;
+        case '2':
+            bdAppsPayment();
+            break;
+        default:
+            alert('No template found!')
+    }
+}
+
+const nagadPayment = () => {
     let nagadFormData = new FormData();
     nagadFormData.append('amount', cv2Obj?.price);
 
@@ -267,43 +279,44 @@ const onClickCv2Download = () => {
     })
         .then((jsonRes) => {
             console.log('Nagad jsonRes =>', jsonRes);
-            window.location.href = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '')
+            window.location.href = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '');
+
         }).catch((err) => console.log('err->', err))
 }
 
-const onClickCv2DownloadBdApp = () => {
-    const mobileNoSubmit = document.getElementById('mobile_no_submit');
+const bdAppsPayment = () => {
+    const userMobile = document.getElementById('user_mobile');
+    const charge = cv2Obj?.price;
+    console.log('userMobile->', userMobile.value);
 
-    mobileNoSubmit.addEventListener('click', (e) => {
-        // payment_amount_submit
-        const userMobile = document.getElementById('user_mobile');
-        const charge = cv2Obj?.price;
-        console.log('userMobile->', userMobile.value);
+    const bdAppFormData = new FormData();
+    bdAppFormData.append("user_mobile", userMobile.value);
+    bdAppFormData.append("charge", charge);
 
-        const bdAppFormData = new FormData();
-        bdAppFormData.append("user_mobile", userMobile.value);
+    fetch("https://xosstech.com/cvm/xossapp/cass.php", {
+        method: "POST",
+        mode: "cors",
+        body: bdAppFormData,
+        redirect: 'follow'
 
-        fetch("https://xosstech.com/cvm/xossapp/check_subscription.php", {
-            method: "POST",
-            mode: "cors",
-            body: bdAppFormData,
-            redirect: 'follow'
-
-        }).then((res) => {
-            console.log('res=>', res);
-            if (!res.ok) {
-                throw Error("Could not fetch data for that resource!!!");
+    }).then((res) => {
+        console.log('res=>', res);
+        if (!res.ok) {
+            throw Error("Could not fetch data for that resource!!!");
+        } else {
+            return res.json();
+        }
+    })
+        .then((jsonRes) => {
+            if (!jsonRes.success) {
+                console.log('!jsonRes.success->', jsonRes);
+                // window.location.href = "login.html";
             } else {
-                return res.json();
+                console.log('jsonRes.success->', jsonRes);
             }
         })
-            .then((jsonRes) => {
-                if (!jsonRes.success) {
-                    console.log('!jsonRes.success->', jsonRes);
-                    // window.location.href = "login.html";
-                } else {
-                    console.log('jsonRes.success->', jsonRes);
-                }
-            })
-    })
+}
+
+const onClickBdApps = () => {
+    $('.mobile_no').toggle("slide");
 }

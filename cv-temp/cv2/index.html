@@ -290,6 +290,14 @@
             color: #db2828;
         }
 
+        .mobile_no {
+            display: none;
+        }
+
+        .cursor-pointer {
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
@@ -298,13 +306,9 @@
     <div class="water-mark"><h1 style="font-size: 3rem">CV MASTER</h1></div>
 
     <div class="download-div">
-        <button type="button" class="top-button top-button-q-pre" onclick="onClickCv2Download()">
-            Download
+        <button type="button" class="top-button top-button-q-pre"
+                data-toggle="modal" data-target="#payment_modal">Download
         </button>
-
-        <!--<button type="button" class="top-button top-button-q-pre"
-                data-toggle="modal" data-target="#mobile_no_modal">Download
-        </button>-->
     </div>
 
     <div id="print_cv" class="print_cv">
@@ -501,32 +505,36 @@
         </div>
     </div>
 
-    <div class="modal fade" id="mobile_no_modal" tabindex="-1" role="dialog" aria-labelledby="mobile_no_modal"
+    <div class="modal fade" id="payment_modal" tabindex="-1" role="dialog" aria-labelledby="payment_modal"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">BD Apps Payment</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Payment</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input cursor-pointer" type="radio" name="payment_radio" id="nagad" value="1">
+                        <label class="form-check-label" for="nagad">Nagad</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input cursor-pointer" type="radio" name="payment_radio" id="bd_apps" value="2" onclick="onClickBdApps()">
+                        <label class="form-check-label" for="bd_apps">BD Apps</label>
+                    </div>
+                    <form class="mobile_no" id="mobile_no">
                         <div class="form-group">
                             <label for="user_mobile" class="col-form-label">Phone Number</label>
                             <input type="text" class="form-control" id="user_mobile">
                         </div>
-                        <!--<div class="form-group">
-                            <label for="charge" class="col-form-label">Amount</label>
-                            <input class="form-control" id="charge">
-                        </div>-->
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button id="mobile_no_submit" type="button" class="btn btn-primary"
-                            onclick="onClickCv2DownloadBdApp()">Pay
+                            onclick="onClickPay()">Pay
                     </button>
                 </div>
             </div>
