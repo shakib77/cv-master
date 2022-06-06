@@ -234,15 +234,7 @@ const onClickCv2DownloadBdApp = () => {
                     // window.location.href = "login.html";
                 } else {
                     console.log('jsonRes.success->', jsonRes);
-
-                    let printContents = document.getElementById('print_cv').innerHTML;
-                    let originalContents = document.body.innerHTML;
-
-                    document.body.innerHTML = printContents;
-
-                    window.print();
-
-                    document.body.innerHTML = originalContents;
+                    window.location.href = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '')
                 }
             })
     })

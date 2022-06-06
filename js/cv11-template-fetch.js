@@ -310,5 +310,6 @@ const onClickCv11Download = () => {
     })
         .then((jsonRes) => {
             console.log('Nagad jsonRes =>', jsonRes);
+            window.location.href = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '')
         }).catch((err) => console.log('err->', err))
 }

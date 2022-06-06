@@ -1,11 +1,3 @@
-// const token = localStorage.getItem("token")
-//     ? localStorage.getItem("token")
-//     : "";
-//
-// const bearer = "Bearer " + token;
-// let isUserLoggedIn = false;
-// if (token) isUserLoggedIn = true;
-
 let data = '';
 
 const myInit = {
@@ -26,12 +18,10 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
         }
     })
     .then((jsonRes) => {
-        console.log('jsonRes =>', jsonRes);
         if (!jsonRes.success) {
             console.log('!jsonRes.success->', jsonRes);
             window.location.href = "login.html";
         } else {
-            console.log('jsonRes.success->', jsonRes);
             data = jsonRes
 
             let personalInfoLength = data?.personal_infos_data?.personal_infos.length - 1
@@ -221,7 +211,6 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
                  <li>
                     <div class="date">${project.project_name}</div>
                     <div class="title">
-                        <!--<p class="regular">Job Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Location</p>-->
                     </div>
                     <div class="info">
                         <p class="semi-bold2">${project.start} - ${project.end}</p>
@@ -264,7 +253,7 @@ const onClickCv2Download = () => {
     nagadFormData.append('amount', cv2Obj?.price);
 
     $(".water-mark").hide();
-    createPdfFromHtmlCv2();
+    // createPdfFromHtmlCv2();
 
     fetch("https://xosstech.com/Payment/nagad/index.php", {
         method: "POST", mode: "cors", body: nagadFormData
@@ -278,6 +267,7 @@ const onClickCv2Download = () => {
     })
         .then((jsonRes) => {
             console.log('Nagad jsonRes =>', jsonRes);
+            window.location.href = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '')
         }).catch((err) => console.log('err->', err))
 }
 
@@ -308,21 +298,11 @@ const onClickCv2DownloadBdApp = () => {
             }
         })
             .then((jsonRes) => {
-                console.log('jsonRes =>', jsonRes);
                 if (!jsonRes.success) {
                     console.log('!jsonRes.success->', jsonRes);
                     // window.location.href = "login.html";
                 } else {
                     console.log('jsonRes.success->', jsonRes);
-
-                    let printContents = document.getElementById('print_cv').innerHTML;
-                    let originalContents = document.body.innerHTML;
-
-                    document.body.innerHTML = printContents;
-
-                    window.print();
-
-                    document.body.innerHTML = originalContents;
                 }
             })
     })
