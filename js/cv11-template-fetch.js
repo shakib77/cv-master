@@ -334,11 +334,13 @@ const nagadPayment = () => {
 const bdAppsPayment = () => {
     const userMobile = document.getElementById('user_mobile');
     const charge = cv11Obj?.price;
-    console.log('userMobile->', userMobile.value);
 
     const bdAppFormData = new FormData();
     bdAppFormData.append("user_mobile", userMobile.value);
     bdAppFormData.append("charge", charge);
+
+    const bdAppSubscriptionData = new FormData();
+    bdAppFormData.append("user_mobile", userMobile.value);
 
     fetch("https://xosstech.com/cvm/xossapp/cass.php", {
         method: "POST",
@@ -355,12 +357,32 @@ const bdAppsPayment = () => {
         }
     })
         .then((jsonRes) => {
-            if (!jsonRes.success) {
-                console.log('!jsonRes.success->', jsonRes);
-                // window.location.href = "login.html";
-            } else {
-                console.log('jsonRes.success->', jsonRes);
+            console.log('jsonRes.success->', jsonRes.response);
+            if (jsonRes.response === 'not_subscribe') {
+                fetch("https://xosstech.com/cvm/xossapp/subscription.php", {
+                    method: "POST",
+                    mode: "cors",
+                    body: bdAppSubscriptionData,
+                    redirect: 'follow'
+
+                }).then((res) => {
+                    console.log('res=>', res);
+                    if (!res.ok) {
+                        throw Error("Could not fetch data for that resource!!!");
+                    } else {
+                        return res.json();
+                    }
+                })
+                    .then((jsonRes) => {
+                        console.log('jsonRes.success sub->', jsonRes.response);
+
+                    })
             }
+
+            if (jsonRes.response ==='charged_successfull')  {
+                createPdfFromHtmlCv11();
+            }
+
         })
 }
 
