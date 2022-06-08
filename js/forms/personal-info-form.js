@@ -27,7 +27,7 @@ fetch('https://xosstech.com/cvm/api/public/api/infos', {
         document.getElementById('father_name').value = personalInfoData.father_name;
         document.getElementById('mother_name').value = personalInfoData.mother_name;
         document.getElementById('profile_summary').value = personalInfoData.profile_summary;
-        document.getElementById('image').value = personalInfoData.image;
+        document.getElementById('image').file = personalInfoData.image;
     }
 
 }).catch((err) => console.log('error', err))
@@ -35,25 +35,6 @@ fetch('https://xosstech.com/cvm/api/public/api/infos', {
 const savePersonalInfo = () => {
     const id = document.getElementById('info_id').value;
 
-    /*const formData = {
-        name: document.getElementById("name").value,
-        mobile: document.getElementById("mobile").value,
-        email: document.getElementById("email").value,
-        present_address: document.getElementById("present_address").value,
-        permanent_address: document.getElementById("permanent_address").value,
-        job_title: document.getElementById("job_title").value,
-        marital_status: document.getElementById("marital_status").value,
-        religion: document.getElementById("religion").value,
-        nationality: document.getElementById("nationality").value,
-        gender: document.getElementById("gender").value,
-        dob: document.getElementById("dob").value,
-        profile_summary: document.getElementById("profile_summary").value,
-        father_name: document.getElementById("father_name").value,
-        mother_name: document.getElementById("mother_name").value,
-        image: document.getElementById("image").value,
-    };*/
-
-    // fileInput.files[0], "file")
     const formData = new FormData();
     formData.append("name", document.getElementById("name").value);
     formData.append("image", document.getElementById("image").files[0]);
