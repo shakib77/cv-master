@@ -64,7 +64,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let image = personalInfo.image;
             // let image = 'https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0';
             let profileImageSegment = `
-            <img src='${image}' alt="profile_pic">`;
+            <img src='${image ? image : ''}' alt="profile_pic">`;
 
             profileImage += profileImageSegment;
             let profileImageContainer = document.querySelector('.img');
@@ -186,9 +186,9 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let experience_info = '';
             let experience_infoSegment = workExperience.map((workExperience) => {
                 return (`
-                        <div class="head1">${workExperience.position}</div>
-                        <div class="skill_name1">${workExperience.company_name}</div>
-                        <p class="p4">${workExperience.start} - ${workExperience.end}</p>
+                        <div class="head1">${workExperience.position ? workExperience.position : ''}</div>
+                        <div class="skill_name1">${workExperience.company_name ? workExperience.company_name : ''}</div>
+                        <p class="p4">${workExperience.start ? workExperience.start : ''} - ${workExperience.end ? workExperience.end : ''}</p>
                         `)
             }).join('')
 
@@ -199,8 +199,8 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let projectInfo = '';
             let projectInfoSegment = projects.map((project) => {
                 return (` 
-                        <div class="head1">${project.project_name}</div>
-                        <p class="p4">${project.start} - ${project.end}</p>
+                        <div class="head1">${project.project_name ? project.project_name : ''}</div>
+                        <p class="p4">${project.start ? project.start : ''} - ${project.end ? project.end : ''}</p>
                         <p class="p3">${project.project_summary}</p>
                  `)
             }).join('')
@@ -208,51 +208,6 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             projectInfo += projectInfoSegment;
             let projectInfoContainer = document.querySelector('.project_info');
             projectInfoContainer.innerHTML = projectInfo;
-
-            /*let contentSegment = `
-               <h1 class="quickFade delayOne"></h1>
-               <p class="quickFade delayOne">${personalInfo.job_title}</p>
-          `;*/
-
-
-            let contactInfo = '';
-            let contactInfoSegment = `<div class="title1">Contact Me</div>
-                            <br>
-                            <div class="title2">Mobile</div>
-                            <p style="margin-bottom: 1px;"></p>
-                            <div class="title2">E-mail</div>
-                            <p style="margin-bottom: 1px;"></p>
-                            <div class="title2">Address</div>
-                            <p style="margin-bottom: 1px;"></p>
-                            <div class="title2">Birth Date</div>
-                            <p style="margin-bottom: 1px;">${personalInfo.dob}</p>
-                `;
-
-            contactInfo += contactInfoSegment;
-            let contactInfoContainer = document.querySelector('.contact_info');
-            contactInfoContainer.innerHTML = contactInfo;
-
-            let language = '';
-            let languageSegment = `
-                             <span>
-                                
-                             </span>
-                        `;
-
-            language += languageSegment;
-            let languageContainer = document.querySelector('.language');
-            languageContainer.innerHTML = language;
-
-            let hobby = '';
-            let hobbySegment = `
-                             <span>
-                                ${additionalInfo.hobby}
-                             </span>
-                        `;
-
-            hobby += hobbySegment;
-            let hobbyContainer = document.querySelector('.hobby');
-            hobbyContainer.innerHTML = hobby;
         }
     })
     .catch((err) => {

@@ -54,7 +54,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let profileImage = '';
             let image = personalInfo.image
             let profileImageSegment = `
-            <img src='${image}' alt="profile_pic">`;
+            <img src='${image ? image : ''}' alt="profile_pic">`;
 
             profileImage += profileImageSegment;
             let profileImageContainer = document.querySelector('.name_right');

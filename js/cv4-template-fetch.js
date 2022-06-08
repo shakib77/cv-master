@@ -54,7 +54,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let image = personalInfo.image
             let name = personalInfo.name
             let profileSegment = `
-                <img src='${image}' class="photo" alt="Profile Picture">
+                <img src='${image ? image : ''}' class="photo" alt="Profile Picture">
                 <div class="contact-info-box">
                     <h1 class="name">${name}</h1>
                     <br>

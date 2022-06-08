@@ -43,7 +43,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let profileImage = '';
             let image = personalInfo.image
             let profileImageSegment = `
-            <img src='${image}' alt="profile_pic">`;
+            <img src='${image ? image : ''}' alt="profile_pic">`;
 
             profileImage += profileImageSegment;
             let profileImageContainer = document.querySelector('.profile_image');
@@ -247,9 +247,7 @@ fetch('https://xosstech.com/cvm/api/public/api/cv', {
 
 const onClickPay = () => {
     const radioValue = document.querySelector('input[name="payment_radio"]:checked').value;
-    createPdfFromHtmlCv2();
-    //todo: payment is off on test demand
-    /*switch (radioValue) {
+    switch (radioValue) {
         case '1':
             nagadPayment();
             break;
@@ -258,7 +256,7 @@ const onClickPay = () => {
             break;
         default:
             alert('No template found!')
-    }*/
+    }
 }
 
 const nagadPayment = () => {
@@ -275,6 +273,7 @@ const nagadPayment = () => {
         if (!res.ok) {
             throw Error("Could not fetch data for that resource!!!");
         } else {
+            // console.log('nagad res->', res.json());
             return res.text();
         }
     })
