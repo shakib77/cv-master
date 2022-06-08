@@ -73,20 +73,20 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let content = '';
             let contentSegment = `
             <p class="p5"><i class="fa fa-envelope" aria-hidden="true"
-                                     style="display: block; font-size: 23px; color: #008AD3;"></i>${personalInfo.email}</p>
+                                     style="display: block; font-size: 23px; color: #008AD3;"></i>${personalInfo.email ? personalInfo.email : ''}</p>
                     <p class="p5"><i class="fa fa-mobile" aria-hidden="true"
-                                     style="display: block; font-size: 33px; color: #008AD3;"></i>${personalInfo.mobile}</p>
+                                     style="display: block; font-size: 33px; color: #008AD3;"></i>${personalInfo.mobile ? personalInfo.mobile : ''}</p>
                     <p class="p5"><i class="fa fa-map-marker" aria-hidden="true"
-                                     style="display: block; font-size: 24px; color: #008AD3;"></i>${personalInfo.present_address}</p>
+                                     style="display: block; font-size: 24px; color: #008AD3;"></i>${personalInfo.present_address ? personalInfo.present_address : ''}</p>
                     <p class="head">Skills</p>
                     <hr style="border: 1px solid #008AD3;">
                     <ul class="skills">
-                        <li>${additionalInfo.skills}</li>
+                        <li>${additionalInfo.skills ? additionalInfo.skills : ''}</li>
                     </ul>
 
                     <p class="head">Languages</p>
                     <hr style="border: 1px solid #008AD3;">
-                    <p class="p3">${additionalInfo.language}</p>
+                    <p class="p3">${additionalInfo.language ? additionalInfo.language : ''}</p>
                     <p class="p4">Good</p>`;
 
             content += contentSegment;
@@ -99,27 +99,27 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
 <ul class="ref">
                 <li>
                     <div class="p6">
-                        <p>${reference.name}</p>
+                        <p>${reference.name ? reference.name : ''}</p>
                     </div>
                 </li>
                 <li>
                     <div class="p3">
-                        <p>${reference.designation}</p>
+                        <p>${reference.designation ? reference.designation : ''}</p>
                     </div>
                 </li>
                 <li>
                     <div class="p3">
-                        <p>${reference.organization}</p>
+                        <p>${reference.organization ? reference.organization : ''}</p>
                     </div>
                 </li>
                 <li>
                     <div class="p3">
-                        <p>${reference.email}</p>
+                        <p>${reference.email ? reference.email : ''}</p>
                     </div>
                 </li>
                 <li>
                     <div class="p3">
-                        <p>${reference.mobile}</p>
+                        <p>${reference.mobile ? reference.mobile : ''}</p>
                     </div>
                 </li>
 </ul>
@@ -138,13 +138,13 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
                             <ul class="ref">
                             <li>
                                 <div class="head1">
-                                    <p>${training.training_name}</p>
+                                    <p>${training.training_name ? training.training_name : ''}</p>
                                 </div>
                             </li>
                            
                             <li>
                                 <div class="p3">
-                                    <p>${training.end}</p>
+                                    <p>${training.end ? training.end : ''}</p>
                                 </div>
                             </li>
                         </ul>
@@ -158,26 +158,30 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
 
             let profileSummary = '';
             let profileSummarySegment = `
-                    <p class="head21">${personalInfo.name}</p>
-                    <p class="p7" style="font-size: 14px;">${personalInfo.profile_summary}</p>`;
+                    <p class="head21">${personalInfo.name ? personalInfo.name : ''}</p>
+                    <p class="p7" style="font-size: 14px;">${personalInfo.profile_summary ? personalInfo.profile_summary : ''}</p>`;
 
             profileSummary += profileSummarySegment;
             let profileSummaryContainer = document.querySelector('.bg');
             profileSummaryContainer.innerHTML = profileSummary;
 
-            let educationInfo = '';
-            let educationInfoSegment = education.map((education) => {
-                return (`
-                        <div class="head1">${education.degree}</div>
-                        <div class="skill_name1">${education.inst_name}</div>
-                        <p class="p4">${education.pass_year}</p>
-                        <p class="p4">${education.result}</p>
-                        <p class="p4">${education.board}</p>`)
-            }).join('')
+            if (education.length > 0) {
 
-            educationInfo += educationInfoSegment;
-            let educationInfoContainer = document.querySelector('.education_info');
-            educationInfoContainer.innerHTML = educationInfo;
+
+                let educationInfo = '';
+                let educationInfoSegment = education.map((education) => {
+                    return (`
+                        <div class="head1">${education.degree ? education.degree : ''}</div>
+                        <div class="skill_name1">${education.inst_name ? education.inst_name : ''}</div>
+                        <p class="p4">${education.pass_year ? education.pass_year : ''}</p>
+                        <p class="p4">${education.result ? education.result : ''}</p>
+                        <p class="p4">${education.board ? education.board : ''}</p>`)
+                }).join('')
+
+                educationInfo += educationInfoSegment;
+                let educationInfoContainer = document.querySelector('.education_info');
+                educationInfoContainer.innerHTML = educationInfo;
+            }
 
             let experience_info = '';
             let experience_infoSegment = workExperience.map((workExperience) => {
@@ -228,19 +232,6 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let contactInfoContainer = document.querySelector('.contact_info');
             contactInfoContainer.innerHTML = contactInfo;
 
-
-            let profileSkills = '';
-            let profileSkillsSegment = `
-                         
-                             <span>
-                                
-                             </span>
-                        `;
-
-            profileSkills += profileSkillsSegment;
-            let profileSkillsContainer = document.querySelector('.profile_skills');
-            profileSkillsContainer.innerHTML = profileSkills;
-
             let language = '';
             let languageSegment = `
                              <span>
@@ -262,11 +253,6 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             hobby += hobbySegment;
             let hobbyContainer = document.querySelector('.hobby');
             hobbyContainer.innerHTML = hobby;
-
-
-
-
-
         }
     })
     .catch((err) => {
@@ -379,7 +365,7 @@ const bdAppsPayment = () => {
                     })
             }
 
-            if (jsonRes.response ==='charged_successfull')  {
+            if (jsonRes.response === 'charged_successfull') {
                 createPdfFromHtmlCv11();
             }
 

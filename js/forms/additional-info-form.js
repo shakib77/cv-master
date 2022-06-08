@@ -25,7 +25,7 @@ fetch('https://xosstech.com/cvm/api/public/api/additions', {
 }).catch((err) => console.log('error', err));
 
 const saveAdditionalInfo = () => {
-    const id = document.getElementById("skills_id");
+    const id = document.getElementById("skills_id").value;
 
     const formData = {
         skills: document.getElementById("skills").value,
