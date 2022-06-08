@@ -247,8 +247,9 @@ fetch('https://xosstech.com/cvm/api/public/api/cv', {
 
 const onClickPay = () => {
     const radioValue = document.querySelector('input[name="payment_radio"]:checked').value;
-
-    switch (radioValue) {
+    createPdfFromHtmlCv2();
+    //todo: payment is off on test demand
+    /*switch (radioValue) {
         case '1':
             nagadPayment();
             break;
@@ -257,7 +258,7 @@ const onClickPay = () => {
             break;
         default:
             alert('No template found!')
-    }
+    }*/
 }
 
 const nagadPayment = () => {
