@@ -54,9 +54,7 @@ const savePersonalInfo = () => {
     formData.append("father_name", document.getElementById("father_name").value);
     formData.append("mother_name", document.getElementById("mother_name").value);
 
-    console.log('frorm->', document.getElementById("dob").value);
-
-    /*fetch(id ? `https://xosstech.com/cvm/api/public/api/info/update/${id}` : 'https://xosstech.com/cvm/api/public/api/info', {
+    fetch(id ? `https://xosstech.com/cvm/api/public/api/info/update/${id}` : 'https://xosstech.com/cvm/api/public/api/info', {
         method: "POST",
         mode: "cors",
         headers: {
@@ -86,5 +84,5 @@ const savePersonalInfo = () => {
         .catch((err) => {
             console.log('error->', err);
             // window.location.href = "/login.html";
-        });*/
+        });
 }
