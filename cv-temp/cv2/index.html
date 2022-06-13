@@ -553,9 +553,9 @@
     function createPdfFromHtmlCv2() {
         let HTML_Width = $(".print_cv").width();
         let HTML_Height = $(".print_cv").height();
-        let top_left_margin = 15;
-        let PDF_Width = HTML_Width + (top_left_margin * 2);
-        let PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
+        let top_left_margin = 0;
+        let PDF_Width = HTML_Width - (top_left_margin * 2);
+        let PDF_Height = (PDF_Width * 1.5) - (top_left_margin * 2);
         let canvas_image_width = HTML_Width;
         let canvas_image_height = HTML_Height;
 
@@ -567,7 +567,7 @@
             pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
             for (let i = 1; i <= totalPDFPages; i++) {
                 pdf.addPage(PDF_Width, PDF_Height);
-                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) + (top_left_margin * 4), canvas_image_width, canvas_image_height);
+                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height * i) - (top_left_margin * 4), canvas_image_width, canvas_image_height);
             }
             pdf.save("resume.pdf");
             // $(".print_cv").hide();
