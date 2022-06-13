@@ -279,7 +279,8 @@ const nagadPayment = () => {
     })
         .then((jsonRes) => {
             console.log('Nagad jsonRes =>', jsonRes);
-            window.location.href = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '');
+            const url = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '');
+            window.open(url, "_blank")
 
         }).catch((err) => console.log('err->', err))
 }
