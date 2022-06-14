@@ -1,4 +1,5 @@
 let data = '';
+let userId = '';
 
 const myInit = {
     method: "POST", // withCredentials: true,
@@ -39,6 +40,8 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let education = data?.education_data?.education;
             let trainings = data?.trainings_data?.trainings
             let projects = data?.projects_data?.projects
+
+            userId = personalInfo?.user_id;
 
             let profileImage = '';
             let image = personalInfo.image
@@ -259,9 +262,31 @@ const onClickPay = () => {
     }
 }
 
+const nagadPaymentGet = () => {
+    fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
+        method: "GET", headers: {
+            "Content-Type": "application/json",
+        }, mode: "cors", cache: "default",
+    }).then((res) => {
+        return res.text()
+    }).then((jsonRes) => {
+        // console.log({jsonRes});
+        if (!jsonRes.success) {
+            return false;
+        }
+
+        console.log('nafdgpay->', jsonRes);
+
+    }).catch((err) => console.log('error', err));
+
+    setTimeout(nagadPaymentGet, 10000);
+}
+
 const nagadPayment = () => {
     let nagadFormData = new FormData();
     nagadFormData.append('amount', cv2Obj?.price);
+    nagadFormData.append('user_id', userId);
+    nagadFormData.append('cv_id', cv2Obj?.id);
 
     $(".water-mark").hide();
     // createPdfFromHtmlCv2();
@@ -278,9 +303,10 @@ const nagadPayment = () => {
         }
     })
         .then((jsonRes) => {
-            console.log('Nagad jsonRes =>', jsonRes);
+            // console.log('Nagad jsonRes =>', jsonRes);
             const url = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '');
             window.open(url, "_blank")
+            nagadPaymentGet();
 
         }).catch((err) => console.log('err->', err))
 }
