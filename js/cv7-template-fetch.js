@@ -288,33 +288,28 @@ const onClickPay = () => {
         default:
             alert('No template found!')
     }
+    $('#payment_modal').modal('hide');
 }
 
-let status = null;
 const nagadPaymentGet = () => {
-    if (!status) {
-        fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: bearer,
-            },
-            mode: "cors",
-            cache: "default",
-        }).then((res) => {
-            return res.json()
-        }).then((jsonRes) => {
-            status = jsonRes.data.status
-            if (status === 'Success') {
-                $(".water-mark").hide();
-                createPdfFromHtmlCv7();
-            }
-        }).catch((err) => console.log('error', err));
+    fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: bearer,
+        },
+        mode: "cors",
+        cache: "default",
+    }).then((res) => {
+        return res.json()
+    }).then((jsonRes) => {
+        if (jsonRes.data.status === 'Success') {
+            $(".water-mark").hide();
+            createPdfFromHtmlCv7();
+        }
+    }).catch((err) => console.log('error', err));
 
-        setTimeout(nagadPaymentGet, 5000);
-    } else {
-        return false;
-    }
+    setTimeout(nagadPaymentGet, 3000);
 }
 
 const nagadPayment = () => {
@@ -389,7 +384,7 @@ const bdAppsPayment = () => {
                     })
             }
 
-            if (jsonRes.response ==='charged_successfull')  {
+            if (jsonRes.response === 'charged_successfull') {
                 createPdfFromHtmlCv7();
             }
 
