@@ -1,4 +1,5 @@
 let data = '';
+let userId = '';
 
 const myInit = {
     method: "POST",
@@ -41,24 +42,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let trainings = data?.trainings_data?.trainings
             let projects = data?.projects_data?.projects
 
-            //todo: code for convert image into base64
-            /*function toDataURL(url, callback) {
-                var xhr = new XMLHttpRequest();
-                xhr.onload = function() {
-                    var reader = new FileReader();
-                    reader.onloadend = function() {
-                        callback(reader.result);
-                    }
-                    reader.readAsDataURL(xhr.response);
-                };
-                xhr.open('GET', url);
-                xhr.responseType = 'blob';
-                xhr.send();
-            }
-
-            toDataURL('https://www.gravatar.com/avatar/d50c83cc0c6523b4d3f6085295c953e0', function(dataUrl) {
-                console.log('RESULT:', dataUrl)
-            })*/
+            userId = personalInfo?.user_id;
 
             let profileImage = '';
             let image = personalInfo.image;
@@ -248,12 +232,38 @@ const onClickPay = () => {
     }
 }
 
+let status = null;
+const nagadPaymentGet = () => {
+    if (!status) {
+        fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: bearer,
+            },
+            mode: "cors",
+            cache: "default",
+        }).then((res) => {
+            return res.json()
+        }).then((jsonRes) => {
+            status = jsonRes.data.status
+            if (status === 'Success') {
+                $(".water-mark").hide();
+                createPdfFromHtmlCv11();
+            }
+        }).catch((err) => console.log('error', err));
+
+        setTimeout(nagadPaymentGet, 5000);
+    } else {
+        return false;
+    }
+}
+
 const nagadPayment = () => {
     let nagadFormData = new FormData();
     nagadFormData.append('amount', cv11Obj?.price);
-
-    $(".water-mark").hide();
-    // createPdfFromHtmlCv2();
+    nagadFormData.append('user_id', userId);
+    nagadFormData.append('cv_id', cv11Obj?.id);
 
     fetch("https://xosstech.com/Payment/nagad/index.php", {
         method: "POST", mode: "cors", body: nagadFormData
@@ -266,9 +276,9 @@ const nagadPayment = () => {
         }
     })
         .then((jsonRes) => {
-            console.log('Nagad jsonRes =>', jsonRes);
-            window.location.href = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '');
-
+            const url = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '');
+            window.open(url, "_blank")
+            nagadPaymentGet();
         }).catch((err) => console.log('err->', err))
 }
 

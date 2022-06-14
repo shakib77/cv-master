@@ -262,24 +262,31 @@ const onClickPay = () => {
     }
 }
 
+let status = null;
 const nagadPaymentGet = () => {
-    fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
-        method: "GET", headers: {
-            "Content-Type": "application/json",
-        }, mode: "cors", cache: "default",
-    }).then((res) => {
-        return res.text()
-    }).then((jsonRes) => {
-        // console.log({jsonRes});
-        if (!jsonRes.success) {
-            return false;
-        }
+    if (!status) {
+        fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: bearer,
+            },
+            mode: "cors",
+            cache: "default",
+        }).then((res) => {
+            return res.json()
+        }).then((jsonRes) => {
+            status = jsonRes.data.status
+            if (status === 'Success') {
+                $(".water-mark").hide();
+                createPdfFromHtmlCv2();
+            }
+        }).catch((err) => console.log('error', err));
 
-        console.log('nafdgpay->', jsonRes);
-
-    }).catch((err) => console.log('error', err));
-
-    setTimeout(nagadPaymentGet, 10000);
+        setTimeout(nagadPaymentGet, 5000);
+    } else {
+        return false;
+    }
 }
 
 const nagadPayment = () => {
@@ -287,9 +294,6 @@ const nagadPayment = () => {
     nagadFormData.append('amount', cv2Obj?.price);
     nagadFormData.append('user_id', userId);
     nagadFormData.append('cv_id', cv2Obj?.id);
-
-    $(".water-mark").hide();
-    // createPdfFromHtmlCv2();
 
     fetch("https://xosstech.com/Payment/nagad/index.php", {
         method: "POST", mode: "cors", body: nagadFormData
@@ -303,7 +307,6 @@ const nagadPayment = () => {
         }
     })
         .then((jsonRes) => {
-            // console.log('Nagad jsonRes =>', jsonRes);
             const url = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '');
             window.open(url, "_blank")
             nagadPaymentGet();
@@ -359,7 +362,7 @@ const bdAppsPayment = () => {
                     })
             }
 
-            if (jsonRes.response ==='charged_successfull')  {
+            if (jsonRes.response === 'charged_successfull') {
                 createPdfFromHtmlCv2();
             }
 

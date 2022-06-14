@@ -1,4 +1,5 @@
 let data = '';
+let userId = '';
 
 const myInit = {
     method: "POST",
@@ -40,6 +41,8 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let education = data?.education_data?.education;
             let trainings = data?.trainings_data?.trainings
             let projects = data?.projects_data?.projects
+
+            userId = personalInfo?.user_id;
 
             let contactInfo = '';
             let contactInfoSegment = `
@@ -233,12 +236,38 @@ const onClickPay = () => {
     }
 }
 
+let status = null;
+const nagadPaymentGet = () => {
+    if (!status) {
+        fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: bearer,
+            },
+            mode: "cors",
+            cache: "default",
+        }).then((res) => {
+            return res.json()
+        }).then((jsonRes) => {
+            status = jsonRes.data.status
+            if (status === 'Success') {
+                $(".water-mark").hide();
+                createPdfFromHtmlCv13();
+            }
+        }).catch((err) => console.log('error', err));
+
+        setTimeout(nagadPaymentGet, 5000);
+    } else {
+        return false;
+    }
+}
+
 const nagadPayment = () => {
     let nagadFormData = new FormData();
     nagadFormData.append('amount', cv13Obj?.price);
-
-    $(".water-mark").hide();
-    // createPdfFromHtmlCv2();
+    nagadFormData.append('user_id', userId);
+    nagadFormData.append('cv_id', cv13Obj?.id);
 
     fetch("https://xosstech.com/Payment/nagad/index.php", {
         method: "POST", mode: "cors", body: nagadFormData
@@ -251,9 +280,9 @@ const nagadPayment = () => {
         }
     })
         .then((jsonRes) => {
-            console.log('Nagad jsonRes =>', jsonRes);
-            window.location.href = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '');
-
+            const url = jsonRes.match(/\bhttps?:\/\/\S+/gi)[0].replace(/","status":"Success"}/g, '');
+            window.open(url, "_blank")
+            nagadPaymentGet();
         }).catch((err) => console.log('err->', err))
 }
 
