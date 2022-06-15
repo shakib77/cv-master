@@ -257,6 +257,9 @@ const onClickPay = () => {
         case '2':
             bdAppsPayment();
             break;
+        case '3':
+            bkashPayment();
+            break;
         default:
             alert('No template found!')
     }
@@ -362,6 +365,40 @@ const bdAppsPayment = () => {
             }
 
         })
+}
+
+const bkashPayment = () => {
+    let requestOptions = {
+        method: 'VIEW',
+        redirect: 'follow',
+        mode: "cors",
+    };
+
+    fetch("https://xosstech.com/Payment/php/payment.php", requestOptions)
+        .then((res) => {
+        if (!res.ok) {
+            throw Error("Could not fetch data for that resource!!!");
+        } else {
+            // console.log('bkash res->', res.json());
+            return res.text();
+        }
+    })
+        .then((jsonRes) => {
+            // console.log('bkash res->', jsonRes);
+            /*let responseHtml = jsonRes;
+            console.log(responseHtml, "Monitoring");
+            //open the new window and write your HTML to it
+            // var myWindow = window.open("", "response", "resizable=yes");
+            let myWindow = window.open();
+            myWindow.document.write(String(responseHtml));*/
+            // return jsonRes;
+
+            const myWindow = window.open();
+            myWindow.document.open();
+            myWindow.document.write(jsonRes);
+            myWindow.document.close();
+
+        }).catch((err) => console.log('err->', err))
 }
 
 const onClickBdApps = () => {
