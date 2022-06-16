@@ -229,10 +229,17 @@ const onClickPay = () => {
         case '2':
             bdAppsPayment();
             break;
+        case '3':
+            bkashPayment();
+            break;
         default:
             alert('No template found!')
     }
     $('#payment_modal').modal('hide');
+}
+
+const bkashPayment = () => {
+    window.open('https://xosstech.com/Payment/php/payment.php', '_blank');
 }
 
 const nagadPaymentGet = () => {

@@ -2,8 +2,7 @@ let data = '';
 let userId = '';
 
 const myInit = {
-    method: "POST", // withCredentials: true,
-    // credentials: "include",
+    method: "POST",
     headers: {
         "Content-Type": "application/json", Authorization: bearer, // cookie: document.cookie,
     }, mode: "cors", cache: "default",
@@ -148,8 +147,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
 
             let jobExperience = '';
             let jobExperienceSegment = workExperience.map((workExperience) => {
-                return (
-                    `<ul>
+                return (`<ul>
                             <li>
                                 <div class="date job_exp_company_name">${workExperience.company_name}</div>
                                 <div class="title job_exp_title">
@@ -162,8 +160,7 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
                         <p>${workExperience.work_summary}</p>
                                 </div>
                             </li>
-                        </ul>`
-                )
+                        </ul>`)
             }).join('')
 
 
@@ -189,15 +186,13 @@ fetch("https://xosstech.com/cvm/api/public/api/profileV2", myInit)
             let trainingInfo = '';
 
             let trainingInfoSegment = trainings.map((training) => {
-                return (
-                    `
+                return (`
                  <li>
                     <div class="date">${training.training_name}</div>
                     <div class="info">
                         <p class="semi-bold1">${training.end}</p>
                     </div>
-                </li>`
-                )
+                </li>`)
             }).join('');
 
             trainingInfo += trainingInfoSegment;
@@ -266,10 +261,13 @@ const onClickPay = () => {
     $('#payment_modal2').modal('hide');
 }
 
+const bkashPayment = () => {
+    window.open('https://xosstech.com/Payment/php/payment.php', '_blank');
+}
+
 const nagadPaymentGet = () => {
     fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
-        method: "GET",
-        headers: {
+        method: "GET", headers: {
             "Content-Type": "application/json",
             Authorization: bearer,
         },
@@ -324,10 +322,7 @@ const bdAppsPayment = () => {
     bdAppFormData.append("user_mobile", userMobile.value);
 
     fetch("https://xosstech.com/cvm/xossapp/cass.php", {
-        method: "POST",
-        mode: "cors",
-        body: bdAppFormData,
-        redirect: 'follow'
+        method: "POST", mode: "cors", body: bdAppFormData, redirect: 'follow'
 
     }).then((res) => {
         console.log('res=>', res);
@@ -341,10 +336,7 @@ const bdAppsPayment = () => {
             console.log('jsonRes.success->', jsonRes.response);
             if (jsonRes.response === 'not_subscribe') {
                 fetch("https://xosstech.com/cvm/xossapp/subscription.php", {
-                    method: "POST",
-                    mode: "cors",
-                    body: bdAppSubscriptionData,
-                    redirect: 'follow'
+                    method: "POST", mode: "cors", body: bdAppSubscriptionData, redirect: 'follow'
 
                 }).then((res) => {
                     console.log('res=>', res);
@@ -365,40 +357,6 @@ const bdAppsPayment = () => {
             }
 
         })
-}
-
-const bkashPayment = () => {
-    let requestOptions = {
-        method: 'VIEW',
-        redirect: 'follow',
-        mode: "cors",
-    };
-
-    fetch("https://xosstech.com/Payment/php/payment.php", requestOptions)
-        .then((res) => {
-        if (!res.ok) {
-            throw Error("Could not fetch data for that resource!!!");
-        } else {
-            // console.log('bkash res->', res.json());
-            return res.text();
-        }
-    })
-        .then((jsonRes) => {
-            // console.log('bkash res->', jsonRes);
-            /*let responseHtml = jsonRes;
-            console.log(responseHtml, "Monitoring");
-            //open the new window and write your HTML to it
-            // var myWindow = window.open("", "response", "resizable=yes");
-            let myWindow = window.open();
-            myWindow.document.write(String(responseHtml));*/
-            // return jsonRes;
-
-            const myWindow = window.open();
-            myWindow.document.open();
-            myWindow.document.write(jsonRes);
-            myWindow.document.close();
-
-        }).catch((err) => console.log('err->', err))
 }
 
 const onClickBdApps = () => {
