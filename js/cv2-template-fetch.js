@@ -263,6 +263,28 @@ const onClickPay = () => {
 
 const bkashPayment = () => {
     window.open('https://xosstech.com/Payment/php/payment.php', '_blank');
+    bkashPaymentStatusGet();
+}
+
+const bkashPaymentStatusGet = () => {
+    fetch('https://xosstech.com/Payment/php/success.html', {
+        method: "GET", headers: {
+            "Content-Type": "application/json",
+            Authorization: bearer,
+        },
+        mode: "cors",
+        cache: "default",
+    }).then((res) => {
+        return res.json()
+    }).then((jsonRes) => {
+        console.log('get bkdjson->', jsonRes);
+        /*if (jsonRes.data.status === 'Success') {
+            $(".water-mark").hide();
+            createPdfFromHtmlCv2();
+        }*/
+    }).catch((err) => console.log('error', err));
+
+    setTimeout(bkashPaymentStatusGet, 3000);
 }
 
 const nagadPaymentGet = () => {
