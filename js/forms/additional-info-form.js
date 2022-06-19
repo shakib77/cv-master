@@ -9,23 +9,28 @@ fetch('https://xosstech.com/cvm/api/public/api/additions', {
     if (!jsonRes.success) {
         throw Error("Could not fetch data for that resource");
     } else {
-        let additionalInfoDataLength = jsonRes.data.length;
-        let additionalInfoData = jsonRes.data[additionalInfoDataLength - 1];
+        if (jsonRes.data && jsonRes.data.length > 0) {
+            let additionalInfoDataLength = jsonRes.data.length;
+            let additionalInfoData = jsonRes.data[additionalInfoDataLength - 1];
 
-        document.getElementById('skills_id').value = additionalInfoData.id;
-        document.getElementById('skills').value = additionalInfoData.skills;
-        document.getElementById('hobby').value = additionalInfoData.hobby;
-        document.getElementById('language').value = additionalInfoData.language;
-        document.getElementById('linkedin').value = additionalInfoData.linkedin;
-        document.getElementById('twitter').value = additionalInfoData.twitter;
-        document.getElementById('behance').value = additionalInfoData.behance;
-        document.getElementById('github').value = additionalInfoData.github;
+            document.getElementById('skills_id').value = additionalInfoData.id;
+            document.getElementById('skills').value = additionalInfoData.skills;
+            document.getElementById('hobby').value = additionalInfoData.hobby;
+            document.getElementById('language').value = additionalInfoData.language;
+            document.getElementById('linkedin').value = additionalInfoData.linkedin;
+            document.getElementById('twitter').value = additionalInfoData.twitter;
+            document.getElementById('behance').value = additionalInfoData.behance;
+            document.getElementById('github').value = additionalInfoData.github;
+        }
     }
 
 }).catch((err) => console.log('error', err));
 
 const saveAdditionalInfo = () => {
-    const id = document.getElementById("skills_id").value;
+    let id = null;
+    if (document.getElementById("skills_id").value) {
+        id = document.getElementById("skills_id").value;
+    }
 
     const formData = {
         skills: document.getElementById("skills").value,
@@ -60,7 +65,7 @@ const saveAdditionalInfo = () => {
                 // window.location.href = "login.html";
             } else {
                 console.log('jsonRes.success->', jsonRes);
-                alert(id ? 'Data has been successfully updated': 'Data has been successfully submitted');
+                alert(id ? 'Data has been successfully updated' : 'Data has been successfully submitted');
                 // document.getElementById("additional_info_from").reset();
             }
         })
