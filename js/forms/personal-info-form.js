@@ -12,7 +12,7 @@ fetch('https://xosstech.com/cvm/api/public/api/infos', {
         let personalInfoLength = jsonRes.data.length;
         let personalInfoData = jsonRes.data[personalInfoLength - 1];
 
-        console.log('personalInfoData.dob->', personalInfoData.dob);
+        // console.log('personalInfoData.dob->', personalInfoData.dob.split("-").reverse().join("-0"));
 
         document.getElementById('info_id').value = personalInfoData.id;
         document.getElementById('name').value = personalInfoData.name;
@@ -25,7 +25,7 @@ fetch('https://xosstech.com/cvm/api/public/api/infos', {
         document.getElementById('religion').value = personalInfoData.religion;
         document.getElementById('nationality').value = personalInfoData.nationality;
         document.getElementById('gender').value = personalInfoData.gender;
-        document.getElementById('dob').value = personalInfoData.dob;
+        document.getElementById('dob').value = personalInfoData.dob.split("-").reverse().join("-0");
         document.getElementById('father_name').value = personalInfoData.father_name;
         document.getElementById('mother_name').value = personalInfoData.mother_name;
         document.getElementById('profile_summary').value = personalInfoData.profile_summary;
@@ -53,6 +53,8 @@ const savePersonalInfo = () => {
     formData.append("profile_summary", document.getElementById("profile_summary").value);
     formData.append("father_name", document.getElementById("father_name").value);
     formData.append("mother_name", document.getElementById("mother_name").value);
+
+    // console.log('sdfd->', document.getElementById("dob").value.split("-").reverse().join("-"));
 
     fetch(id ? `https://xosstech.com/cvm/api/public/api/info/update/${id}` : 'https://xosstech.com/cvm/api/public/api/info', {
         method: "POST",
