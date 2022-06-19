@@ -13,6 +13,7 @@ fetch('https://xosstech.com/cvm/api/public/api/infos', {
             let personalInfoLength = jsonRes.data.length;
             let personalInfoData = jsonRes.data[personalInfoLength - 1];
 
+            document.getElementById('info_id').value = personalInfoData.id;
             document.getElementById('name').value = personalInfoData.name;
             document.getElementById('email').value = personalInfoData.email;
             document.getElementById('mobile').value = personalInfoData.mobile;
