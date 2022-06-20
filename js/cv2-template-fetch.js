@@ -263,7 +263,29 @@ const onClickPay = () => {
 
 const bkashPayment = () => {
     window.open('https://xosstech.com/Payment/php/payment.php', '_blank');
-    bkashPaymentStatusGet();
+
+    let bkashFormData = new FormData();
+    bkashFormData.append('amount', cv2Obj?.price);
+    bkashFormData.append('user_id', userId);
+    bkashFormData.append('cv_id', cv2Obj?.id);
+
+    fetch("https://xosstech.com/Payment/php/payment.php", {
+        method: "VIEW", mode: "cors", body: bkashFormData
+
+    }).then((res) => {
+        if (!res.ok) {
+            throw Error("Could not fetch data for that resource!!!");
+        } else {
+            // console.log('bkash res->', res.text());
+            return res.text();
+        }
+    })
+        .then((jsonRes) => {
+            console.log('jros->', jsonRes);
+
+        }).catch((err) => console.log('err->', err))
+
+    nagadPaymentGet();
 }
 
 const bkashPaymentStatusGet = () => {
