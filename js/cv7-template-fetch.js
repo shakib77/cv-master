@@ -295,9 +295,9 @@ const onClickPay = () => {
 }
 
 const bkashPayment = () => {
-    window.open(`https://xosstech.com/Payment/php/payment.php?cv_id=${cv7Obj?.id}&user_id=${userId}&id=CVM${cv7Obj?.price}CVF`, '_blank');
+    window.open(`https://xosstech.com/Payment/bkash/payment.php?cv_id=${cv7Obj?.id}&user_id=${userId}&id=CVM${cv7Obj?.price}CVF`, '_blank');
 
-    bkashPaymentStatusGet();
+    setTimeout(bkashPaymentStatusGet, 5000);
 }
 
 const bkashPaymentStatusGet = () => {
@@ -410,7 +410,7 @@ const bdAppsPayment = () => {
                 })
                     .then((jsonRes) => {
                         console.log('jsonRes.success sub->', jsonRes.response);
-
+                        window.alert('Please press 1 for subscription')
                     })
             }
 
