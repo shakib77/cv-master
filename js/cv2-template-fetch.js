@@ -262,34 +262,13 @@ const onClickPay = () => {
 }
 
 const bkashPayment = () => {
-    window.open('https://xosstech.com/Payment/php/payment.php', '_blank');
+    window.open(`https://xosstech.com/Payment/php/payment.php?cv_id=${cv2Obj?.id}&user_id=${userId}&id=CVM${cv2Obj?.price}CVF`, '_blank');
 
-    let bkashFormData = new FormData();
-    bkashFormData.append('amount', cv2Obj?.price);
-    bkashFormData.append('user_id', userId);
-    bkashFormData.append('cv_id', cv2Obj?.id);
-
-    fetch("https://xosstech.com/Payment/php/payment.php", {
-        method: "VIEW", mode: "cors", body: bkashFormData
-
-    }).then((res) => {
-        if (!res.ok) {
-            throw Error("Could not fetch data for that resource!!!");
-        } else {
-            // console.log('bkash res->', res.text());
-            return res.text();
-        }
-    })
-        .then((jsonRes) => {
-            console.log('jros->', jsonRes);
-
-        }).catch((err) => console.log('err->', err))
-
-    nagadPaymentGet();
+    bkashPaymentStatusGet();
 }
 
 const bkashPaymentStatusGet = () => {
-    fetch('https://xosstech.com/Payment/php/success.html', {
+    fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
         method: "GET", headers: {
             "Content-Type": "application/json",
             Authorization: bearer,
@@ -300,10 +279,10 @@ const bkashPaymentStatusGet = () => {
         return res.json()
     }).then((jsonRes) => {
         console.log('get bkdjson->', jsonRes);
-        /*if (jsonRes.data.status === 'Success') {
+        if (jsonRes.data.status === 'Completed') {
             $(".water-mark").hide();
             createPdfFromHtmlCv2();
-        }*/
+        }
     }).catch((err) => console.log('error', err));
 
     setTimeout(bkashPaymentStatusGet, 3000);

@@ -242,7 +242,30 @@ const onClickPay = () => {
 }
 
 const bkashPayment = () => {
-    window.open('https://xosstech.com/Payment/php/payment.php', '_blank');
+    window.open(`https://xosstech.com/Payment/php/payment.php?cv_id=${cv3Obj?.id}&user_id=${userId}&id=CVM${cv3Obj?.price}CVF`, '_blank');
+
+    bkashPaymentStatusGet();
+}
+
+const bkashPaymentStatusGet = () => {
+    fetch('https://xosstech.com/cvm/api/public/api/nagadpayment', {
+        method: "GET", headers: {
+            "Content-Type": "application/json",
+            Authorization: bearer,
+        },
+        mode: "cors",
+        cache: "default",
+    }).then((res) => {
+        return res.json()
+    }).then((jsonRes) => {
+        console.log('get bkdjson->', jsonRes);
+        if (jsonRes.data.status === 'Completed') {
+            $(".water-mark").hide();
+            createPdfFromHtmlCv3();
+        }
+    }).catch((err) => console.log('error', err));
+
+    setTimeout(bkashPaymentStatusGet, 3000);
 }
 
 const nagadPaymentGet = () => {
